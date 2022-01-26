@@ -27,7 +27,7 @@ export default class App {
   }
 
   private route() {
-    this.app.use('/api/posts', tempRouter);
+    this.app.use('/api/temp', tempRouter);
   }
 
   listen() {
