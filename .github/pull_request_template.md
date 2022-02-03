@@ -8,7 +8,7 @@
 
 - What
 
-### 🚧 전달 사항 [option]
+### 💁‍♂️ 전달 사항 [option]
 
 - Caution
 
