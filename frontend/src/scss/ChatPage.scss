@@ -1,0 +1,18 @@
+//Chat scss
+@import "./base/base";
+@import "./base/mixin";
+@import "./base/variable";
+@import "./component/header";
+@import "./component/layout";
+
+@import "./component/chat";
+
+.main-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  @include mobile {
+    flex-direction: column;
+  }
+}

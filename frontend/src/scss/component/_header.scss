@@ -1,3 +1,76 @@
 .header-container {
-  display: block;
+  padding: 1%;
+  .MuiPaper-root {
+    background-color: #fff;
+    box-shadow: none;
+  }
+
+  .MuiBox-root {
+    color: #000;
+  }
+
+  .gnb-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    @include font-default(500, 16px);
+    @include mobile {
+      display: none;
+    }
+  }
+
+  .right-container {
+    width: 20%;
+    @include mobile {
+      flex-grow: 1;
+    }
+    .user-navigation-container {
+      width: 15%;
+      position: absolute;
+      top: -10%;
+      right: 3%;
+      display: inline-flex;
+      justify-content: space-between;
+      flex-grow: 1;
+      white-space: nowrap;
+      @include font-default(300, 14px);
+      @include mobile {
+        display: none;
+      }
+    }
+
+    .search-container {
+      width: 100%;
+      position: relative;
+      border-radius: 10px;
+      margin-left: 0;
+      background-color: #e5e5e5;
+      display: flex;
+      flex-grow: 1;
+      padding-left: 2%;
+
+      .search-icon {
+        height: 100%;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .search-input {
+        padding-left: calc(1.5rem);
+        &::before,
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .header-logo {
+    img {
+      width: 80%;
+      margin: 0 auto;
+    }
+  }
 }
