@@ -1,4 +1,4 @@
-import { AppBar, Box, Input, Link, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Input, Link, Toolbar } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
 interface IUserNavigtaion {
@@ -7,11 +7,9 @@ interface IUserNavigtaion {
 
 const Logo: React.FC = () => {
   return (
-    <Box>
-      <Typography variant='h6' component='div'>
-        시대 이음
-      </Typography>
-    </Box>
+    <div className='header-logo'>
+      <img src='/img/logo_long.png' alt='logo' />
+    </div>
   );
 };
 
