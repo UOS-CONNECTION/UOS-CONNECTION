@@ -1,5 +1,9 @@
+import {Routes} from 'react-router-dom';
+
 const Router: React.FC = () => {
-  return <div>Router</div>;
+  return <Routes>
+    <Router />
+  </Routes>>
 };
 
 export default Router;
