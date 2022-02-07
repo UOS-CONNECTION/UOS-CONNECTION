@@ -1,0 +1,54 @@
+// Share Tab
+.share-tab-container {
+  width: 50%;
+
+  .Mui-selected {
+    @include font-default(500, 1rem);
+  }
+}
+
+// Share Card
+.share-card-container {
+  display: flex;
+  width: 100%;
+  padding: 5%;
+  margin-bottom: 5%;
+  cursor: pointer;
+  .card-main-image {
+    max-width: 20%;
+
+    .card-img {
+      max-width: 80%;
+    }
+  }
+
+  .card-content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    
+    .card-label-container {
+      display: flex;
+      .card-label {
+        background-color: #6eb7e9;
+        color: #fff;
+
+        &:not(:first-child) {
+          margin-left: 2%;
+        }
+      }
+    }
+  }
+
+  .card-user-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+
+    img {
+      max-width: 100%;
+    }
+  }
+}
