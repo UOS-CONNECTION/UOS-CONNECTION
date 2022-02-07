@@ -1,4 +1,4 @@
-import { AppBar, Box, Input, Link, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Input, Link, Toolbar } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
 interface IUserNavigtaion {
