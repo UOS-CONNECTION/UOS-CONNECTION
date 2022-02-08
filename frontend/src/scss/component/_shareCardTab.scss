@@ -11,6 +11,7 @@
 .share-card-container {
   display: flex;
   width: 100%;
+  height: 6em;
   padding: 5%;
   margin-bottom: 5%;
   cursor: pointer;
@@ -39,16 +40,72 @@
         }
       }
     }
-  }
+    .card-label-container {
+      display: flex;
+      .card-label {
+        background-color: #6eb7e9;
+        color: #fff;
 
+        &:not(:first-child) {
+          margin-left: 2%;
+        }
+      }
+    }
+    .card-label-container {
+      display: flex;
+      .card-label {
+        background-color: #6eb7e9;
+        color: #fff;
+
+        &:not(:first-child) {
+          margin-left: 2%;
+        }
+      }
+    }
+    .card-label-container {
+      display: flex;
+      .card-label {
+        background-color: #6eb7e9;
+        color: #fff;
+
+        &:not(:first-child) {
+          margin-left: 2%;
+        }
+      }
+    }
+    .card-label-container {
+      display: flex;
+      .card-label {
+        background-color: #6eb7e9;
+        color: #fff;
+
+        &:not(:first-child) {
+          margin-left: 2%;
+        }
+      }
+    }
+  }
+  
   .card-user-container {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     text-align: center;
-
+    
     img {
       max-width: 100%;
+    }
+  }
+}
+
+.card-label-container {
+  display: flex;
+  .card-label {
+    background-color: #6eb7e9;
+    color: #fff;
+
+    &:not(:first-child) {
+      margin-left: 2%;
     }
   }
 }
