@@ -25,7 +25,7 @@ export const TempChat = [
     },
     unwatched: 0,
     last: "2022/2/5/22/20",
-    overview: "지함 지함 지함 지함 지함 지함 지함",
+    overview: "지함 지함 지함 지함 지함 지함 지함 지함 지함 지함 지함",
     content: [
       [" UN village ~~", 1],
       ["U & me relaxing chilling yeah~~", 0],
