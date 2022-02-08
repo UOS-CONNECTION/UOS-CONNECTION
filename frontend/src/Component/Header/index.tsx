@@ -1,13 +1,20 @@
 import { AppBar, Box, Input, Link, Toolbar } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { useNavigate } from 'react-router-dom';
 
 interface IUserNavigtaion {
   isLogin: boolean;
 }
 
 const Logo: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleGoMain = () => {
+    navigate('/', {replace: true})
+  };
+
   return (
-    <div className='header-logo'>
+    <div className='header-logo' onClick={handleGoMain}>
       <img src='/img/logo_long.png' alt='logo' />
     </div>
   );
@@ -16,9 +23,6 @@ const Logo: React.FC = () => {
 const GNBNavigation: React.FC = () => {
   return (
     <Box className='gnb-container'>
-      <Link href='/' color='inherit' underline='none'>
-        이음
-      </Link>
       <Link href='#' color='inherit' underline='none'>
         물품공유
       </Link>
@@ -27,6 +31,9 @@ const GNBNavigation: React.FC = () => {
       </Link>
       <Link href='#' color='inherit' underline='none'>
         채팅
+      </Link>
+      <Link href='/' color='inherit' underline='none'>
+        이음
       </Link>
     </Box>
   );
