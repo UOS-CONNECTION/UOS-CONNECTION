@@ -11,7 +11,7 @@ const ShareCard: React.FC<IShareCard> = ({ data }) => {
   const navigate = useNavigate();
 
   const handleGoDetailPage = useCallback(() => {
-    navigate(`/post/${data.id}`, {replace: true});
+    navigate(`/post/${data.id}`);
   }, []);
 
   return (

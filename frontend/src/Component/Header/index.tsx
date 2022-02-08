@@ -10,7 +10,7 @@ const Logo: React.FC = () => {
   const navigate = useNavigate();
 
   const handleGoMain = () => {
-    navigate('/', {replace: true})
+    navigate('/')
   };
 
   return (
