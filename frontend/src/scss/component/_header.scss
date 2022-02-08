@@ -67,9 +67,10 @@
   }
 
   .header-logo {
+    width: 15%;
     cursor: pointer;
     img {
-      max-width: 40%;
+      max-width: 100%;
     }
   }
 }
