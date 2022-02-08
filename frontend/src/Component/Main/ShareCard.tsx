@@ -1,4 +1,6 @@
 import { Avatar, Box, Card, CardMedia, Chip, Typography } from '@mui/material';
+import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { IData } from '../../Util/Type';
 
 interface IShareCard {
@@ -6,13 +8,19 @@ interface IShareCard {
 }
 
 const ShareCard: React.FC<IShareCard> = ({ data }) => {
+  const navigate = useNavigate();
+
+  const handleGoDetailPage = useCallback(() => {
+    navigate(`/post/${data.id}`, {replace: true});
+  }, []);
+
   return (
-    <Card className='share-card-container'>
+    <Card className='share-card-container' onClick={handleGoDetailPage}>
       <Box className='card-main-image'>
         <CardMedia
           className='card-img'
           component='img'
-          image={data.User.img}
+          image={data.img}
           alt='user-image'
         />
       </Box>
