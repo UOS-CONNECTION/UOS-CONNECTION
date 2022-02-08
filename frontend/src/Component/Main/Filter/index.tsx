@@ -27,6 +27,7 @@ const Filter: React.FC<IFilter> = ({
 }) => {
   return (
     <Card className='filter-container'>
+      <SortFilter sortOption={sortOption} setSortOption={setSortOption} />
       <LocationFilter
         locationOption={locationOption}
         setLocationOption={setLocationOption}
@@ -36,7 +37,6 @@ const Filter: React.FC<IFilter> = ({
         mannerOption={mannerOption}
         setMannerOption={setMannerOption}
       />
-      <SortFilter sortOption={sortOption} setSortOption={setSortOption} />
       <Button variant='contained' className='filter-btn'>필터 적용하기</Button>
     </Card>
   );
