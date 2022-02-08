@@ -7,7 +7,7 @@ export const TempChat = [
       nickname: "상민",
     },
     unwatched: 2,
-    last: "22/02/07/22-20",
+    last: "2022/2/7/22/20",
     overview: "인간크롱 뿌뿌뿡",
     content: [
       ["에헤이", 1],
@@ -24,8 +24,8 @@ export const TempChat = [
       nickname: "지함",
     },
     unwatched: 0,
-    last: "22/02/05/22-20",
-    overview: "지함 지향적 사고",
+    last: "2022/2/5/22/20",
+    overview: "지함 지함 지함 지함 지함 지함 지함",
     content: [
       [" UN village ~~", 1],
       ["U & me relaxing chilling yeah~~", 0],
@@ -44,7 +44,7 @@ export const TempChat = [
       nickname: "인우",
     },
     unwatched: 0,
-    last: "22/02/08/22-20",
+    last: "2022/2/08/11/20",
     overview: "책상 breaker",
   },
 ];
