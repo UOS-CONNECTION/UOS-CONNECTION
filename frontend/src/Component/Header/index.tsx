@@ -25,6 +25,9 @@ const GNBNavigation: React.FC = () => {
       <Link href="#" color="inherit" underline="none">
         채팅
       </Link>
+      <Link href="#" color="inherit" underline="none">
+        이음
+      </Link>
     </Box>
   );
 };
