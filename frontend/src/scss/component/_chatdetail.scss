@@ -21,7 +21,7 @@
       background-color: #ffef61;
     }
     .chatdetail-usernickname {
-      @include font-default(500, 22px);
+      @include font-default(500, 1.375rem);
     }
   }
   .chatdetail {
@@ -62,10 +62,19 @@
       height: 100%;
       max-width: 300px;
       .chat-content {
-        @include font-default(300, 15px);
+        @include font-default(300, 0.938rem);
       }
-      .chat-userimg {
+      .userimg-orange {
         align-self: center;
+        width: 30px;
+        height: 30px;
+        background-color: #ff5722;
+      }
+      .userimg-hidden {
+        align-self: center;
+        width: 30px;
+        height: 30px;
+        visibility: hidden;
       }
       .chatdetail-left {
         padding: 5px 10px;

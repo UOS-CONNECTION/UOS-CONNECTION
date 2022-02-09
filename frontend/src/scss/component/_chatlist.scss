@@ -14,7 +14,7 @@
     padding-bottom: 20px;
     border-bottom: 1px solid #d1d1d1;
     .chatlist-header {
-      @include font-default(500, 26px);
+      @include font-default(500, 1.625rem);
       line-height: 30px;
     }
     .search-icon {
@@ -47,10 +47,10 @@
       .chatlist-mid {
         width: 120px;
         .chatlist-nickname {
-          @include font-default(500, 18px);
+          @include font-default(500, 1.125rem);
         }
         .chatlist-overview {
-          @include font-default(500, 14px);
+          @include font-default(500, 0.875rem);
           color: #7a7979;
         }
       }
@@ -60,7 +60,7 @@
         flex-direction: column;
         align-items: flex-end;
         .chatlist-lastsaw {
-          @include font-default(300, 13px);
+          @include font-default(300, 0.813rem);
           color: #504f4f;
         }
         .unwatched-circle {
@@ -74,7 +74,7 @@
           align-items: flex-start;
           .chatlist-unwatched {
             color: white;
-            @include font-default(500, 16px);
+            @include font-default(500, 1rem);
             line-height: 16px;
           }
         }
