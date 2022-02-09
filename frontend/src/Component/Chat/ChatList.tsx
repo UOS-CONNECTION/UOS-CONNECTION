@@ -1,9 +1,13 @@
 import { Box, Typography, Card, CardContent, CardMedia } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { TempChat } from "../../Util/TempChat";
-import { DateConvert } from "../../Util/Date";
+import { DateConvert } from "../../Util/DateConvert";
+import { Summary } from "../../Util/Summary";
+import { ChatType } from "../../Util/ChatType";
 
 const ChatList: React.FC = () => {
+  const unwatchedExist = (_item: ChatType): boolean => _item.unwatched !== 0;
+
   return (
     <Box className="chatlist-container">
       <Box className="chatlist-top">
@@ -26,16 +30,14 @@ const ChatList: React.FC = () => {
                 {item.user.nickname}
               </Typography>
               <Typography className="chatlist-overview">
-                {item.overview.length > 18
-                  ? item.overview.slice(0, 19) + "..."
-                  : item.overview}
+                {Summary(item.overview)}
               </Typography>
             </CardContent>
             <CardContent className="chatlist-right">
               <Typography className="chatlist-lastsaw">
                 {DateConvert(item.last)}
               </Typography>
-              {item.unwatched !== 0 ? (
+              {unwatchedExist(item) ? (
                 <Box className="unwatched-circle">
                   <Typography className="chatlist-unwatched">
                     {item.unwatched}
