@@ -9,11 +9,7 @@
 */
 export const DateConvert = (_date: string): string => {
   const pastDate: string[] = _date.split("/"); // 작성 당시의 시간을 연월일시분으로 분리
-  const pastYear: string = pastDate[0];
-  const pastMonth: string = pastDate[1];
-  const pastDay: string = pastDate[2];
-  const pastHour: string = pastDate[3];
-  const pastMinute: string = pastDate[4];
+  const [pastYear, pastMonth, pastDay, pastHour, pastMinute] = pastDate;
 
   const today = new Date(); //현재 시간을 연월일로 분리
   const year: number = today.getFullYear();
