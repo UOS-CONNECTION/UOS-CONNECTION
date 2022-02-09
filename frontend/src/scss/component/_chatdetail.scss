@@ -1,0 +1,99 @@
+.chatdetail-container {
+  background-color: #fff;
+  max-height: 550px;
+  min-width: 300px;
+  border-radius: 10px;
+
+  .chatdetail-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 36px;
+    margin-top: 15px;
+    margin-bottom: -5px;
+    padding-bottom: 0px;
+    border-bottom: 1px solid #d1d1d1;
+    .userimg-container {
+      width: 40px;
+      height: 40px;
+      border-radius: 40px;
+      background-color: #ffef61;
+    }
+    .chatdetail-usernickname {
+      @include font-default(500, 22px);
+    }
+  }
+  .chatdetail {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    justify-content: space-between;
+    margin-top: 20px;
+    min-width: 400px;
+    max-height: 350px;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #c0c0c0;
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+    .chat-left {
+      margin-left: 0;
+      margin-right: auto;
+    }
+    .chat-right {
+      margin-right: 0;
+      margin-left: auto;
+    }
+    .chat-yellow,
+    .chat-gray {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding: 15px;
+      margin-left: 5px;
+      min-height: 30px;
+      height: 100%;
+      max-width: 300px;
+      .chat-content {
+        @include font-default(300, 15px);
+      }
+      .chat-userimg {
+        align-self: center;
+      }
+      .chatdetail-left {
+        padding: 5px 10px;
+        margin-left: 5px;
+      }
+      .chatdetail-right {
+        padding: 5px 10px;
+        margin-left: 5px;
+      }
+    }
+  }
+  .chat-yellow {
+    .chatdetail-left {
+      background-color: #fbf3aa;
+      border-radius: 20px;
+    }
+  }
+  .chat-gray {
+    .chatdetail-right {
+      background-color: #eeeeee;
+      border-radius: 20px;
+    }
+  }
+  .send-chat {
+    padding: 0;
+    margin: 10px 15px 20px;
+    input {
+      padding: 0 !important;
+    }
+  }
+}
