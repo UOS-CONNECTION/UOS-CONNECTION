@@ -90,10 +90,19 @@
     }
   }
   .send-chat {
-    padding: 0;
     margin: 10px 15px 20px;
-    input {
-      padding: 0 !important;
+    .chat-input {
+      border: 0;
+      border-radius: 10px;
+      input {
+        padding: 0;
+        padding-left: 20px;
+      }
+      .send-icon {
+        padding: 10px;
+        padding-right: 5px;
+        height: 40;
+      }
     }
   }
 }
