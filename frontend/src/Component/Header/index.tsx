@@ -22,7 +22,7 @@ const GNBNavigation: React.FC = () => {
       <Link href="#" color="inherit" underline="none">
         재능공유
       </Link>
-      <Link href="#" color="inherit" underline="none">
+      <Link href="/chat" color="inherit" underline="none">
         채팅
       </Link>
       <Link href="#" color="inherit" underline="none">
