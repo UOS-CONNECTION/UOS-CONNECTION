@@ -2,6 +2,10 @@
 .share-tab-container {
   width: 50%;
 
+  @include mobile {
+    width: 100%;
+  }
+
   .Mui-selected {
     @include font-default(500, 1rem);
   }

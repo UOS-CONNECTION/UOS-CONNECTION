@@ -8,6 +8,10 @@
   border: 1px solid #6eb7e9;
   white-space:nowrap;
 
+  @include mobile {
+    width: 100%;
+  }
+
   .filter-option-title {
     @include font-default(700, 1.2rem);
   }
