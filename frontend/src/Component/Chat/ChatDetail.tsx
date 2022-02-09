@@ -46,6 +46,7 @@ const ChatDetail: React.FC = () => {
                       }
                     : {
                         display: "",
+                        visibility: "hidden",
                         bgcolor: grey[50],
                         width: 30,
                         height: 30,
