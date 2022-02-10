@@ -7,8 +7,25 @@
    날짜가 현재 시간 기준 1일 전이라면 어제로 통칭
    날짜가 현재 시간 기준 2일 전 이상이라면 yyyy/mm/dd
 */
+
+const isToday = (_pastDay: string, _date: number): boolean => {
+  return Number(_pastDay) === _date;
+};
+const isYesterday = (_pastDay: string, _date: number): boolean => {
+  return Number(_pastDay) === _date - 1;
+};
+const isThisyear = (_pastYear: string, _year: number): boolean => {
+  return Number(_pastYear) === _year;
+};
+const isThismonth = (_pastMonth: string, _month: number): boolean => {
+  return Number(_pastMonth) === _month;
+};
+const isAfternoon = (_pastHour: string): boolean => {
+  return Number(_pastHour) > 12;
+};
+
 export const DateConvert = (_date: string): string => {
-  const pastDate: string[] = _date.split("/"); // 작성 당시의 시간을 연월일시분으로 분리
+  const pastDate: string[] = _date.split('/'); // 작성 당시의 시간을 연월일시분으로 분리
   const [pastYear, pastMonth, pastDay, pastHour, pastMinute] = pastDate;
 
   const today = new Date(); //현재 시간을 연월일로 분리
@@ -16,27 +33,26 @@ export const DateConvert = (_date: string): string => {
   const month: number = today.getMonth() + 1;
   const date: number = today.getDate();
 
-  const isToday: boolean = Number(pastDay) === date;
-  const isYesterday: boolean = Number(pastDay) === date - 1;
-  const isThisyear: boolean = Number(pastYear) === year;
-  const isThismonth: boolean = Number(pastMonth) === month;
-  const isAfternoon: boolean = Number(pastHour) > 12;
-
   const yyyymmdd: string =
     pastYear +
-    "-" +
-    ["0", pastMonth].join("").slice(-2) +
-    "-" +
-    ["0", pastDay].join("").slice(-2); // yyyymmdd 형식으로 변경
+    '-' +
+    ['0', pastMonth].join('').slice(-2) +
+    '-' +
+    ['0', pastDay].join('').slice(-2); // yyyymmdd 형식으로 변경
 
   const pastAfternoonTime: string = String(Number(pastHour) - 12); //작성 당시 시간 오후로 변환
 
-  if ((isToday || isYesterday) && isThisyear && isThismonth) {
-    if (isToday && isAfternoon)
+  if (
+    (isToday(pastDay, date) || isYesterday(pastDay, date)) &&
+    isThisyear(pastYear, year) &&
+    isThismonth(pastMonth, month)
+  ) {
+    if (isToday(pastDay, date) && isAfternoon(pastHour))
       return `오후 ${pastAfternoonTime}:${pastMinute}`;
-    else if (isToday && !isAfternoon) return `오전 ${pastHour}:${pastMinute}`;
-    else if (isYesterday) return "어제";
+    else if (isToday(pastDay, date) && !isAfternoon(pastHour))
+      return `오전 ${pastHour}:${pastMinute}`;
+    else if (isYesterday(pastDay, date)) return '어제';
   } else return yyyymmdd;
 
-  return "err"; //exception
+  return 'err'; //exception
 };
