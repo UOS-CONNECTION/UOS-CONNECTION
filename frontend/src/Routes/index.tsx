@@ -1,5 +1,14 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { MainPage } from '../Page';
+
 const Router: React.FC = () => {
-  return <div>Router</div>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<MainPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default Router;
