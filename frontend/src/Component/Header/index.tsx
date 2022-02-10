@@ -1,14 +1,21 @@
 import { AppBar, Box, Input, Link, Toolbar } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { useNavigate } from "react-router-dom";
 
 interface IUserNavigtaion {
   isLogin: boolean;
 }
 
 const Logo: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleGoMain = () => {
+    navigate("/");
+  };
+
   return (
-    <div className="header-logo">
-      <img src={`/img/logo_long.png`} alt=""></img>
+    <div className="header-logo" onClick={handleGoMain}>
+      <img src="/img/logo_long.png" alt="logo" />
     </div>
   );
 };
@@ -22,10 +29,10 @@ const GNBNavigation: React.FC = () => {
       <Link href="#" color="inherit" underline="none">
         재능공유
       </Link>
-      <Link href="/chat" color="inherit" underline="none">
+      <Link href="#" color="inherit" underline="none">
         채팅
       </Link>
-      <Link href="#" color="inherit" underline="none">
+      <Link href="/" color="inherit" underline="none">
         이음
       </Link>
     </Box>
@@ -67,8 +74,10 @@ const SearchBar: React.FC = () => {
     </Box>
   );
 };
-const isLogin = false;
+
 const Header: React.FC = () => {
+  const isLogin = false;
+
   return (
     <Box className="header-container">
       <AppBar position="static">

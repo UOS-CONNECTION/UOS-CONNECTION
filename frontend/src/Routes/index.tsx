@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainPage from "../Page/MainPage";
+import { MainPage } from "../Page";
 import ChatPage from "../Page/ChatPage";
 
 const Router: React.FC = () => {

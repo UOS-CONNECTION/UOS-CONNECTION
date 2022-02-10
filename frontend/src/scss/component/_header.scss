@@ -13,7 +13,6 @@
     display: flex;
     justify-content: space-evenly;
     flex-grow: 1;
-    @include font-default(500, 16px);
     @include mobile {
       display: none;
     }
@@ -25,7 +24,7 @@
       flex-grow: 1;
     }
     .user-navigation-container {
-      width: 17%;
+      width: 15%;
       position: absolute;
       top: -10%;
       right: 3%;
@@ -33,7 +32,7 @@
       justify-content: space-between;
       flex-grow: 1;
       white-space: nowrap;
-      @include font-default(500, 14px);
+      @include font-default(300, 14px);
       @include mobile {
         display: none;
       }
@@ -68,9 +67,10 @@
   }
 
   .header-logo {
+    width: 15%;
+    cursor: pointer;
     img {
-      width: 80%;
-      margin: 0 auto;
+      max-width: 100%;
     }
   }
 }
