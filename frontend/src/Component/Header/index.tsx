@@ -47,7 +47,7 @@ const UserNavigation: React.FC<IUserNavigtaion> = ({ isLogin }) => {
           로그인
         </Link>
       }
-      {!isLogin && 
+      {!isLogin &&
         <Link href='#' color='inherit' underline='none'>
           회원가입
         </Link>
@@ -55,11 +55,11 @@ const UserNavigation: React.FC<IUserNavigtaion> = ({ isLogin }) => {
       <Link href='#' color='inherit' underline='none'>
         고객센터
       </Link>
-      {isLogin && 
+      {isLogin && (
         <Link href='/' color='inherit' underline='none'>
           마이페이지
         </Link>
-      }
+      )}
     </Box>
   );
 };
