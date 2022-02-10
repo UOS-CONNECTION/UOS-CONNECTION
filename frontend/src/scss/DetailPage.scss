@@ -1,0 +1,22 @@
+// default scss
+@import './base/base';
+@import './base/variable';
+@import './base/mixin';
+
+// components scss
+@import './component/layout';
+@import './component/header';
+@import './component/mainBanner';
+@import './component/detailCard';
+@import './component/infomation';
+
+.detail-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5%;
+  margin-bottom: 5%;
+
+  @include mobile {
+    flex-direction: column;
+  }
+}

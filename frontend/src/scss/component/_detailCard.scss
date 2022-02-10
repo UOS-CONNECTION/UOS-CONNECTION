@@ -1,0 +1,96 @@
+.detail-card-container {
+  display: flex;
+  padding: 3%;
+  width: 70%;
+  height: 100%;
+
+  @include mobile {
+    width: 100%;
+    flex-direction: column;
+  }
+  .detail-main-image {
+    width: 40%;
+    flex-grow: 1;
+    
+    @include mobile {
+      width: 100%;
+    }
+    img {
+      max-width: 100%;
+      border: 1px solid #e5e5e5;
+      border-radius: 15px;
+    }
+
+    .card-label-container {
+      margin-top: 5%;
+    }
+  }
+
+  .detail-content-container {
+    width: 60%;
+    margin-left: 5%;
+
+    @include mobile {
+      margin-left: 0%;
+      margin-top: 10%;
+      width: 100%;
+    }
+
+    .post-title {
+      @include font-default(700, 1.3rem);
+      padding-bottom: 3%;
+      border-bottom: 1px solid #a5a5a5;
+    }
+
+    .detail-user-info {
+      display: flex;
+      justify-content: space-evenly;
+      text-align: center;
+      margin: 3% auto;
+
+      .user-avatar {
+        .user-img {
+          width: 75px;
+          height: 75px;
+        }
+
+        p {
+          margin-top: 10%;
+        }
+      }
+
+      .detail-user-description {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        .detail-user-score {
+          display: flex;
+          align-items: center;
+
+          .user-score {
+            @include font-default(600, 1.3rem);
+          }
+
+          .user-star-score {
+            margin-left: 3%;
+          }
+        }
+        
+        .user-short_desc {
+          @include font-default(300, 0.8rem);
+          color: #8a8787;
+        }
+      } 
+    }
+
+    .post-desc {
+      margin: 10% auto;
+    }
+
+    .ask-btn {
+      width: 100%;
+      background-color: #6eb7e9;
+    }
+  }
+}

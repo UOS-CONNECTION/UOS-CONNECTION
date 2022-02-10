@@ -1,0 +1,29 @@
+.infomation-card-container {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  
+  @include mobile {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .infomation-container {
+    margin: 0 auto;
+    border: 1px solid #a5a5a5;
+    padding: 5%;
+    border-radius: 15px;
+
+    &:last-child {
+      margin-top: 10%;
+    }
+  }
+
+  .infomation-grid {
+    width: 100%;
+    white-space: nowrap;
+  }
+}
