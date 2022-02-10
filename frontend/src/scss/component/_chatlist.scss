@@ -50,7 +50,7 @@
           @include font-default(500, 1.125rem);
         }
         .chatlist-overview {
-          @include font-default(500, 0.875rem);
+          @include font-default(500, 0.813rem);
           color: #7a7979;
         }
       }
@@ -60,7 +60,7 @@
         flex-direction: column;
         align-items: flex-end;
         .chatlist-lastsaw {
-          @include font-default(300, 0.813rem);
+          @include font-default(300, 0.75rem);
           color: #504f4f;
         }
         .unwatched-circle {
