@@ -1,6 +1,6 @@
 export interface ChatType {
   id: number;
-  user: UserType;
+  User: UserType;
   unwatched: number;
   last: string;
   overview?: string;
