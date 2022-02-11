@@ -1,7 +1,7 @@
 import SignupForm from "./SignupForm";
 
 const SignupTitle: React.FC = () => {
-  return <h1>Sign up</h1>;
+  return <h1 className="signup-title">Sign up</h1>;
 };
 
 const Signup: React.FC = () => {

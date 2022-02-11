@@ -5,4 +5,31 @@
 
 // components scss
 @import "./component/layout";
-@import "./component/signup";
+@import "./component/signupForm";
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+
+  .signup-container-box {
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 10px;
+    gap: 20px;
+    margin: 30px 0px;
+
+    .signup-title {
+      all: unset;
+      font-size: 30px;
+      font-weight: 600;
+    }
+  }
+}
