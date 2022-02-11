@@ -1,30 +1,18 @@
-import { Box, Avatar, Typography, Stack } from "@mui/material";
+import { Avatar } from "@mui/material";
 
 const EasyLogin: React.FC = () => {
   return (
     <div className="easylogin-container">
-      <Box>
-        <Typography component="h3" fontSize="12px" mb={2}>
-          SNS 계정으로 간편 로그인/회원가입
-        </Typography>
-        <Stack direction="row" justifyContent="center" spacing={3}>
-          <Avatar
-            alt="Google"
-            src={`/img/google.ico`}
-            sx={{ width: 48, height: 48 }}
-          />
-          <Avatar
-            alt="Naver"
-            src={`/img/naver.ico`}
-            sx={{ width: 48, height: 48 }}
-          />
-          <Avatar
-            alt="Kakao"
-            src={`/img/kakao.svg`}
-            sx={{ width: 48, height: 48 }}
-          />
-        </Stack>
-      </Box>
+      <h3 className="easylogin-title">SNS 계정으로 간편 로그인/회원가입</h3>
+      <div className="icons-container">
+        <Avatar
+          className="easylogin-icon"
+          alt="Google"
+          src={`/img/google.ico`}
+        />
+        <Avatar className="easylogin-icon" alt="Naver" src={`/img/naver.ico`} />
+        <Avatar className="easylogin-icon" alt="Kakao" src={`/img/kakao.svg`} />
+      </div>
     </div>
   );
 };

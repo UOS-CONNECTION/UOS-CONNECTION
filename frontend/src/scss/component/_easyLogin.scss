@@ -1,0 +1,24 @@
+.easylogin-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+
+  .easylogin-title {
+    all: unset;
+    font-size: 13px;
+  }
+
+  .icons-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 30px;
+
+    .easylogin-icon {
+      width: 48px;
+      height: 48px;
+    }
+  }
+}

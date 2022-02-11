@@ -4,4 +4,27 @@
 @import "./base/mixin";
 
 // components scss
-@import "./component/login";
+@import "./component/layout";
+@import "./component/loginForm";
+@import "./component/logo";
+@import "./component/twoLink";
+@import "./component/easyLogin";
+
+.login-container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+
+  .login-container-box {
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 10px;
+  }
+}
