@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { DetailPage, MainPage } from '../Page';
+import { DetailPage, MainPage, ChatPage } from '../Page';
 
 const Router: React.FC = () => {
   return (
@@ -7,6 +7,7 @@ const Router: React.FC = () => {
       <Routes>
         <Route path='/' element={<MainPage />} />
         <Route path='post/:postId' element={<DetailPage />} />
+        <Route path='/chat' element={<ChatPage />} />
       </Routes>
     </BrowserRouter>
   );
