@@ -1,0 +1,94 @@
+.chatlist-container {
+  background-color: #fff;
+  max-height: 550px;
+  max-width: 380px;
+  border-radius: 15px;
+  .chatlist-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0 36px;
+    margin-top: 35px;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #d1d1d1;
+    .chatlist-header {
+      @include font-default(500, 1.625rem);
+      line-height: 30px;
+    }
+    .search-icon {
+      width: 26px;
+    }
+  }
+  .chatlist {
+    display: flex;
+    flex-direction: column;
+    margin: 0 36px;
+    min-width: 320px;
+    max-height: 400px;
+    overflow-y: scroll;
+    .chat {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      min-height: 95px;
+      border-bottom: 1px solid #d1d1d1;
+      &:hover {
+        background-color: #dbdbdbaf;
+      }
+      .chatlist-userimg {
+        margin-left: 10px;
+        background-color: #9dbeff;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+      }
+      .chatlist-mid {
+        width: 120px;
+        .chatlist-nickname {
+          @include font-default(500, 1.125rem);
+        }
+        .chatlist-overview {
+          @include font-default(500, 0.813rem);
+          color: #7a7979;
+        }
+      }
+      .chatlist-right {
+        width: 70px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        .chatlist-lastsaw {
+          @include font-default(300, 0.75rem);
+          color: #504f4f;
+        }
+        .unwatched-circle {
+          margin-top: 5%;
+          width: 18px;
+          height: 18px;
+          border-radius: 18px;
+          background-color: rgb(255, 122, 107);
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          .chatlist-unwatched {
+            color: white;
+            @include font-default(500, 1rem);
+            line-height: 16px;
+          }
+        }
+      }
+    }
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #c0c0c0;
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+  }
+}
