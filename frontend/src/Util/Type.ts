@@ -4,6 +4,8 @@ export interface IUser {
   name: string,
   score: number,
   short_desc: string,
+  basic_info: IInfomation[],
+  extra_info: IInfomation[],
 }
 
 export interface IData {
@@ -11,5 +13,12 @@ export interface IData {
   title: string,
   label: string[],
   desc: string,
+  img: string,
   User: IUser,
+}
+
+export interface IInfomation {
+  id: number,
+  type: number,
+  info: string,
 }
