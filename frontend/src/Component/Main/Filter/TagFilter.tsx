@@ -1,10 +1,8 @@
 import {
-  Box,
   FormControl,
   FormControlLabel,
   Radio,
   RadioGroup,
-  Select,
   SelectChangeEvent,
   Typography,
 } from '@mui/material';

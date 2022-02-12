@@ -12,7 +12,7 @@ const ShareCard: React.FC<IShareCard> = ({ data }) => {
 
   const handleGoDetailPage = useCallback(() => {
     navigate(`/post/${data.id}`);
-  }, []);
+  }, [data.id, navigate]);
 
   return (
     <Card className='share-card-container' onClick={handleGoDetailPage}>

@@ -2,12 +2,13 @@
 @import "./base/base";
 @import "./base/mixin";
 @import "./base/variable";
+
 @import "./component/header";
 @import "./component/layout";
 @import "./component/chatlist";
 @import "./component/chatdetail";
 
-.main-container {
+.chat-main-container {
   width: 100%;
   display: flex;
   flex-direction: row;

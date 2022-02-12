@@ -6,8 +6,8 @@ import { ChatType } from '../../Util/ChatType';
 import ChatCard from './ChatCard';
 
 const ChatDetail: React.FC = () => {
-  const [chatPerson, setChatPerson] = useState<number>(2); //id
-  const [chatData, setChatData] = useState<ChatType>(TempChat[1]);
+  // const [chatPerson, setChatPerson] = useState<number>(2); //id
+  const [chatData, ] = useState<ChatType>(TempChat[1]);
 
   return (
     <Box className='chatdetail-container'>
