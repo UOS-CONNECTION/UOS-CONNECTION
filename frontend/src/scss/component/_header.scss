@@ -68,6 +68,9 @@
 
   .header-logo {
     width: 15%;
+    @include mobile {
+      width: 35%;
+    }
     cursor: pointer;
     img {
       max-width: 100%;
