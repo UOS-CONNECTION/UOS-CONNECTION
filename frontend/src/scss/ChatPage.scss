@@ -1,14 +1,13 @@
 //Chat scss
-@import "./base/base";
-@import "./base/mixin";
-@import "./base/variable";
-@import "./component/header";
-@import "./component/layout";
-@import "./component/chatlist";
-@import "./component/chatdetail";
+@import './base/base';
+@import './base/mixin';
+@import './base/variable';
+@import './component/header';
+@import './component/layout';
+@import './component/chatlist';
+@import './component/chatdetail';
 
-.main-container {
-  width: 100%;
+.chat-container {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
