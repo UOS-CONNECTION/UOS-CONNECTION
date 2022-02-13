@@ -21,7 +21,7 @@ const ChatDetail: React.FC = () => {
       </Card>
       <Box className='chatdetail'>
         {chatData.content?.map((item, idx) => (
-          <ChatCard item={item} idx={idx} />
+          <ChatCard item={item} idx={idx} key={idx} />
         ))}
       </Box>
       <Box className='send-chat'>
