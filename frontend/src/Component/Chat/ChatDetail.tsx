@@ -1,8 +1,8 @@
 import { Box, Typography, Card, CardContent, TextField } from '@mui/material';
 import { useState } from 'react';
-import { TempChat } from '../../Util/TempChat';
+import { TempChat } from '../../Util/TempData';
 import SendIcon from '@mui/icons-material/Send';
-import { ChatType } from '../../Util/ChatType';
+import { ChatType } from '../../Util/Type';
 import ChatCard from './ChatCard';
 
 const ChatDetail: React.FC = () => {
