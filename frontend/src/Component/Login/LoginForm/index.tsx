@@ -3,10 +3,10 @@ import LoginButton from "./LoginButton";
 
 const LoginForm: React.FC = () => {
   return (
-    <div className="loginform-container">
+    <section className="loginform-container">
       <LoginInput />
       <LoginButton />
-    </div>
+    </section>
   );
 };
 
