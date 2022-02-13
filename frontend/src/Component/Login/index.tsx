@@ -1,14 +1,14 @@
-import Logo from "./Logo";
 import LoginForm from "./LoginForm";
-import TwoLink from "./TwoLink";
+import LoginOuterLink from "./LoginOuterLink";
 import EasyLogin from "./EasyLogin";
 
-/*
-import GoogleIcon from "@mui/icons-material/Google";
-import naver from "/img/naver.ico";
-import kakao from "/img/kakao.svg";
-import logo from "/img/logo.svg";
-*/
+const Logo: React.FC = () => {
+  return (
+    <div className="logo-container">
+      <img className="logo" alt="Logo" src={`/img/logo_long.png`} />
+    </div>
+  );
+};
 
 const Login: React.FC = () => {
   return (
@@ -16,7 +16,7 @@ const Login: React.FC = () => {
       <div className="login-container-box">
         <Logo />
         <LoginForm />
-        <TwoLink />
+        <LoginOuterLink />
         <EasyLogin />
       </div>
     </div>

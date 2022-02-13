@@ -1,9 +1,8 @@
 import {
-  Box,
   FormGroup,
   FormControlLabel,
   Checkbox,
-  Divider,
+  Typography,
 } from "@mui/material";
 
 const Agree: React.FC = () => {

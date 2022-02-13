@@ -1,7 +1,12 @@
+import { Typography } from "@mui/material";
 import SignupForm from "./SignupForm";
 
 const SignupTitle: React.FC = () => {
-  return <h1 className="signup-title">Sign up</h1>;
+  return (
+    <Typography variant="h1" className="signup-title">
+      Sign up
+    </Typography>
+  );
 };
 
 const Signup: React.FC = () => {
