@@ -1,7 +1,19 @@
-const MainBanner = () => {
+import { useState } from 'react';
+import BannerSlider from './BannerSlider';
+
+const MainBanner: React.FC = () => {
+  const [banner, setBanner] = useState<string[]>([
+    '/logo512.png',
+    '/logo512.png',
+    '/logo512.png',
+    '/logo512.png',
+    '/logo512.png',
+    '/logo512.png',
+  ]);
+
   return (
     <div className='main-banner'>
-      <img src='/logo512.png' alt='main-banner' />
+      <BannerSlider _banner={banner} children={''} />
     </div>
   );
 };
