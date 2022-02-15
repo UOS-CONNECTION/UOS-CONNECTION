@@ -1,13 +1,12 @@
-.chatdetail-container {
+.chat-detail-container {
   background-color: #fff;
-  max-height: 70vh;
-  height: auto;
-  width: 33vw;
+  width: 45%;
+  height: 84%;
   border-radius: 10px;
   overflow: auto;
   transition: all 0.5s;
 
-  .chatdetail-top {
+  .chat-detail-top {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -16,8 +15,8 @@
     position: sticky;
     top: 0%;
     z-index: 2;
-    padding: 3%;
-    margin: 0 1%;
+    margin: 0 3%;
+    padding: 2% 0;
     border-bottom: 1px solid #d1d1d1;
 
     .userimg-container {
@@ -27,16 +26,16 @@
       background-color: #ffef61;
     }
 
-    .chatdetail-usernickname {
+    .chat-detail-usernickname {
       @include font-default(500, 1.375rem);
     }
   }
 
-  .chatdetail {
+  .chat-detail {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-top: 20px;
+    margin: 2% 3%;
 
     .chat-left {
       margin-left: 0;
@@ -52,11 +51,8 @@
       display: flex;
       flex-direction: row;
       justify-content: center;
-      padding: 15px;
-      margin-left: 5px;
+      margin: 3%;
       height: 100%;
-      max-width: 300px;
-      min-height: 30px;
 
       .chat-content {
         @include font-default(300, 0.938rem);
@@ -76,12 +72,12 @@
         visibility: hidden;
       }
 
-      .chatdetail-left {
+      .chat-detail-left {
         padding: 5px 10px;
         margin-left: 5px;
       }
 
-      .chatdetail-right {
+      .chat-detail-right {
         padding: 5px 10px;
         margin-left: 5px;
       }
@@ -89,14 +85,14 @@
   }
 
   .chat-yellow {
-    .chatdetail-left {
+    .chat-detail-left {
       background-color: #fbf3aa;
       border-radius: 20px;
     }
   }
 
   .chat-gray {
-    .chatdetail-right {
+    .chat-detail-right {
       background-color: #eeeeee;
       border-radius: 20px;
     }

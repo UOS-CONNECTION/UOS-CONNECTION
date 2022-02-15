@@ -10,16 +10,16 @@ const ChatDetail: React.FC = () => {
   const [chatData, setChatData] = useState<ChatType>(TempChat[1]);
 
   return (
-    <Box className='chatdetail-container'>
-      <Card className='chatdetail-top' elevation={0}>
+    <Box className='chat-detail-container'>
+      <Card className='chat-detail-top' elevation={0}>
         <Box className='userimage-container'></Box>
         <CardContent>
-          <Typography className='chatdetail-usernickname'>
+          <Typography className='chat-detail-usernickname'>
             {chatData.User.nickname}
           </Typography>
         </CardContent>
       </Card>
-      <Box className='chatdetail'>
+      <Box className='chat-detail'>
         {chatData.content?.map((item, idx) => (
           <ChatCard item={item} idx={idx} key={idx} />
         ))}

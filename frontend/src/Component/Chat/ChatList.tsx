@@ -9,37 +9,37 @@ const ChatList: React.FC = () => {
   const unwatchedExist = (_item: ChatType): boolean => _item.unwatched !== 0;
 
   return (
-    <Box className='chatlist-container'>
-      <Box className='chatlist-top'>
-        <Typography color='inherit' className='chatlist-header'>
+    <Box className='chat-list-container'>
+      <Box className='chat-list-top'>
+        <Typography color='inherit' className='chat-list-header'>
           대화목록
         </Typography>
         <SearchIcon className='search-icon'></SearchIcon>
       </Box>
-      <Box className='chatlist'>
+      <Box className='chat-list'>
         {TempChat.map((item, idx) => (
           <Card className='chat' elevation={0} key={idx}>
             <CardMedia
               component='img'
-              className='chatlist-userimg'
+              className='chat-list-userimg'
               alt=''
               image=''
             />
-            <CardContent className='chatlist-mid'>
-              <Typography className='chatlist-nickname'>
+            <CardContent className='chat-list-mid'>
+              <Typography className='chat-list-nickname'>
                 {item.User.nickname}
               </Typography>
-              <Typography className='chatlist-overview'>
+              <Typography className='chat-list-overview'>
                 {Summary(item.overview)}
               </Typography>
             </CardContent>
-            <CardContent className='chatlist-right'>
-              <Typography className='chatlist-lastsaw'>
+            <CardContent className='chat-list-right'>
+              <Typography className='chat-list-lastsaw'>
                 {DateConvert(item.last)}
               </Typography>
               {unwatchedExist(item) ? (
                 <Box className='unwatched-circle'>
-                  <Typography className='chatlist-unwatched'>
+                  <Typography className='chat-list-unwatched'>
                     {item.unwatched}
                   </Typography>
                 </Box>

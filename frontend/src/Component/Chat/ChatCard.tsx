@@ -16,7 +16,7 @@ const ChatCard: React.FC<ChatcardProps> = ({ item, idx }) => {
           J
         </Avatar>
         <CardContent
-          className={item[1] > 0 ? 'chatdetail-left' : 'chatdetail-right'}
+          className={item[1] > 0 ? 'chat-detail-left' : 'chat-detail-right'}
         >
           <Typography className='chat-content'>{item[0]}</Typography>
         </CardContent>
