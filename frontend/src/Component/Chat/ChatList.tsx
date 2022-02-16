@@ -4,8 +4,13 @@ import { TempChat } from '../../Util/TempData';
 import { DateConvert } from '../../Util/DateConvert';
 import { Summary } from '../../Util/Summary';
 import { ChatType } from '../../Util/Type';
+import { Dispatch, SetStateAction } from 'react';
 
-const ChatList: React.FC = () => {
+interface IchatSelect {
+  setChatroom: Dispatch<SetStateAction<number>>;
+}
+
+const ChatList: React.FC<IchatSelect> = ({ setChatroom }) => {
   const unwatchedExist = (_item: ChatType): boolean => _item.unwatched !== 0;
 
   return (
@@ -18,7 +23,12 @@ const ChatList: React.FC = () => {
       </Box>
       <Box className='chat-list'>
         {TempChat.map((item, idx) => (
-          <Card className='chat' elevation={0} key={idx}>
+          <Card
+            className='chat'
+            elevation={0}
+            key={idx}
+            onClick={() => setChatroom(idx)}
+          >
             <CardMedia
               component='img'
               className='chat-list-userimg'

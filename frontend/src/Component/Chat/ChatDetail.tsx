@@ -1,13 +1,21 @@
 import { Box, Typography, Card, CardContent, TextField } from '@mui/material';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { TempChat } from '../../Util/TempData';
 import SendIcon from '@mui/icons-material/Send';
 import { ChatType } from '../../Util/Type';
 import ChatCard from './ChatCard';
 
-const ChatDetail: React.FC = () => {
+interface chatroomProps {
+  chatRoom: number;
+}
+
+const ChatDetail: React.FC<chatroomProps> = ({ chatRoom }) => {
   const [chatPerson, setChatPerson] = useState<number>(2); //id
-  const [chatData, setChatData] = useState<ChatType>(TempChat[1]);
+  const [chatData, setChatData] = useState<ChatType>(TempChat[0]);
+
+  useEffect(() => {
+    setChatData(TempChat[chatRoom]);
+  }, [chatRoom]);
 
   return (
     <Box className='chat-detail-container'>
