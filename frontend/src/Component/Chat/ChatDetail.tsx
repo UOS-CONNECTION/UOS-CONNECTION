@@ -10,7 +10,7 @@ interface chatroomProps {
 }
 
 const ChatDetail: React.FC<chatroomProps> = ({ chatRoom }) => {
-  const [chatPerson, setChatPerson] = useState<number>(2); //id
+  // const [chatPerson, setChatPerson] = useState<number>(2); //id
   const [chatData, setChatData] = useState<ChatType>(TempChat[0]);
 
   useEffect(() => {
