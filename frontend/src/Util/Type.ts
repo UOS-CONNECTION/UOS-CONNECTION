@@ -24,7 +24,7 @@ export interface IInfomation {
 }
 
 export interface ChatType {
-  id: number;
+  id: string;
   User: UserType;
   unwatched: number;
   last: string;
@@ -33,7 +33,7 @@ export interface ChatType {
 }
 
 interface UserType {
-  id: number;
+  id: string;
   img: string | null;
   nickname: string;
 }
