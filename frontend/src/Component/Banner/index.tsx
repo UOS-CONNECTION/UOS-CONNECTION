@@ -14,7 +14,7 @@ const MainBanner: React.FC = () => {
 
   return (
     <div className='main-banner'>
-      <BannerSlider _banner={banner} children={''} />
+      <BannerSlider banner={banner} />
     </div>
   );
 };

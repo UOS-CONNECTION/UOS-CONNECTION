@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Scrollbar, Autoplay } from 'swiper';
 
@@ -6,11 +5,10 @@ import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
 
 interface BannerProps {
-  children: ReactNode;
-  _banner: string[];
+  banner: string[];
 }
 
-const BannerSlider = ({ children, _banner }: BannerProps) => {
+const BannerSlider: React.FC<BannerProps> = ({ banner }) => {
   SwiperCore.use([Navigation, Scrollbar, Autoplay]);
   return (
     <Swiper
@@ -18,7 +16,7 @@ const BannerSlider = ({ children, _banner }: BannerProps) => {
       scrollbar={true}
       autoplay={{ delay: 3000, disableOnInteraction: false }}
     >
-      {_banner?.map((bannerSrc, idx) => (
+      {banner?.map((bannerSrc, idx) => (
         <SwiperSlide key={idx}>
           <img src={bannerSrc} alt='banner' />
         </SwiperSlide>
