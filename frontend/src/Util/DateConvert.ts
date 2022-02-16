@@ -24,7 +24,7 @@ const isAfternoon = (_pastHour: string): boolean => {
   return Number(_pastHour) > 12;
 };
 
-export const DateConvert = (_date: string): string => {
+export const dateConvert = (_date: string): string => {
   const pastDate: string[] = _date.split('/'); // 작성 당시의 시간을 연월일시분으로 분리
   const [pastYear, pastMonth, pastDay, pastHour, pastMinute] = pastDate;
 

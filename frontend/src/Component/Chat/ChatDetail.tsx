@@ -5,11 +5,11 @@ import SendIcon from '@mui/icons-material/Send';
 import { ChatType } from '../../Util/Type';
 import ChatCard from './ChatCard';
 
-interface chatroomProps {
+interface ChatroomProps {
   chatRoom: number;
 }
 
-const ChatDetail: React.FC<chatroomProps> = ({ chatRoom }) => {
+const ChatDetail: React.FC<ChatroomProps> = ({ chatRoom }) => {
   // const [chatPerson, setChatPerson] = useState<number>(2); //id
   const [chatData, setChatData] = useState<ChatType>(TempChat[0]);
 
