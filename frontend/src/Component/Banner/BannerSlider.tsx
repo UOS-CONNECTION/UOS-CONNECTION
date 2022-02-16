@@ -16,7 +16,7 @@ const BannerSlider = ({ children, _banner }: BannerProps) => {
     <Swiper
       navigation={true}
       scrollbar={true}
-      autoplay={{ delay: 2500, disableOnInteraction: false }}
+      autoplay={{ delay: 3000, disableOnInteraction: false }}
     >
       {_banner?.map((bannerSrc, idx) => (
         <SwiperSlide key={idx}>
