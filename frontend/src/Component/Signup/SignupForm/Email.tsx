@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   TextField,
   FormControl,
@@ -7,7 +8,27 @@ import {
   Button,
 } from "@mui/material";
 
-const Email: React.FC = () => {
+interface SignupEmail {
+  email: string;
+  setEmail: Function;
+}
+
+const Email: React.FC<SignupEmail> = ({ email, setEmail }) => {
+  const [emailId, setEmailId] = useState("");
+  const [selectDomain, setSelectDomain] = useState("");
+
+  const handleEmailIdChange = (e: any) => {
+    setEmailId(e.target.value);
+  };
+  const handleSelectDomain = (e: any) => {
+    setSelectDomain(e.target.value);
+  };
+
+  const handleEmailButtonClicked = (e: any) => {
+    setEmail(emailId.concat("@", selectDomain));
+    console.log("Your email: " + emailId.concat("@", selectDomain));
+  };
+
   return (
     <div className="input-container">
       <div className="input-title">이메일</div>
@@ -17,17 +38,17 @@ const Email: React.FC = () => {
           label="이메일"
           id="email"
           name="email"
-          autoComplete="email"
+          value={emailId}
+          onChange={handleEmailIdChange}
         />
         <span className="symbol-at">@</span>
-        <FormControl className="email-select">
-          <InputLabel id="email-input-label">선택해주세요.</InputLabel>
+        <FormControl className="domain-select">
+          <InputLabel id="domain-select-label">선택해주세요.</InputLabel>
           <Select
-            labelId="email-input-label"
-            id="demo-simple-select"
-            label="Age"
-            /* value={age} */
-            /* onChange={handleChange} */
+            labelId="domain-select-label"
+            label="선택해주세요."
+            value={selectDomain}
+            onChange={handleSelectDomain}
           >
             <MenuItem value={"gmail.com"}>gmail.com</MenuItem>
             <MenuItem value={"naver.com"}>naver.com</MenuItem>
@@ -35,7 +56,12 @@ const Email: React.FC = () => {
           </Select>
         </FormControl>
       </div>
-      <Button className="email-button" type="submit" variant="outlined">
+      <Button
+        className="email-button"
+        type="button"
+        onClick={handleEmailButtonClicked}
+        variant="outlined"
+      >
         이메일 인증하기
       </Button>
     </div>

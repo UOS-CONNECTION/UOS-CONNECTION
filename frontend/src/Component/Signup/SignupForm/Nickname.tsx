@@ -1,6 +1,29 @@
+import { useState } from "react";
 import { TextField } from "@mui/material";
 
-const Nickname: React.FC = () => {
+interface SingupNickname {
+  nickname: string;
+  setNickname: Function;
+}
+
+const Nickname: React.FC<SingupNickname> = ({ nickname, setNickname }) => {
+  const handleNicknameChange = (e: any) => {
+    setNickname(e.target.value);
+  };
+
+  const nicknameRegex: RegExp = /^[A-Za-z]{2,15}$/;
+  const [invalidNickname, setInvalidNickname] = useState(false);
+
+  const validateNickname = (e: any) => {
+    if (nicknameRegex.test(nickname)) {
+      setInvalidNickname(false);
+      console.log(nickname);
+    } else {
+      setInvalidNickname(true);
+      console.log("invalid nickname");
+    }
+  };
+
   return (
     <div className="input-container">
       <div className="input-title">닉네임</div>
@@ -9,11 +32,15 @@ const Nickname: React.FC = () => {
       </div>
       <TextField
         className="nickname-input"
-        name="nickname"
         label="닉네임"
         type="nickname"
+        name="nickname"
         id="nickname"
-        autoComplete="nickname"
+        value={nickname}
+        onChange={handleNicknameChange}
+        onBlur={validateNickname}
+        error={invalidNickname}
+        helperText={invalidNickname ? "Please enter a valid nickname" : ""}
       />
     </div>
   );

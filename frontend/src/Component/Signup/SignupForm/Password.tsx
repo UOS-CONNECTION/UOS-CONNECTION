@@ -1,6 +1,29 @@
+import { useState } from "react";
 import { TextField } from "@mui/material";
 
-const Password: React.FC = () => {
+interface Password {
+  password: string;
+  setPassword: Function;
+}
+
+const Password: React.FC<Password> = ({ password, setPassword }) => {
+  const handlePasswordChange = (e: any) => {
+    setPassword(e.target.value);
+  };
+
+  const passwordRegex: RegExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  const [invalidPassword, setInvalidPassword] = useState(false);
+
+  const validatePassword = (e: any) => {
+    if (passwordRegex.test(password)) {
+      setInvalidPassword(false);
+      console.log(password);
+    } else {
+      setInvalidPassword(true);
+      console.log("invalid password");
+    }
+  };
+
   return (
     <div className="input-container">
       <div className="input-title">비밀번호</div>
@@ -9,12 +32,15 @@ const Password: React.FC = () => {
       </div>
       <TextField
         className="password-input"
-        fullWidth
-        name="password"
         label="비밀번호"
         type="password"
         id="password"
-        autoComplete="current-password"
+        name="password"
+        value={password}
+        onChange={handlePasswordChange}
+        onBlur={validatePassword}
+        error={invalidPassword}
+        helperText={invalidPassword ? "Please enter a valid password" : ""}
       />
     </div>
   );

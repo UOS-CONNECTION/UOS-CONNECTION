@@ -1,9 +1,4 @@
-import {
-  FormGroup,
-  FormControlLabel,
-  Checkbox,
-  Typography,
-} from "@mui/material";
+import { FormGroup, FormControlLabel, Checkbox } from "@mui/material";
 
 const Agree: React.FC = () => {
   return (
