@@ -1,11 +1,11 @@
-import { Box, Tab, Tabs } from '@mui/material';
-import { useCallback, useState } from 'react';
-import { SHARE_INFO } from '../../Util/Constant';
-import { IData } from '../../Util/Type';
-import ShareCard from './ShareCard';
+import { Box, Tab, Tabs } from "@mui/material";
+import { useCallback, useState } from "react";
+import { SHARE_INFO } from "../../Util/Constant";
+import { IData } from "../../Util/Type";
+import ShareCard from "./ShareCard";
 
 interface IShareTab {
-  talentData: IData[],
+  talentData: IData[];
 }
 
 const ShareTab: React.FC<IShareTab> = ({ talentData }) => {
@@ -19,10 +19,10 @@ const ShareTab: React.FC<IShareTab> = ({ talentData }) => {
   );
 
   return (
-    <Box className='share-tab-container'>
+    <Box className="share-tab-container">
       <Tabs value={option} onChange={handleOptionChange}>
-        <Tab label='재능공유' />
-        <Tab label='물품공유' />
+        <Tab label="재능공유" />
+        <Tab label="물품공유" />
       </Tabs>
       {option === SHARE_INFO.TALENT &&
         talentData.map((data, idx) => <ShareCard key={idx} data={data} />)}
