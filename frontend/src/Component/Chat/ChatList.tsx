@@ -1,9 +1,9 @@
 import { Box, Typography, Card, CardContent, CardMedia } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import { TempChat } from '../../Util/TempChat';
+import { TempChat } from '../../Util/TempData';
 import { DateConvert } from '../../Util/DateConvert';
 import { Summary } from '../../Util/Summary';
-import { ChatType } from '../../Util/ChatType';
+import { ChatType } from '../../Util/Type';
 
 const ChatList: React.FC = () => {
   const unwatchedExist = (_item: ChatType): boolean => _item.unwatched !== 0;

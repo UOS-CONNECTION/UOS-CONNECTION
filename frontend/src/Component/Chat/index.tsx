@@ -4,7 +4,7 @@ import ChatDetail from "./ChatDetail";
 
 const Chat: React.FC = () => {
   return (
-    <Box className="main-container">
+    <Box className="chat-main-container">
       <ChatList />
       <ChatDetail />
     </Box>

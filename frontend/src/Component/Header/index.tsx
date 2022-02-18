@@ -32,7 +32,7 @@ const GNBNavigation: React.FC = () => {
       <Link href='/chat' color='inherit' underline='none'>
         채팅
       </Link>
-      <Link href='/' color='inherit' underline='none'>
+      <Link href='/about' color='inherit' underline='none'>
         이음
       </Link>
     </Box>
