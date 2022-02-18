@@ -34,6 +34,6 @@ export interface ChatType {
 
 interface UserType {
   id: string;
-  img: string | null;
+  img: string;
   nickname: string;
 }

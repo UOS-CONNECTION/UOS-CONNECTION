@@ -1,4 +1,4 @@
-import { Box, Typography, Card, CardContent, CardMedia } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { TempChat } from '../../Util/TempData';
 import { Dispatch, SetStateAction } from 'react';
@@ -19,7 +19,12 @@ const ChatList: React.FC<IchatSelect> = ({ setChatroom }) => {
       </Box>
       <Box className='chat-list'>
         {TempChat.map((item, idx) => (
-          <ChatPerson item={item} idx={idx} setChatroom={setChatroom} />
+          <ChatPerson
+            key={idx}
+            item={item}
+            idx={idx}
+            setChatroom={setChatroom}
+          />
         ))}
       </Box>
     </Box>

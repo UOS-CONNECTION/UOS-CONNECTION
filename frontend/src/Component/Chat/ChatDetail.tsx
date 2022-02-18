@@ -1,4 +1,11 @@
-import { Box, Typography, Card, CardContent, TextField } from '@mui/material';
+import {
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  TextField,
+  Avatar,
+} from '@mui/material';
 import { useState, useEffect } from 'react';
 import { TempChat } from '../../Util/TempData';
 import SendIcon from '@mui/icons-material/Send';
@@ -20,12 +27,11 @@ const ChatDetail: React.FC<ChatroomProps> = ({ chatRoom }) => {
   return (
     <Box className='chat-detail-container'>
       <Card className='chat-detail-top' elevation={0}>
-        <Box className='userimage-container'></Box>
-        <CardContent>
-          <Typography className='chat-detail-usernickname'>
-            {chatData.User.nickname}
-          </Typography>
-        </CardContent>
+        {/* <Box className='userimage-container'></Box> */}
+        <Avatar alt='user-img' src={chatData.User.img}></Avatar>
+        <Typography className='chat-detail-usernickname'>
+          {chatData.User.nickname}
+        </Typography>
       </Card>
       <Box className='chat-detail'>
         {chatData.content?.map((item, idx) => (

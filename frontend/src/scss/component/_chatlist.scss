@@ -1,6 +1,6 @@
 .chat-list-container {
   background-color: #fff;
-  height: 70%;
+  height: 80%;
   width: 35%;
   border-radius: 15px;
   overflow: auto;
@@ -8,16 +8,17 @@
   position: relative;
 
   .chat-list-top {
+    height: 15%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     position: sticky;
     top: 0%;
     background: white;
     z-index: 2;
     margin: 0 5%;
-    padding: 7% 7% 5%;
+    padding: 0 5%;
     border-bottom: 1px solid #d1d1d1;
 
     .chat-list-header {

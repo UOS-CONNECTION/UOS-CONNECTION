@@ -170,7 +170,7 @@ export const TempChat = Array(20)
     id: shortId.generate(),
     User: {
       id: shortId.generate(),
-      img: null,
+      img: faker.internet.avatar(),
       nickname: faker.name.lastName() + faker.name.firstName(),
     },
     unwatched: faker.datatype.number({ min: 0, max: 5 }),
