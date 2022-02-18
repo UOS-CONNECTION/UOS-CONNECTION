@@ -23,6 +23,15 @@ export interface IInfomation {
   info: string;
 }
 
+export interface IDeveloper {
+  id: number;
+  name: string;
+  github: string;
+  stack: string[];
+  img: string;
+  short_desc: string;
+}
+
 export interface ChatType {
   id: string;
   User: UserType;

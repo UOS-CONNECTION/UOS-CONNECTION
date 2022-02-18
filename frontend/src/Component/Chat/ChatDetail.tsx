@@ -7,6 +7,7 @@ import {
   Avatar,
 } from '@mui/material';
 import { useState, useEffect } from 'react';
+
 import { TempChat } from '../../Util/TempData';
 import SendIcon from '@mui/icons-material/Send';
 import { ChatType } from '../../Util/Type';
