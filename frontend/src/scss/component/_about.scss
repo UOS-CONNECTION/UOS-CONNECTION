@@ -1,0 +1,85 @@
+.about-container {
+  width: 100%;
+
+  .description-container {
+    width: 100%;
+
+    .description-line {
+      margin: 10% auto;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+
+      img {
+        width: 25%;
+        border-radius: 15px;
+        @include mobile {
+          width: 40%;
+        }
+      }
+
+      .description-text-container {
+        width: 30%;
+
+        .description-title {
+          @include font-default(700, 1.5rem);
+        }
+      }
+    }
+  }
+
+  .developer-cards {
+    width: 100%;
+    margin-bottom: 10%;
+    white-space: nowrap;
+
+    @include desktop {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .developer-card-container {
+      width: 80%;
+      margin: 5% auto;
+      display: flex;
+      padding: 5%;
+      .developer-image {
+        border-radius: 10px;
+        width: 30%;
+      }
+      
+      .developer-card-name {
+        @include font-default(700, 1rem);
+      }
+
+      .developer-content {
+        margin-left: 5%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+      }
+
+      .developer-label-container {
+        display: flex;
+        .developer-label {
+          color: #fff;
+
+          &:not(:first-child) {
+            margin-left: 5%;
+          }
+        }
+        .red {
+          background-color: #ff8988;
+        }
+        .yellow {
+          background-color: #ffde57;
+        }
+      }
+
+      .developer-short-desc {
+        color: #807f7f;
+        @include font-default(300, 0.9rem);
+      }
+    }
+  }
+}
