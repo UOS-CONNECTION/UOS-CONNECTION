@@ -54,5 +54,5 @@ export const dateConvert = (_date: string): string => {
     else if (isYesterday(pastDay, date)) return '어제';
   } else return yyyymmdd;
 
-  return 'err'; //exception
+  return 'err'; //exception handling
 };
