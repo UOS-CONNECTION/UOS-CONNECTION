@@ -7,8 +7,7 @@
     "start": "ts-node -r tsconfig-paths/register src/index.ts",
     "dev": "concurrently \"yarn dev:server\" \"yarn dev:client\"",
     "dev:server": "nodemon --exec ts-node -r tsconfig-paths/register src/index.ts",
-    "dev:client": "cd ../frontend && yarn start",
-    "heroku-postbuild": "cd ../frontend && yarn install && yarn build"
+    "dev:client": "cd ../frontend && yarn start"
   },
   "dependencies": {
     "cors": "^2.8.5",

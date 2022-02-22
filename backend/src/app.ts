@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 
-import tempRouter from '@routes/temp-router';
+import rootRouter from './routes';
 
 export default class App {
   app: express.Application;
@@ -10,13 +10,16 @@ export default class App {
 
   constructor() {
     this.app = express();
-    this.port = process.env.PORT || '4000';
+    this.port = process.env.PORT || '8080';
     this.config();
     this.middleware();
     this.route();
   }
 
-  private config() {}
+  private config() {
+    this.app.use(express.json()); // json parsing
+    this.app.use(express.urlencoded({ extended: false })); // body parsing
+  }
 
   private middleware() {
     const corsOption = {
@@ -27,7 +30,7 @@ export default class App {
   }
 
   private route() {
-    this.app.use('/api/temp', tempRouter);
+    this.app.use('/api', rootRouter);
   }
 
   listen() {
@@ -35,4 +38,4 @@ export default class App {
       console.log(`LISTEN ON PORT ${this.port}`);
     });
   }
-};
+}

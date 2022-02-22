@@ -6,42 +6,49 @@ import DetailCard from './DetailCard';
 import InfomationCard from './InfomationCard';
 
 const initialPost: IData = {
+  id: 0,
+  desc: '',
+  title: '',
+  img: '',
+  label: [''],
+  User: {
     id: 0,
-    desc: '',
-    title: '',
     img: '',
-    label: [''],
-    User: {
-      id: 0,
-      img: '',
-      name: '',
-      score: 0,
-      short_desc: '',
-      basic_info: [{
+    name: '',
+    score: 0,
+    short_desc: '',
+    basic_info: [
+      {
         id: 0,
         type: 0,
         info: '',
-      }],
-      extra_info: [{
+      },
+    ],
+    extra_info: [
+      {
         id: 0,
         type: 0,
         info: '',
-      }]
-    }
+      },
+    ],
+  },
 };
 
 const Detail: React.FC = () => {
   const { postId } = useParams();
-  
+
   const [post, setPost] = useState<IData>(initialPost);
   const [basicInfoList, setBasicInfoList] = useState<IInfomation[]>([]);
   const [extraInfoList, setExtraInfoList] = useState<IInfomation[]>([]);
 
   useLayoutEffect(() => {
-    const nextPost = TempData[Number(postId) - 1];
-    setPost(nextPost);
-    setBasicInfoList(nextPost.User.basic_info as IInfomation[]);
-    setExtraInfoList(nextPost.User.extra_info as IInfomation[]);
+    fetch(`http://localhost:8080/api/post/${postId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setPost(data);
+        setBasicInfoList(data.User.basic_info);
+        setExtraInfoList(data.User.extra_info);
+      });
   }, [postId]);
 
   return (

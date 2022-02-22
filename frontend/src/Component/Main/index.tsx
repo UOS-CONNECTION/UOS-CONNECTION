@@ -5,7 +5,7 @@ import Filter from './Filter';
 import ShareTab from './ShareTab';
 
 const Main: React.FC = () => {
-  const [talentData, ] = useState<IData[]>(TempData);
+  const [talentData] = useState<IData[]>(TempData);
   const [locationOption, setLocationOption] = useState<string>('');
   const [tagOption, setTagOption] = useState<[]>([]);
   const [mannerOption, setMannerOption] = useState<string>('');
