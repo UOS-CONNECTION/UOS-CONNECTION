@@ -1,21 +1,22 @@
 //Chat scss
-@import "./base/base";
-@import "./base/mixin";
-@import "./base/variable";
+@import './base/base';
+@import './base/variable';
+@import './base/mixin';
 
-@import "./component/header";
-@import "./component/layout";
-@import "./component/chatlist";
-@import "./component/chatdetail";
+@import './component/layout';
+@import './component/header';
+@import './component/chatlist';
+@import './component/chatdetail';
 
 .chat-main-container {
   width: 100%;
+  height: 83vh;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  min-height: calc(100vh - 100px);
   background-color: #e2e2e2;
+
   @include mobile {
     flex-direction: column;
   }

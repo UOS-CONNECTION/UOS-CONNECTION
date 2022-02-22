@@ -33,16 +33,16 @@ export interface IDeveloper {
 }
 
 export interface ChatType {
-  id: number;
+  id: string;
   User: UserType;
   unwatched: number;
   last: string;
-  overview?: string;
+  overview: string | null;
   content?: (string | number)[][];
 }
 
 interface UserType {
-  id: number;
-  img: string | null;
+  id: string;
+  img: string;
   nickname: string;
 }
