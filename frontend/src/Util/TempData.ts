@@ -1,4 +1,6 @@
 import { BASIC_INFO_TYPE, EXTRA_INFO_TYPE } from './Constant';
+import * as faker from 'faker';
+import shortId from 'shortid';
 
 export const TempData = [
   {
@@ -147,91 +149,40 @@ export const TempData = [
   },
 ];
 
-// TempChatting
-export const TempChat = [
-  {
-    id: 1,
+faker.setLocale('ko');
+const makeDate = (): string => {
+  return (
+    String(faker.datatype.number({ min: 2000, max: 2022 })) +
+    '/' +
+    String(faker.datatype.number({ min: 1, max: 12 })) +
+    '/' +
+    String(faker.datatype.number({ min: 1, max: 30 })) +
+    '/' +
+    String(faker.datatype.number({ min: 0, max: 24 })) +
+    '/' +
+    String(faker.datatype.number({ min: 10, max: 60 }))
+  );
+};
+
+export const TempChat = Array(20)
+  .fill('')
+  .map(() => ({
+    id: shortId.generate(),
     User: {
-      id: 180,
-      img: null,
-      nickname: '상민',
+      id: shortId.generate(),
+      img: faker.internet.avatar(),
+      nickname: faker.name.lastName() + faker.name.firstName(),
     },
-    unwatched: 2,
-    last: '2022/2/7/22/20',
-    overview: '인간크롱 뿌뿌뿡',
+    unwatched: faker.datatype.number({ min: 0, max: 5 }),
+    last: makeDate(),
+    overview: faker.lorem.words(),
     content: [
       // + host - receiver
-      ['에헤이', 1],
-      ['하이하이여', -1],
-      ['님 50만원만 네고 ㄱㄱ', -2],
-      ['허허 50만원 받고 더블로 가 !', 1],
+      [faker.lorem.sentence(), 1],
+      [faker.lorem.sentence(), -1],
+      [faker.lorem.sentence(), 1],
+      [faker.lorem.sentence(), 2],
+      [faker.lorem.sentence(), -1],
     ],
-  },
-  {
-    id: 2,
-    User: {
-      id: 160,
-      img: null,
-      nickname: '지함',
-    },
-    unwatched: 0,
-    last: '2022/2/5/22/20',
-    overview: '지함 지함 지함 지함 지함 지함 지함 지함 지함 지함 지함',
-    content: [
-      [' UN village ~~', 1],
-      ['U & me relaxing chilling yeah~~', -1],
-      ['완벽한 모습을 너에게 보이지는 않을 거야~~', -2],
-      ['지금 이 순간 마저 난 모든 것 흘러가는대로 부는 곳으로 바람이~~', 1],
-      ['사랑을 속삭일 때 난 원래 ~~', -1],
-      ['이미 알고 있었다고 해도 ~ 처음 느끼는 기분으로 널 ~~', 1],
-      ['리드할께 lean on~~ me', 2],
-      ['특별한 시간을 보낼 수 있는 자신이 있다는 걸 난 알아~', -1],
-      ['I know that I know that I know that', -2],
-      ['한남동 UN village ~~ 언덕에서 달을 보면', 1],
-    ],
-  },
-  {
-    id: 3,
-    User: {
-      id: 180,
-      img: null,
-      nickname: '인우',
-    },
-    unwatched: 0,
-    last: '2022/2/08/11/20',
-    overview: '책상 breaker',
-  },
-  {
-    id: 4,
-    User: {
-      id: 140,
-      img: null,
-      nickname: '케로로',
-    },
-    unwatched: 0,
-    last: '2022/2/08/3/20',
-    overview: '퍼렁별 침략자',
-  },
-  {
-    id: 5,
-    User: {
-      id: 163,
-      img: null,
-      nickname: '코난',
-    },
-    unwatched: 3,
-    last: '2022/2/08/14/20',
-    overview: '몸은 작아졌어도 두뇌는 그래도 포기를 모르는 명탐정',
-  },
-  {
-    id: 6,
-    User: {
-      id: 132,
-      img: null,
-      nickname: '김신',
-    },
-    unwatched: 0,
-    last: '2021/2/28/11/20',
-    overview: '아무르 티그로 캐슬을 박살 내기 위해서 한국에 상륙',
-  },
-];
+  }));
+

@@ -1,68 +1,87 @@
-.chatlist-container {
+.chat-list-container {
   background-color: #fff;
-  max-height: 550px;
-  max-width: 380px;
+  height: 80%;
+  width: 35%;
   border-radius: 15px;
-  .chatlist-top {
+  overflow: auto;
+  transition: all 0.5s;
+  position: relative;
+
+  .chat-list-top {
+    height: 15%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-end;
-    margin: 0 36px;
-    margin-top: 35px;
-    margin-bottom: 10px;
-    padding-bottom: 20px;
+    align-items: center;
+    position: sticky;
+    top: 0%;
+    background: white;
+    z-index: 2;
+    margin: 0 5%;
+    padding: 0 5%;
     border-bottom: 1px solid #d1d1d1;
-    .chatlist-header {
-      @include font-default(500, 1.625rem);
+
+    .chat-list-header {
+      @include font-default(500, 1.5rem);
       line-height: 30px;
     }
+
     .search-icon {
       width: 26px;
     }
   }
-  .chatlist {
+
+  .chat-list {
     display: flex;
     flex-direction: column;
-    margin: 0 36px;
-    min-width: 320px;
-    max-height: 400px;
-    overflow-y: scroll;
+    margin: 0 5%;
+    flex-basis: 320px;
+    flex-grow: 1;
+
     .chat {
       display: flex;
       flex-direction: row;
       align-items: center;
-      min-height: 95px;
       border-bottom: 1px solid #d1d1d1;
+
       &:hover {
         background-color: #dbdbdbaf;
       }
-      .chatlist-userimg {
+
+      .chat-list-userimg {
         margin-left: 10px;
         background-color: #9dbeff;
         width: 50px;
         height: 50px;
         border-radius: 50px;
       }
-      .chatlist-mid {
-        width: 120px;
-        .chatlist-nickname {
+
+      .chat-list-mid {
+        width: 45%;
+
+        .chat-list-nickname {
           @include font-default(500, 1.125rem);
         }
-        .chatlist-overview {
+
+        .chat-list-overview {
           @include font-default(500, 0.813rem);
           color: #7a7979;
         }
       }
-      .chatlist-right {
-        width: 70px;
+
+      .chat-list-right {
+        width: 30%;
+        margin-left: auto;
+        margin-right: 0%;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        .chatlist-lastsaw {
+
+        .chat-list-lastsaw {
           @include font-default(300, 0.75rem);
           color: #504f4f;
         }
+
         .unwatched-circle {
           margin-top: 5%;
           width: 18px;
@@ -72,7 +91,8 @@
           display: flex;
           justify-content: center;
           align-items: flex-start;
-          .chatlist-unwatched {
+
+          .chat-list-unwatched {
             color: white;
             @include font-default(500, 1rem);
             line-height: 16px;
@@ -80,15 +100,25 @@
         }
       }
     }
-    &::-webkit-scrollbar {
-      width: 10px;
-    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &:hover {
     &::-webkit-scrollbar-thumb {
       background-color: #c0c0c0;
       border-radius: 10px;
     }
-    &::-webkit-scrollbar-track {
-      background-color: transparent;
-    }
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
   }
 }
