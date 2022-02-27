@@ -1,14 +1,15 @@
 import { Box, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import { TempChat } from '../../Util/TempData';
 import { Dispatch, SetStateAction } from 'react';
 import ChatPerson from './ChatPerson';
+import { ChatType } from '../../Util/Type';
 
 interface IchatSelect {
   setChatroom: Dispatch<SetStateAction<number>>;
+  chatlist: ChatType[];
 }
 
-const ChatList: React.FC<IchatSelect> = ({ setChatroom }) => {
+const ChatList: React.FC<IchatSelect> = ({ setChatroom, chatlist }) => {
   return (
     <Box className='chat-list-container'>
       <Box className='chat-list-top'>
@@ -18,7 +19,7 @@ const ChatList: React.FC<IchatSelect> = ({ setChatroom }) => {
         <SearchIcon className='search-icon'></SearchIcon>
       </Box>
       <Box className='chat-list'>
-        {TempChat.map((item, idx) => (
+        {chatlist.map((item, idx) => (
           <ChatPerson
             key={idx}
             item={item}

@@ -1,37 +1,21 @@
-import {
-  Box,
-  Typography,
-  Card,
-  CardContent,
-  TextField,
-  Avatar,
-} from '@mui/material';
-import { useState, useEffect } from 'react';
-
-import { TempChat } from '../../Util/TempData';
+import { Box, Typography, Card, TextField, Avatar } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { ChatType } from '../../Util/Type';
 import ChatCard from './ChatCard';
 
 interface ChatroomProps {
-  chatRoom: number;
+  chatData: ChatType;
 }
 
-const ChatDetail: React.FC<ChatroomProps> = ({ chatRoom }) => {
+const ChatDetail: React.FC<ChatroomProps> = ({ chatData }) => {
   // const [chatPerson, setChatPerson] = useState<number>(2); //id
-  const [chatData, setChatData] = useState<ChatType>(TempChat[0]);
-
-  useEffect(() => {
-    setChatData(TempChat[chatRoom]);
-  }, [chatRoom]);
 
   return (
     <Box className='chat-detail-container'>
       <Card className='chat-detail-top' elevation={0}>
-        {/* <Box className='userimage-container'></Box> */}
-        <Avatar alt='user-img' src={chatData.User.img}></Avatar>
+        <Avatar alt='user-img' src={''}></Avatar>
         <Typography className='chat-detail-usernickname'>
-          {chatData.User.nickname}
+          {chatData.User?.nickname}
         </Typography>
       </Card>
       <Box className='chat-detail'>
