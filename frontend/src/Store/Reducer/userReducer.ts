@@ -1,7 +1,9 @@
+import { LOG_IN_REQUEST } from '../type';
+
 const userReducer = (state = {}, action: any) => {
   switch (action.type) {
-    case 'LOGIN_USER':
-      return { ...state, login: action.payload};
+    case LOG_IN_REQUEST:
+      return { ...state, login: action.payload };
     default:
       return state;
   }

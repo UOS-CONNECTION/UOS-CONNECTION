@@ -3,6 +3,7 @@ import { Request, Response, Router } from 'express';
 
 const postRouter = Router();
 
-postRouter.get('/:id', postController.temp);
+postRouter.get('/:postId', postController.temp);
+postRouter.get('/', postController.getAllPost);
 
 export default postRouter;
