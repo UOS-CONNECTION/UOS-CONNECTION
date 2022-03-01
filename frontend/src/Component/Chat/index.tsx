@@ -38,15 +38,14 @@ const Chat: React.FC = () => {
   useLayoutEffect(() => {
     fetch(`http://localhost:8080/api/chat/room/${chatRoom}`)
       .then((res) => res.json())
-      .then((data) => setChatData(data[0]))
-      .then(() => console.log(chatData));
+      .then((data) => setChatData(data[0]));
   }, [chatRoom]);
 
   useLayoutEffect(() => {
     fetch('http://localhost:8080/api/chat/list')
       .then((res) => res.json())
       .then((data) => setChatlist(data));
-  }, [chatlist]);
+  }, []);
 
   return (
     <Box className='chat-main-container'>
