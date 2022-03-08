@@ -1,23 +1,26 @@
 ---
-
 name: Bug report
- about: report to help us
- title: "[BUG]"
- labels: ''
- assignees: ''
- ---
+about: Create a report to help us improve
+title: ''
+labels: ''
+assignees: ''
+---
 
-## Title
+**Describe the bug**
+A clear and concise description of what the bug is.
 
-- Bug Name
+**How to find**
+How to find the bug?
 
-## Description
+1. Go to '...'
+2. Click on '....'
+3. Scroll down to '....'
+4. See error
 
-- description of what the bug is.
+**Expected behavior**
+Expected behavior with not bug
 
- 1. When does it happen?
- 2. Explain
+- bahavior
 
-## Screenshots
-
-- Screenshot about bug
+**Screenshots**
+If applicable, add screenshots to help explain your problem.
