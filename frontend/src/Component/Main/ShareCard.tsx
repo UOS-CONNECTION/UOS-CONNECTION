@@ -1,18 +1,22 @@
 import { Avatar, Box, Card, CardMedia, Chip, Typography } from '@mui/material';
 import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { selectOnePost } from '../../Store/Action/postAction';
 import { IData } from '../../Util/Type';
 
 interface IShareCard {
-  data: IData,
+  data: IData;
 }
 
 const ShareCard: React.FC<IShareCard> = ({ data }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleGoDetailPage = useCallback(() => {
+    dispatch(selectOnePost(data));
     navigate(`/post/${data.id}`);
-  }, [data.id, navigate]);
+  }, [data, dispatch, navigate]);
 
   return (
     <Card className='share-card-container' onClick={handleGoDetailPage}>
