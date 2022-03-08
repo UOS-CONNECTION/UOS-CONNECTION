@@ -3,6 +3,7 @@ import ChatList from './ChatList';
 import ChatDetail from './ChatDetail';
 import { useState, useLayoutEffect } from 'react';
 import { ChatType } from '../../Util/Type';
+import { io } from 'socket.io-client';
 
 const initialChatlist: ChatType[] = [
   {
@@ -30,6 +31,14 @@ const initialChat: ChatType = {
   overview: '',
 };
 
+const socket = io('http://localhost:8080/', {
+  transports: ['websocket'],
+  upgrade: false,
+  forceNew: true,
+});
+socket.emit('message', 'Hello, Im from client!');
+console.log(socket.connected);
+
 const Chat: React.FC = () => {
   const [chatRoom, setChatroom] = useState<number>(0);
   const [chatlist, setChatlist] = useState<ChatType[]>(initialChatlist);
@@ -49,8 +58,8 @@ const Chat: React.FC = () => {
 
   return (
     <Box className='chat-main-container'>
-      <ChatList setChatroom={setChatroom} chatlist={chatlist} />
-      <ChatDetail chatData={chatData} />
+      <ChatList setChatroom={setChatroom} chatlist={chatlist} socket={socket} />
+      <ChatDetail chatData={chatData} socket={socket} />
     </Box>
   );
 };

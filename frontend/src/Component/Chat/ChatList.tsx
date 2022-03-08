@@ -7,9 +7,10 @@ import { ChatType } from '../../Util/Type';
 interface IchatSelect {
   setChatroom: Dispatch<SetStateAction<number>>;
   chatlist: ChatType[];
+  socket: any;
 }
 
-const ChatList: React.FC<IchatSelect> = ({ setChatroom, chatlist }) => {
+const ChatList: React.FC<IchatSelect> = ({ setChatroom, chatlist, socket }) => {
   return (
     <Box className='chat-list-container'>
       <Box className='chat-list-top'>
