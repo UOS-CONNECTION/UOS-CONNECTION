@@ -10,7 +10,6 @@ export default class App {
   app: express.Application;
   port: string;
   server: any;
-  dbConnection: any;
 
   constructor() {
     this.app = express();
@@ -30,7 +29,7 @@ export default class App {
 
   private middleware() {
     const corsOption = {
-      origin: process.env.FRONTEND_URL || 'http://localhost:3000' || '*',
+      origin: process.env.FRONTEND_URL || 'http://localhost:3000',
       credentials: true,
     };
     this.app.use(cors(corsOption));

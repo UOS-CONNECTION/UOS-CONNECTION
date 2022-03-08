@@ -21,38 +21,40 @@ const initialRecentChat = {
 };
 
 const ChatDetail: React.FC<ChatroomProps> = ({ chatData, socket }) => {
-  const [myname, setMyname] = useState<string>('keroro');
+  const [myName, setMyName] = useState<string>('keroro');
   const [inputMessage, setInputMessage] = useState<string>('');
   const [chatMonitor, setChatMonitor] = useState<ChatContent[]>([]);
   const [recentChat, setRecentChat] = useState<ChatContent>(initialRecentChat);
-  const [first, setFirst] = useState<boolean>(true);
+  const [isFirstChat, setFirstChat] = useState<boolean>(true);
   const [firstArr, setFirstArr] = useState<number[]>([]);
 
   //set user by login(w/redux) temp var = keroro
 
-  const handleInput = (event: any) => {
+  const handleInput = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     event.preventDefault();
     setInputMessage(event.target.value);
   };
 
-  const handleEnter = (event: any) => {
+  const handleEnter = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'Enter') {
       socket.emit('message', {
         message: inputMessage,
-        sender_nickname: myname,
+        sender_nickname: myName,
       });
       setInputMessage('');
     }
   };
 
   const handleBtnClick = () => {
-    socket.emit('message', { message: inputMessage, sender_nickname: myname });
+    socket.emit('message', { message: inputMessage, sender_nickname: myName });
     setInputMessage('');
   };
 
-  const makePastChat = async () => {
+  const recallPastChat = () => {
     const pastChat: ChatContent[] = [initialRecentChat];
-    await chatData?.content?.map((item, idx) => {
+    chatData?.content?.map((item, idx) => {
       pastChat.push({
         message: item[0],
         sender_nickname: item[1],
@@ -62,18 +64,17 @@ const ChatDetail: React.FC<ChatroomProps> = ({ chatData, socket }) => {
         pastChat[idx + 1]['sender_nickname'] !==
           pastChat[idx]['sender_nickname']
       )
-        setFirstArr([...firstArr, idx]);
+        setFirstArr((prev) => [...prev, idx]);
     });
-    console.log(pastChat);
     setChatMonitor(pastChat);
   };
 
   useLayoutEffect(() => {
-    makePastChat();
+    recallPastChat();
   }, [chatData]);
 
   useEffect(() => {
-    socket.on('upload', (data: any) => {
+    socket.on('upload', (data: ChatContent) => {
       console.log(data);
       setRecentChat(data);
     });
@@ -100,26 +101,25 @@ const ChatDetail: React.FC<ChatroomProps> = ({ chatData, socket }) => {
       </Card>
       <Box className='chat-detail'>
         {chatMonitor.map((item, idx) => {
-          console.log(firstArr);
           if (item.message.length === 0) return;
-          if (item.sender_nickname !== myname && firstArr.includes(idx)) {
+          if (item.sender_nickname !== myName && firstArr.includes(idx)) {
             return (
               <ChatCard
                 message={item.message}
                 isFirst={true}
-                color={'yellow'}
+                color='yellow'
                 Key={idx}
               />
             ); // first Yellow & yellow or gray
           } else if (
-            item.sender_nickname !== myname &&
+            item.sender_nickname !== myName &&
             !firstArr.includes(idx)
           ) {
             return (
               <ChatCard
                 message={item.message}
                 isFirst={false}
-                color={'yellow'}
+                color='yellow'
                 Key={idx}
               />
             );
@@ -128,7 +128,7 @@ const ChatDetail: React.FC<ChatroomProps> = ({ chatData, socket }) => {
               <ChatCard
                 message={item.message}
                 isFirst={false}
-                color={'gray'}
+                color='gray'
                 Key={idx}
               />
             );
@@ -148,10 +148,8 @@ const ChatDetail: React.FC<ChatroomProps> = ({ chatData, socket }) => {
               <SendIcon className='send-icon' onClick={handleBtnClick} />
             ),
           }}
-          onChange={(event) => {
-            handleInput(event);
-          }}
-          onKeyPress={(event) => event.key === 'Enter' && handleEnter(event)}
+          onChange={handleInput}
+          onKeyPress={handleEnter}
           value={inputMessage}
         />
       </Box>
