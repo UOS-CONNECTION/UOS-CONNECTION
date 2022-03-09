@@ -3,7 +3,7 @@ import { Router } from 'express';
 
 const chatRouter = Router();
 
-chatRouter.get('/list', chatController.chatList);
-chatRouter.get('/room/:id', chatController.chatRoom);
+chatRouter.get('/list', chatController.getChatList);
+chatRouter.get('/room/:id', chatController.getChatRoomDetail);
 
 export default chatRouter;

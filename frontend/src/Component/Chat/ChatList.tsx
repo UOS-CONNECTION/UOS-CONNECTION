@@ -1,16 +1,22 @@
 import { Box, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { Dispatch, SetStateAction } from 'react';
-import ChatPerson from './ChatPerson';
-import { ChatType } from '../../Util/Type';
+import { Socket } from 'socket.io-client';
 
-interface IchatSelect {
-  setChatroom: Dispatch<SetStateAction<number>>;
-  chatlist: ChatType[];
-  socket: any;
+import ChatPerson from './ChatPerson';
+import {
+  ChatType,
+  ServerToClientEvents,
+  ClientToServerEvents,
+} from '../../Util/Type';
+
+interface IChatSelect {
+  setChatRoom: Dispatch<SetStateAction<number>>;
+  chatList: ChatType[];
+  socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 }
 
-const ChatList: React.FC<IchatSelect> = ({ setChatroom, chatlist, socket }) => {
+const ChatList: React.FC<IChatSelect> = ({ setChatRoom, chatList, socket }) => {
   return (
     <Box className='chat-list-container'>
       <Box className='chat-list-top'>
@@ -20,12 +26,12 @@ const ChatList: React.FC<IchatSelect> = ({ setChatroom, chatlist, socket }) => {
         <SearchIcon className='search-icon'></SearchIcon>
       </Box>
       <Box className='chat-list'>
-        {chatlist.map((item, idx) => (
+        {chatList.map((item, idx) => (
           <ChatPerson
             key={idx}
             item={item}
             idx={idx}
-            setChatroom={setChatroom}
+            setChatRoom={setChatRoom}
           />
         ))}
       </Box>

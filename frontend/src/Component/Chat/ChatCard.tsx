@@ -1,23 +1,17 @@
 import { Box, Typography, Card, Avatar, CardContent } from '@mui/material';
 
-type ChatcardProps = {
+type ChatCardProps = {
   message: string;
   isFirst: boolean;
   color: string;
-  Key: number;
 };
 
-const ChatCard: React.FC<ChatcardProps> = ({
-  message,
-  isFirst,
-  color,
-  Key,
-}) => {
+const ChatCard: React.FC<ChatCardProps> = ({ message, isFirst, color }) => {
   // const isfirstYellow: boolean = item[1] === 1;
   const isYellow: boolean = color === 'yellow';
 
   return (
-    <Box key={Key} className={isYellow ? 'chat-left' : 'chat-right'}>
+    <Box className={isYellow ? 'chat-left' : 'chat-right'}>
       <Card elevation={0} className={isYellow ? 'chat-yellow' : 'chat-gray'}>
         <Avatar
           className={isYellow && isFirst ? 'userimg-orange' : 'userimg-hidden'}

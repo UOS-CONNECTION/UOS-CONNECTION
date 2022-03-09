@@ -1,23 +1,15 @@
 import { Box } from '@mui/material';
+import { io, Socket } from 'socket.io-client';
+import { useState, useLayoutEffect } from 'react';
+
 import ChatList from './ChatList';
 import ChatDetail from './ChatDetail';
-import { useState, useLayoutEffect } from 'react';
-import { ChatType } from '../../Util/Type';
-import { io } from 'socket.io-client';
-
-const initialChatlist: ChatType[] = [
-  {
-    id: '',
-    User: {
-      id: '',
-      img: '',
-      nickname: '',
-    },
-    unwatched: 0,
-    last: '',
-    overview: '',
-  },
-];
+import {
+  ChatType,
+  ServerToClientEvents,
+  ClientToServerEvents,
+} from '../../Util/Type';
+import requestAPI from '../../Util/Request';
 
 const initialChat: ChatType = {
   id: '',
@@ -30,35 +22,37 @@ const initialChat: ChatType = {
   last: '',
   overview: '',
 };
+const initialChatList: ChatType[] = [initialChat];
 
-const socket = io('http://localhost:8080/', {
-  transports: ['websocket'],
-  upgrade: false,
-  forceNew: true,
-});
-socket.emit('message', 'Hello, Im from client!');
+const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(
+  'http://localhost:8080/',
+  {
+    transports: ['websocket'],
+    upgrade: false,
+    forceNew: true,
+  }
+);
+socket.send('Hello, Im from client!');
 console.log(socket.connected);
 
 const Chat: React.FC = () => {
-  const [chatRoom, setChatroom] = useState<number>(0);
-  const [chatlist, setChatlist] = useState<ChatType[]>(initialChatlist);
+  const [chatRoom, setChatRoom] = useState<number>(0);
+  const [chatList, setChatList] = useState<ChatType[]>(initialChatList);
   const [chatData, setChatData] = useState<ChatType>(initialChat);
 
   useLayoutEffect(() => {
-    fetch(`http://localhost:8080/api/chat/room/${chatRoom}`)
-      .then((res) => res.json())
-      .then((data) => setChatData(data[0]));
+    requestAPI
+      .get(`/api/chat/room/${chatRoom}`)
+      .then((res) => setChatData(res.data[0]));
   }, [chatRoom]);
 
   useLayoutEffect(() => {
-    fetch('http://localhost:8080/api/chat/list')
-      .then((res) => res.json())
-      .then((data) => setChatlist(data));
+    requestAPI.get('/api/chat/list').then((res) => setChatList(res.data));
   }, []);
 
   return (
     <Box className='chat-main-container'>
-      <ChatList setChatroom={setChatroom} chatlist={chatlist} socket={socket} />
+      <ChatList setChatRoom={setChatRoom} chatList={chatList} socket={socket} />
       <ChatDetail chatData={chatData} socket={socket} />
     </Box>
   );

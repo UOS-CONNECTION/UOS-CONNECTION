@@ -3,14 +3,14 @@ import { Request, Response } from 'express';
 import { Socket } from '../utils/socket';
 
 class chatController {
-  async chatList(req: Request, res: Response) {
+  async getChatList(req: Request, res: Response) {
     try {
       return res.json(TempChatList);
     } catch (err) {
       res.sendStatus(400);
     }
   }
-  async chatRoom(req: Request, res: Response) {
+  async getChatRoomDetail(req: Request, res: Response) {
     try {
       const { id } = req.params;
 

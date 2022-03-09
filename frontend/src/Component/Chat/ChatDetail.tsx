@@ -1,26 +1,32 @@
 import { Box, Typography, Card, TextField, Avatar } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import { ChatType } from '../../Util/Type';
-import ChatCard from './ChatCard';
 import { useState, useEffect, useLayoutEffect } from 'react';
 import React from 'react';
+import { Socket } from 'socket.io-client';
 
-interface ChatroomProps {
+import {
+  ChatType,
+  ServerToClientEvents,
+  ClientToServerEvents,
+} from '../../Util/Type';
+import ChatCard from './ChatCard';
+
+interface ChatRoomProps {
   chatData: ChatType;
-  socket: any;
+  socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 }
 
 interface ChatContent {
   message: string;
-  sender_nickname: string;
+  senderName: string;
 }
 
 const initialRecentChat = {
   message: '',
-  sender_nickname: '',
+  senderName: '',
 };
 
-const ChatDetail: React.FC<ChatroomProps> = ({ chatData, socket }) => {
+const ChatDetail: React.FC<ChatRoomProps> = ({ chatData, socket }) => {
   const [myName, setMyName] = useState<string>('keroro');
   const [inputMessage, setInputMessage] = useState<string>('');
   const [chatMonitor, setChatMonitor] = useState<ChatContent[]>([]);
@@ -39,16 +45,16 @@ const ChatDetail: React.FC<ChatroomProps> = ({ chatData, socket }) => {
 
   const handleEnter = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'Enter') {
-      socket.emit('message', {
+      socket.send({
         message: inputMessage,
-        sender_nickname: myName,
+        senderName: myName,
       });
       setInputMessage('');
     }
   };
 
   const handleBtnClick = () => {
-    socket.emit('message', { message: inputMessage, sender_nickname: myName });
+    socket.send({ message: inputMessage, senderName: myName });
     setInputMessage('');
   };
 
@@ -57,12 +63,11 @@ const ChatDetail: React.FC<ChatroomProps> = ({ chatData, socket }) => {
     chatData?.content?.map((item, idx) => {
       pastChat.push({
         message: item[0],
-        sender_nickname: item[1],
+        senderName: item[1],
       });
       if (
         idx > 0 &&
-        pastChat[idx + 1]['sender_nickname'] !==
-          pastChat[idx]['sender_nickname']
+        pastChat[idx + 1]['senderName'] !== pastChat[idx]['senderName']
       )
         setFirstArr((prev) => [...prev, idx]);
     });
@@ -75,15 +80,14 @@ const ChatDetail: React.FC<ChatroomProps> = ({ chatData, socket }) => {
 
   useEffect(() => {
     socket.on('upload', (data: ChatContent) => {
-      console.log(data);
       setRecentChat(data);
     });
   }, []);
 
   useEffect(() => {
     if (recentChat?.message?.length > 0) {
-      recentChat?.sender_nickname !==
-        chatMonitor[chatMonitor.length - 1]['sender_nickname'] &&
+      recentChat?.senderName !==
+        chatMonitor[chatMonitor.length - 1]['senderName'] &&
         firstArr[firstArr.length - 1] !== chatMonitor.length &&
         setFirstArr([...firstArr, chatMonitor.length]);
       setChatMonitor([...chatMonitor, recentChat]);
@@ -102,25 +106,22 @@ const ChatDetail: React.FC<ChatroomProps> = ({ chatData, socket }) => {
       <Box className='chat-detail'>
         {chatMonitor.map((item, idx) => {
           if (item.message.length === 0) return;
-          if (item.sender_nickname !== myName && firstArr.includes(idx)) {
+          if (item.senderName !== myName && firstArr.includes(idx)) {
             return (
               <ChatCard
                 message={item.message}
                 isFirst={true}
                 color='yellow'
-                Key={idx}
+                key={idx}
               />
             ); // first Yellow & yellow or gray
-          } else if (
-            item.sender_nickname !== myName &&
-            !firstArr.includes(idx)
-          ) {
+          } else if (item.senderName !== myName && !firstArr.includes(idx)) {
             return (
               <ChatCard
                 message={item.message}
                 isFirst={false}
                 color='yellow'
-                Key={idx}
+                key={idx}
               />
             );
           } else {
@@ -129,7 +130,7 @@ const ChatDetail: React.FC<ChatroomProps> = ({ chatData, socket }) => {
                 message={item.message}
                 isFirst={false}
                 color='gray'
-                Key={idx}
+                key={idx}
               />
             );
           }

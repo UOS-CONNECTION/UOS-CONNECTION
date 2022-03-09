@@ -11,7 +11,6 @@ const Socket = {
 io.on('connection', (socket) => {
   console.log(`User ${socket.id} connected`);
   socket.on('message', (data) => {
-    console.log('client send', data);
     //database 추가
     io.emit('upload', data);
   });
