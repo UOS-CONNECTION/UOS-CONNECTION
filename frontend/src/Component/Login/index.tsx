@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LoginForm from "./LoginForm";
 import LoginOuterLink from "./LoginOuterLink";
 import EasyLogin from "./EasyLogin";
+import requestAPI from "../../Util/Request";
+import { PhotoSizeSelectLargeOutlined } from "@mui/icons-material";
 
 interface LoginData {
   email: string;
@@ -26,6 +28,22 @@ const Login: React.FC = () => {
     password: "",
   });
   const [loginList, setLoginList] = useState<LoginData[]>([]);
+
+  useEffect(() => {
+    requestAPI.post(`/api/user/login`, loginData).then((res) => {
+      console.log("good!");
+      console.log(res);
+    });
+  }, [loginData]);
+
+  /*  const postLogin = async () => {
+    const res = await requestAPI.post(`/api/user/login`, loginData);
+    console.log(res);
+  };
+
+  useEffect(() => {
+    postLogin();
+  }, [loginData]); */
 
   return (
     <div className="login-container">

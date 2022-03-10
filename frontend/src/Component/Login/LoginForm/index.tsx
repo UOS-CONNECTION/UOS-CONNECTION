@@ -33,7 +33,7 @@ const LoginForm: React.FC<LoginForm> = ({
     inputData = makeLoginData(email, password);
     setLoginData(inputData);
     setLoginList([...loginList, inputData]);
-    console.log(inputData);
+    //console.log(inputData);
   };
 
   return (

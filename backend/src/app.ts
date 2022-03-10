@@ -1,7 +1,9 @@
-import express from 'express';
-import cors from 'cors';
+import express from "express";
+import cors from "cors";
+import { createConnection } from "typeorm";
+import connectionOptions from "../ormconfig";
 
-import rootRouter from './routes';
+import rootRouter from "./routes";
 
 export default class App {
   app: express.Application;
@@ -10,7 +12,7 @@ export default class App {
 
   constructor() {
     this.app = express();
-    this.port = process.env.PORT || '8080';
+    this.port = process.env.PORT || "8080";
     this.config();
     this.middleware();
     this.route();
@@ -19,18 +21,21 @@ export default class App {
   private config() {
     this.app.use(express.json()); // json parsing
     this.app.use(express.urlencoded({ extended: false })); // body parsing
+    createConnection(connectionOptions).then(() => {
+      console.log("DB Connection");
+    });
   }
 
   private middleware() {
     const corsOption = {
-      origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+      origin: process.env.FRONTEND_URL || "http://localhost:3000",
       credentials: true,
     };
     this.app.use(cors(corsOption));
   }
 
   private route() {
-    this.app.use('/api', rootRouter);
+    this.app.use("/api", rootRouter);
   }
 
   listen() {
