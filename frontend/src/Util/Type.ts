@@ -37,12 +37,29 @@ export interface ChatType {
   User: UserType;
   unwatched: number;
   last: string;
-  overview: string | null;
-  content?: (string | number)[][];
+  overview: string;
+  content?: string[][];
 }
 
 interface UserType {
   id: string;
   img: string;
   nickname: string;
+}
+
+interface ChatContent {
+  message: string;
+  senderName: string;
+}
+
+export interface ServerToClientEvents {
+  upload: (data: ChatContent) => void;
+}
+
+export interface ClientToServerEvents {
+  send: () => void;
+}
+
+export interface InterServerEvents {
+  ping: () => void;
 }

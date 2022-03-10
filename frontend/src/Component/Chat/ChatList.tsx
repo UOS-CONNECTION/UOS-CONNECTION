@@ -1,14 +1,22 @@
 import { Box, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import { TempChat } from '../../Util/TempData';
 import { Dispatch, SetStateAction } from 'react';
-import ChatPerson from './ChatPerson';
+import { Socket } from 'socket.io-client';
 
-interface IchatSelect {
-  setChatroom: Dispatch<SetStateAction<number>>;
+import ChatPerson from './ChatPerson';
+import {
+  ChatType,
+  ServerToClientEvents,
+  ClientToServerEvents,
+} from '../../Util/Type';
+
+interface IChatSelect {
+  setChatRoom: Dispatch<SetStateAction<number>>;
+  chatList: ChatType[];
+  socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 }
 
-const ChatList: React.FC<IchatSelect> = ({ setChatroom }) => {
+const ChatList: React.FC<IChatSelect> = ({ setChatRoom, chatList, socket }) => {
   return (
     <Box className='chat-list-container'>
       <Box className='chat-list-top'>
@@ -18,12 +26,12 @@ const ChatList: React.FC<IchatSelect> = ({ setChatroom }) => {
         <SearchIcon className='search-icon'></SearchIcon>
       </Box>
       <Box className='chat-list'>
-        {TempChat.map((item, idx) => (
+        {chatList.map((item, idx) => (
           <ChatPerson
             key={idx}
             item={item}
             idx={idx}
-            setChatroom={setChatroom}
+            setChatRoom={setChatRoom}
           />
         ))}
       </Box>
