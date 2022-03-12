@@ -1,25 +1,26 @@
 import { Box, Typography, Card, CardContent, CardMedia } from '@mui/material';
+import { Dispatch, SetStateAction } from 'react';
+
 import { dateConvert } from '../../Util/dateConvert';
 import { summary } from '../../Util/summary';
-import { Dispatch, SetStateAction } from 'react';
 import { ChatType } from '../../Util/Type';
 
 interface ChatPersonProps {
   item: ChatType;
   idx: number;
-  setChatroom: Dispatch<SetStateAction<number>>;
+  setChatRoom: Dispatch<SetStateAction<number>>;
 }
 
 const unwatchedExist = (_item: ChatType): boolean => _item.unwatched !== 0;
 
-const ChatPerson: React.FC<ChatPersonProps> = ({ item, idx, setChatroom }) => {
+const ChatPerson: React.FC<ChatPersonProps> = ({ item, idx, setChatRoom }) => {
   return (
     <Card
       className='chat'
       elevation={0}
       key={idx}
       onClick={() => {
-        setChatroom(idx);
+        setChatRoom(idx);
       }}
     >
       <CardMedia

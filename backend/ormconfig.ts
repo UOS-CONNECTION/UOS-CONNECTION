@@ -4,7 +4,7 @@ import { ConnectionOptions } from "typeorm";
 dotenv.config();
 
 const ormconfig: ConnectionOptions = {
-  type: "mysql",
+  type: 'mysql',
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),
   username: process.env.DB_USERNAME,
@@ -12,9 +12,9 @@ const ormconfig: ConnectionOptions = {
   database: process.env.DB_DATABASENAME,
   synchronize: true,
   logging: false,
-  entities: ["src/entities/**/*.ts"],
+  entities: ['src/entities/**/*.ts'],
   cli: {
-    entitiesDir: "src/entities",
+    entitiesDir: 'src/entities',
   },
 };
 
