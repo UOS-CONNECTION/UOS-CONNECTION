@@ -1,6 +1,5 @@
 import { TempChat, TempChatList } from '@src/utils/temp.data';
 import { Request, Response } from 'express';
-import { Socket } from '../utils/socket';
 
 class chatController {
   async getChatList(req: Request, res: Response) {
