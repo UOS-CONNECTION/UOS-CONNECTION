@@ -1,11 +1,16 @@
-// typeorm
+import { EntityRepository, Repository } from 'typeorm';
 
-// class UserRepository extends Repository<User> {
-class UserRepository {
-  // typeorm
-  // findById(id: number) {
-  //
-  // }
+import UserEntity from '@src/entities/user.entity';
+
+@EntityRepository(UserEntity)
+class UserRepository extends Repository<UserEntity> {
+  findById(_id: number) {
+    return this.findOne({ _id });
+  }
+
+  findByEmail(email: string) {
+    return this.findOne({ email });
+  }
 }
 
 export default UserRepository;
