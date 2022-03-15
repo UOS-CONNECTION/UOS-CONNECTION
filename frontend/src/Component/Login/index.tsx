@@ -3,15 +3,6 @@ import LoginForm from "./LoginForm";
 import LoginOuterLink from "./LoginOuterLink";
 import EasyLogin from "./EasyLogin";
 
-interface LoginData {
-  email: string;
-  password: string;
-}
-
-interface LoginList {
-  loginList: LoginData[];
-}
-
 const Logo: React.FC = () => {
   return (
     <div className="logo-container">
@@ -21,22 +12,11 @@ const Logo: React.FC = () => {
 };
 
 const Login: React.FC = () => {
-  const [loginData, setLoginData] = useState<LoginData>({
-    email: "",
-    password: "",
-  });
-  const [loginList, setLoginList] = useState<LoginData[]>([]);
-
   return (
     <div className="login-container">
       <div className="login-container-box">
         <Logo />
-        <LoginForm
-          loginData={loginData}
-          setLoginData={setLoginData}
-          loginList={loginList}
-          setLoginList={setLoginList}
-        />
+        <LoginForm />
         <LoginOuterLink />
         <EasyLogin />
       </div>
