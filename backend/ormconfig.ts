@@ -12,9 +12,9 @@ const ormconfig: ConnectionOptions = {
   database: process.env.DB_DATABASENAME,
   synchronize: true,
   logging: false,
-  entities: ['src/entities/**/*.ts'],
+  entities: ['src/db/entities/**/*.ts'],
   cli: {
-    entitiesDir: 'src/entities',
+    entitiesDir: 'src/db/entities',
   },
 };
 
