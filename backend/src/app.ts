@@ -1,15 +1,15 @@
-import express from 'express';
-import cors from 'cors';
-import { createConnection } from 'typeorm';
-import connectionOptions from '../ormconfig';
-import { io } from './utils/socket';
+import express from "express";
+import cors from "cors";
+import * as http from "http";
 
+import DBConfig from "./db";
+import SocketAPI from "./utils/socket";
 import rootRouter from "./routes";
 
 export default class App {
   app: express.Application;
   port: string;
-  server: any;
+  server: http.Server;
 
   constructor() {
     this.app = express();
@@ -22,9 +22,7 @@ export default class App {
   private config() {
     this.app.use(express.json()); // json parsing
     this.app.use(express.urlencoded({ extended: false })); // body parsing
-    createConnection(connectionOptions).then(() => {
-      console.log('DB Connection');
-    });
+    DBConfig.connectionDB();
   }
 
   private middleware() {
@@ -43,6 +41,7 @@ export default class App {
     this.server = this.app.listen(this.port, () => {
       console.log(`LISTEN ON PORT ${this.port}`);
     });
-    io.attach(this.server);
+    const socketAPI = new SocketAPI(this.server);
+    socketAPI.connectSocket();
   }
 }
