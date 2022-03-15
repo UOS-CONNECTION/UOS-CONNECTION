@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 import Email from './Email';
 import Password from './Password';
@@ -8,11 +8,6 @@ import Agree from './Agree';
 import SignupButton from './SignupButton';
 import { SignUpData } from '../type';
 
-interface SignUpFromProps {
-  signUpData: SignUpData;
-  setSignupData: Dispatch<SetStateAction<SignUpData>>;
-}
-
 const makeSignUpData = (signUpData: SignUpData) => {
   return {
     email: `${signUpData.email}@${signUpData.domain}`,
@@ -21,10 +16,14 @@ const makeSignUpData = (signUpData: SignUpData) => {
   };
 };
 
-const SignupForm: React.FC<SignUpFromProps> = ({
-  signUpData,
-  setSignupData,
-}) => {
+const SignupForm: React.FC = () => {
+  const [signUpData, setSignupData] = useState<SignUpData>({
+    email: '',
+    password: '',
+    nickname: '',
+    domain: '',
+  });
+
   const handleSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();

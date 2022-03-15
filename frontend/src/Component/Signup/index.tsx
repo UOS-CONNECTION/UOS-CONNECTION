@@ -13,18 +13,11 @@ const SignupTitle: React.FC = () => {
 };
 
 const Signup: React.FC = () => {
-  const [signUpData, setSignupData] = useState<SignUpData>({
-    email: '',
-    password: '',
-    nickname: '',
-    domain: '',
-  });
-
   return (
     <div className='signup-container'>
       <div className='signup-container-box'>
         <SignupTitle />
-        <SignupForm signUpData={signUpData} setSignupData={setSignupData} />
+        <SignupForm />
       </div>
     </div>
   );
