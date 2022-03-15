@@ -1,9 +1,12 @@
+import UserRepository from "@src/repositories/user.repository";
 import { NextFunction, Request, Response } from "express";
+import { getCustomRepository } from "typeorm";
+import passport from "passport";
+import express from "express";
 
-const express = require("express");
-const passport = require("passport");
+import CryptoAPI from "../utils/crypto";
+
 const LocalStrategy = require("passport-local");
-const crypto = require("crypto"); /* 비번 암호화해서 저장하기 위한 모듈 */
 
 const sample = {
   email: "aaa",
@@ -25,19 +28,56 @@ class userController {
     }
   }
 
-  async signUp(req: Request, res: Response, next: NextFunction) {}
+  async signUp(req: Request, res: Response, next: NextFunction) {
+    if (req.user) {
+      return res.redirect("/");
+    }
+    res.render("/signup", {
+      title: "Create Account",
+    });
+  }
 
   async signIn(req: Request, res: Response, next: NextFunction) {
     try {
-      console.log("signin good!");
-      console.log(req.body);
+      const { email, password } = req.body;
+      const hashedPassword = await CryptoAPI.getHashedPassword(password);
 
-      passport.authenticate("local", {
-        successRedirect: "/",
-        failureRedirect: "/login",
-      });
+      const userRepository = getCustomRepository(UserRepository);
+
+      // 예외 처리 1 인풋 값 에러
+      if (!email || !password) {
+        return res.send(401);
+      }
+      const existedUser = await userRepository.findByEmail(email);
+
+      // 예외처리 2 데이터베이스에 유저 이메일이 없는 경우
+      if (!existedUser) {
+        return res.send(409);
+      }
+      // 예외처리 3 입력 패스워드와 데이터베이스 패스워드가 다른 경우
+      if (existedUser.password !== hashedPassword) {
+        return res.send(403);
+      }
+      // 로그인 로직 실행 (세션 저장, 리턴 200 해주면서 프론트에게 정상작동 알림)
+
+      passport.authenticate(
+        "local"
+        /* (err: Error, user: UserEntity, info: IVerifyOptions) => {
+          if (err) return;
+          if (!user) {
+            return res.redirect("/login");
+          }
+          req.logIn(user, (err) => {
+            if (err) {
+              return next(err);
+            }
+            req.flash("success", { msg: "Success! You are logged in." });
+            res.redirect(req.session.returnTo || "/");
+          });
+        } */
+      );
     } catch (err) {
-      console.log("signin error");
+      console.log("signin error!");
       res.sendStatus(400);
     }
   }

@@ -13,19 +13,13 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
-<<<<<<< HEAD
     "express-session": "^1.17.2",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.15",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
-    "typeorm": "^0.2.45"
-=======
-    "mysql": "^2.18.1",
-    "nodemon": "^2.0.15",
-    "socket.io": "^4.4.1",
-    "typeorm": "^0.2.44"
->>>>>>> d24c9f0fb3ddc401619a304dd8b6d6e78a5011d4
+    "typeorm": "^0.2.45",
+    "socket.io": "^4.4.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
