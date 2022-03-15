@@ -1,10 +1,11 @@
-import { useState } from "react";
-import Email from "./Email";
-import Password from "./Password";
-import PasswordCheck from "./PasswordCheck";
-import Nickname from "./Nickname";
-import Agree from "./Agree";
-import SignupButton from "./SignupButton";
+import { useState } from 'react';
+
+import Email from './Email';
+import Password from './Password';
+import PasswordCheck from './PasswordCheck';
+import Nickname from './Nickname';
+import Agree from './Agree';
+import SignupButton from './SignupButton';
 
 interface SignupData {
   email: string;
@@ -25,9 +26,9 @@ const SignupForm: React.FC<ISignupForm> = ({
   signupList,
   setSignupList,
 }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [nickname, setNickname] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [nickname, setNickname] = useState('');
 
   const makeSignupData = (
     _email: string,
@@ -37,7 +38,7 @@ const SignupForm: React.FC<ISignupForm> = ({
     return { email: _email, password: _password, nickname: _nickname };
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     let inputData: SignupData;
     inputData = makeSignupData(email, password, nickname);
@@ -47,7 +48,7 @@ const SignupForm: React.FC<ISignupForm> = ({
   };
 
   return (
-    <form className="signupform-container" onSubmit={handleSubmit}>
+    <form className='signupform-container' onSubmit={handleSubmit}>
       <Email email={email} setEmail={setEmail} />
       <Password password={password} setPassword={setPassword} />
       <PasswordCheck password={password} />
