@@ -21,7 +21,6 @@ const PasswordCheck: React.FC<PasswordCheck> = ({ password }) => {
       reInvalidRepassword(false);
     } else {
       reInvalidRepassword(true);
-      console.log('not same password');
     }
   };
   return (

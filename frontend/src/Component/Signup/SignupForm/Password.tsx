@@ -19,10 +19,8 @@ const Password: React.FC<Password> = ({ password, setPassword }) => {
   const validatePassword = () => {
     if (passwordRegex.test(password)) {
       setInvalidPassword(false);
-      console.log(password);
     } else {
       setInvalidPassword(true);
-      console.log('invalid password');
     }
   };
 

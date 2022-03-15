@@ -44,7 +44,6 @@ const SignupForm: React.FC<ISignupForm> = ({
     inputData = makeSignupData(email, password, nickname);
     setSignupData(inputData);
     setSignupList([...signupList, inputData]);
-    console.log(inputData);
   };
 
   return (

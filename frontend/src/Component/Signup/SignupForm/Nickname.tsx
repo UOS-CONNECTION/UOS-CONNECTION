@@ -19,10 +19,8 @@ const Nickname: React.FC<SingupNickname> = ({ nickname, setNickname }) => {
   const validateNickname = () => {
     if (nicknameRegex.test(nickname)) {
       setInvalidNickname(false);
-      console.log(nickname);
     } else {
       setInvalidNickname(true);
-      console.log('invalid nickname');
     }
   };
 

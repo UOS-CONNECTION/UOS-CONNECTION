@@ -29,7 +29,6 @@ const Email: React.FC<SignupEmail> = ({ email, setEmail }) => {
 
   const handleEmailButtonClicked = () => {
     setEmail(emailId.concat('@', selectDomain));
-    console.log('Your email: ' + emailId.concat('@', selectDomain));
   };
 
   return (
