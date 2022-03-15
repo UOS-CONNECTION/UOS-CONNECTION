@@ -28,15 +28,15 @@ class UserEntity {
 
   // 매너 점수
   @Column('int', { nullable: true })
-  score: number;
+  manner_score: number;
 
   // 자기자신 소개
   @Column('text', { nullable: true })
-  desc: string;
+  self_desc: string;
 
   // 신고 당한 횟수
   @Column('int', { nullable: true })
-  report: number;
+  reported_cnt: number;
 
   @Column('text', { nullable: true })
   favorite_post: string;

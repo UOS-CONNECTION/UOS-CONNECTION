@@ -13,9 +13,6 @@ class ChatMessageEntity {
   chatRoom: ChatEntity;
 
   @Column('timestamp', { nullable: false })
-  updated_at: Timestamp;
-
-  @Column('timestamp', { nullable: false })
   created_at: Timestamp;
 }
 
