@@ -9,12 +9,6 @@ import PassportAPI from "../utils/passport";
 
 const LocalStrategy = require("passport-local");
 
-const sample = {
-  email: "aaa",
-  password: "bbb",
-  nickname: "jiham",
-};
-
 class userController {
   // example user
   async temp(req: Request, res: Response, next: NextFunction) {
