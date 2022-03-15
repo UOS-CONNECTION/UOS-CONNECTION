@@ -1,12 +1,6 @@
 import { Box, Typography, Card, TextField, Avatar } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import {
-  useState,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useCallback,
-} from 'react';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import React from 'react';
 import { Socket } from 'socket.io-client';
 
@@ -61,7 +55,6 @@ const ChatDetail: React.FC<ChatRoomProps> = ({ chatData, socket }) => {
 
   const scrollToBottom = () => {
     scrollRef?.current?.scrollTo(0, 1000000);
-    console.log(scrollRef.current);
   };
 
   useLayoutEffect(() => {
@@ -97,7 +90,6 @@ const ChatDetail: React.FC<ChatRoomProps> = ({ chatData, socket }) => {
               item?.message?.length > 0 && (
                 <ChatCard
                   message={item.message}
-                  isFirst={item.isFirstChat}
                   isLeft={item.isLeft}
                   key={idx}
                 />
