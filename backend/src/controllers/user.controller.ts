@@ -5,6 +5,7 @@ import passport from "passport";
 import express from "express";
 
 import CryptoAPI from "../utils/crypto";
+import PassportAPI from "../utils/passport";
 
 const LocalStrategy = require("passport-local");
 
@@ -40,6 +41,10 @@ class userController {
   async signIn(req: Request, res: Response, next: NextFunction) {
     try {
       const { email, password } = req.body;
+      const fields = {
+        usernameField: email,
+        passwordField: password,
+      };
       const hashedPassword = await CryptoAPI.getHashedPassword(password);
 
       const userRepository = getCustomRepository(UserRepository);
@@ -59,10 +64,11 @@ class userController {
         return res.send(403);
       }
       // 로그인 로직 실행 (세션 저장, 리턴 200 해주면서 프론트에게 정상작동 알림)
+      PassportAPI.localLogin(fields);
 
-      passport.authenticate(
-        "local"
-        /* (err: Error, user: UserEntity, info: IVerifyOptions) => {
+      /* passport.authenticate(
+        "local",
+        (err: Error, user: UserEntity, info: IVerifyOptions) => {
           if (err) return;
           if (!user) {
             return res.redirect("/login");
@@ -74,8 +80,8 @@ class userController {
             req.flash("success", { msg: "Success! You are logged in." });
             res.redirect(req.session.returnTo || "/");
           });
-        } */
-      );
+        }
+      ); */
     } catch (err) {
       console.log("signin error!");
       res.sendStatus(400);
