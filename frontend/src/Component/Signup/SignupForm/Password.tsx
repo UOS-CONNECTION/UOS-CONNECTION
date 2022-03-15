@@ -1,27 +1,27 @@
 import { useState } from 'react';
 import { TextField } from '@mui/material';
 
-interface Password {
+import { InputEventHandler } from '../type';
+
+interface PasswordProps {
   password: string;
-  setPassword: Function;
+  handleSignUpInputChange: InputEventHandler;
 }
 
-const Password: React.FC<Password> = ({ password, setPassword }) => {
-  const handlePasswordChange = (
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => {
-    setPassword(e.target.value);
-  };
-
+const isInValidPassword = (password: string) => {
   const passwordRegex: RegExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-  const [invalidPassword, setInvalidPassword] = useState(false);
+
+  return !passwordRegex.test(password);
+};
+
+const Password: React.FC<PasswordProps> = ({
+  password,
+  handleSignUpInputChange,
+}) => {
+  const [invalidPassword, setInvalidPassword] = useState<boolean>(false);
 
   const validatePassword = () => {
-    if (passwordRegex.test(password)) {
-      setInvalidPassword(false);
-    } else {
-      setInvalidPassword(true);
-    }
+    setInvalidPassword(isInValidPassword(password));
   };
 
   return (
@@ -37,10 +37,10 @@ const Password: React.FC<Password> = ({ password, setPassword }) => {
         id='password'
         name='password'
         value={password}
-        onChange={handlePasswordChange}
+        onChange={handleSignUpInputChange}
         onBlur={validatePassword}
         error={invalidPassword}
-        helperText={invalidPassword ? 'Please enter a valid password' : ''}
+        helperText={invalidPassword && 'Please enter a valid password'}
       />
     </div>
   );

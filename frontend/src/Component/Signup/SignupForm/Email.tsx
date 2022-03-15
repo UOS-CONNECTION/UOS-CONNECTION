@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback } from 'react';
 import {
   TextField,
   FormControl,
@@ -6,30 +6,29 @@ import {
   Select,
   MenuItem,
   Button,
-  SelectChangeEvent,
 } from '@mui/material';
 
-interface SignupEmail {
+import { InputEventHandler } from '../type';
+
+interface SignupEmailProps {
   email: string;
-  setEmail: Function;
+  domain: string;
+  handleSignUpInputChange: InputEventHandler;
 }
 
-const Email: React.FC<SignupEmail> = ({ email, setEmail }) => {
-  const [emailId, setEmailId] = useState('');
-  const [selectDomain, setSelectDomain] = useState('');
-
-  const handleEmailIdChange = (
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => {
-    setEmailId(e.target.value);
-  };
-  const handleSelectDomain = (e: SelectChangeEvent<string>) => {
-    setSelectDomain(e.target.value);
-  };
-
-  const handleEmailButtonClicked = () => {
-    setEmail(emailId.concat('@', selectDomain));
-  };
+const Email: React.FC<SignupEmailProps> = ({
+  email,
+  domain,
+  handleSignUpInputChange,
+}) => {
+  const handleEmailButtonClicked = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      e.preventDefault();
+      // TODO
+      // email 인증 진행
+    },
+    []
+  );
 
   return (
     <div className='input-container'>
@@ -40,8 +39,8 @@ const Email: React.FC<SignupEmail> = ({ email, setEmail }) => {
           label='이메일'
           id='email'
           name='email'
-          value={emailId}
-          onChange={handleEmailIdChange}
+          value={email}
+          onChange={handleSignUpInputChange}
         />
         <span className='symbol-at'>@</span>
         <FormControl className='domain-select'>
@@ -49,12 +48,13 @@ const Email: React.FC<SignupEmail> = ({ email, setEmail }) => {
           <Select
             labelId='domain-select-label'
             label='선택해주세요.'
-            value={selectDomain}
-            onChange={handleSelectDomain}
+            name='domain'
+            value={domain}
+            onChange={handleSignUpInputChange}
           >
-            <MenuItem value={'gmail.com'}>gmail.com</MenuItem>
-            <MenuItem value={'naver.com'}>naver.com</MenuItem>
-            <MenuItem value={'daum.net'}>daum.net</MenuItem>
+            <MenuItem value='gmail.com'>gmail.com</MenuItem>
+            <MenuItem value='naver.com'>naver.com</MenuItem>
+            <MenuItem value='daum.net'>daum.net</MenuItem>
           </Select>
         </FormControl>
       </div>

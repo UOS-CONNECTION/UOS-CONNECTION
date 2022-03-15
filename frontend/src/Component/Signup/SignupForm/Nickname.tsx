@@ -1,27 +1,27 @@
 import { useState } from 'react';
 import { TextField } from '@mui/material';
 
+import { InputEventHandler } from '../type';
+
 interface SingupNickname {
   nickname: string;
-  setNickname: Function;
+  handleSignUpInputChange: InputEventHandler;
 }
 
-const Nickname: React.FC<SingupNickname> = ({ nickname, setNickname }) => {
-  const handleNicknameChange = (
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => {
-    setNickname(e.target.value);
-  };
-
+const isInValidNickname = (nickname: string) => {
   const nicknameRegex: RegExp = /^[A-Za-z]{2,15}$/;
-  const [invalidNickname, setInvalidNickname] = useState(false);
+
+  return !nicknameRegex.test(nickname);
+};
+
+const Nickname: React.FC<SingupNickname> = ({
+  nickname,
+  handleSignUpInputChange,
+}) => {
+  const [invalidNickname, setInvalidNickname] = useState<boolean>(false);
 
   const validateNickname = () => {
-    if (nicknameRegex.test(nickname)) {
-      setInvalidNickname(false);
-    } else {
-      setInvalidNickname(true);
-    }
+    setInvalidNickname(isInValidNickname(nickname));
   };
 
   return (
@@ -37,10 +37,10 @@ const Nickname: React.FC<SingupNickname> = ({ nickname, setNickname }) => {
         name='nickname'
         id='nickname'
         value={nickname}
-        onChange={handleNicknameChange}
+        onChange={handleSignUpInputChange}
         onBlur={validateNickname}
         error={invalidNickname}
-        helperText={invalidNickname ? 'Please enter a valid nickname' : ''}
+        helperText={invalidNickname && 'Please enter a valid nickname'}
       />
     </div>
   );
