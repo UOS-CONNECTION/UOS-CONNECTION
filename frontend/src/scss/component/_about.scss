@@ -5,7 +5,7 @@
     width: 100%;
 
     .description-line {
-      margin: 10% auto;
+      margin: 3% auto;
       width: 100%;
       display: flex;
       justify-content: space-around;
@@ -47,7 +47,7 @@
         border-radius: 10px;
         width: 30%;
       }
-      
+
       .developer-card-name {
         @include font-default(700, 1rem);
       }
