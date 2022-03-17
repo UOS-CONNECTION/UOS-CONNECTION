@@ -2,16 +2,18 @@ import { useCallback, useState } from 'react';
 
 import LoginInput from './LoginInput';
 import LoginButton from './LoginButton';
+import requestAPI from '../../../Util/Request';
 
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
   const handleSubmit = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
+    async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       const inputData = { email, password };
-      console.log(inputData);
+      const res = await requestAPI.post('/api/user/login', inputData);
+      console.log(res);
     },
     [email, password]
   );
