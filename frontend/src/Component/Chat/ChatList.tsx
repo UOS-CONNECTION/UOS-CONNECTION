@@ -1,5 +1,4 @@
 import { Box, Typography } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
 import { Dispatch, SetStateAction } from 'react';
 import { Socket } from 'socket.io-client';
 
@@ -23,7 +22,6 @@ const ChatList: React.FC<IChatSelect> = ({ setChatRoom, chatList, socket }) => {
         <Typography color='inherit' className='chat-list-header'>
           대화목록
         </Typography>
-        <SearchIcon className='search-icon'></SearchIcon>
       </Box>
       <Box className='chat-list'>
         {chatList.map((item, idx) => (
