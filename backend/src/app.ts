@@ -1,10 +1,10 @@
-import express from 'express';
-import cors from 'cors';
-import * as http from 'http';
+import express from "express";
+import cors from "cors";
+import * as http from "http";
 
-import DBConfig from './db';
-import SocketAPI from './utils/socket';
-import rootRouter from './routes';
+import DBConfig from "./db";
+import SocketAPI from "./utils/socket";
+import rootRouter from "./routes";
 
 export default class App {
   app: express.Application;
@@ -13,7 +13,7 @@ export default class App {
 
   constructor() {
     this.app = express();
-    this.port = process.env.PORT || '8080';
+    this.port = process.env.PORT || "8080";
     this.config();
     this.middleware();
     this.route();
@@ -27,14 +27,14 @@ export default class App {
 
   private middleware() {
     const corsOption = {
-      origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+      origin: process.env.FRONTEND_URL || "http://localhost:3000",
       credentials: true,
     };
     this.app.use(cors(corsOption));
   }
 
   private route() {
-    this.app.use('/api', rootRouter);
+    this.app.use("/api", rootRouter);
   }
 
   listen() {
