@@ -11,7 +11,7 @@ const ChatCard: React.FC<ChatCardProps> = ({ message, isLeft }) => {
   return (
     <Box className={isLeft ? 'chat-left' : 'chat-right'}>
       <Card elevation={0} className={isLeft ? 'chat-yellow' : 'chat-gray'}>
-        <Avatar className={isLeft ? 'userimg-orange' : 'userimg-hidden'}>
+        <Avatar className={isLeft ? 'user-img-orange' : 'user-img-hidden'}>
           J
         </Avatar>
         <CardContent

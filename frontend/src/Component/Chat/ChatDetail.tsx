@@ -9,6 +9,7 @@ import {
   ServerToClientEvents,
   ClientToServerEvents,
 } from '../../Util/Type';
+import { BOTTOM_HEIGHT } from '../../Util/Constant';
 import ChatCard from './ChatCard';
 import useChatList from '../../Hook/useChatList';
 
@@ -54,7 +55,7 @@ const ChatDetail: React.FC<ChatRoomProps> = ({ chatData, socket }) => {
   };
 
   const scrollToBottom = () => {
-    scrollRef?.current?.scrollTo(0, 1000000);
+    scrollRef?.current?.scrollTo(0, BOTTOM_HEIGHT);
   };
 
   useLayoutEffect(() => {
