@@ -17,10 +17,10 @@ class ChatEntity {
   @OneToMany(() => ChatMessageEntity, (chatMessage) => chatMessage._id)
   chat_id: number;
 
-  @Column('timestamp', { nullable: false })
+  @Column('timestamp', { nullable: true })
   updated_at: Timestamp;
 
-  @Column('timestamp', { nullable: false })
+  @Column('timestamp', { nullable: true })
   created_at: Timestamp;
 }
 
