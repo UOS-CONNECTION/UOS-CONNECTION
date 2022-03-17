@@ -25,7 +25,7 @@ interface ChatContent {
 const ChatDetail: React.FC<ChatRoomProps> = ({ chatData, socket }) => {
   const [myName, setMyName] = useState<string>('keroro');
   const [inputMessage, setInputMessage] = useState<string>('');
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const { chatList, addChat, setPastChat } = useChatList();
   const scrollRef = useRef<HTMLInputElement>(null);
 
