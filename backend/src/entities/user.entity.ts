@@ -1,6 +1,6 @@
 // type orm user
 
-import { Column } from "typeorm";
+import { Column } from 'typeorm';
 
 class UserEntity {
   @Column()

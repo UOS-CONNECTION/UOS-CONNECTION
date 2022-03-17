@@ -1,8 +1,8 @@
-import UserEntity from "@src/entities/user.entity";
-import UserRepository from "@src/repositories/user.repository";
-import passport from "passport";
-import passportLocal from "passport-local";
-import { getCustomRepository } from "typeorm";
+import UserEntity from '@src/entities/user.entity';
+import UserRepository from '@src/repositories/user.repository';
+import passport from 'passport';
+import passportLocal from 'passport-local';
+import { getCustomRepository } from 'typeorm';
 
 const LocalStrategy = passportLocal.Strategy;
 
@@ -19,10 +19,10 @@ class PassportAPI {
           const userRepository = getCustomRepository(UserRepository);
           const existedUser = await userRepository.findByEmail(email);
           if (!existedUser) {
-            done(null, null, { message: "Cannot find User" });
+            done(null, null, { message: 'Cannot find User' });
           }
           if (existedUser.password !== password) {
-            done(null, null, { message: "Incorrect password" });
+            done(null, null, { message: 'Incorrect password' });
           }
 
           // success
@@ -37,9 +37,9 @@ class PassportAPI {
     );
   }
   localAuthenticate() {
-    passport.authenticate("local", {
-      successRedirect: "/",
-      failureRedirect: "/login",
+    passport.authenticate('local', {
+      successRedirect: '/',
+      failureRedirect: '/login',
     });
   }
 }
