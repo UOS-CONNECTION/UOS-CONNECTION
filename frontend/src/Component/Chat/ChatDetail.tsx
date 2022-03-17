@@ -1,6 +1,6 @@
 import { Box, Typography, Card, TextField, Avatar } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import { useState, useEffect, useLayoutEffect } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import React from 'react';
 import { Socket } from 'socket.io-client';
 
@@ -9,7 +9,9 @@ import {
   ServerToClientEvents,
   ClientToServerEvents,
 } from '../../Util/Type';
+import { BOTTOM_HEIGHT } from '../../Util/Constant';
 import ChatCard from './ChatCard';
+import useChatList from '../../Hook/useChatList';
 
 interface ChatRoomProps {
   chatData: ChatType;
@@ -21,18 +23,12 @@ interface ChatContent {
   senderName: string;
 }
 
-const initialRecentChat = {
-  message: '',
-  senderName: '',
-};
-
 const ChatDetail: React.FC<ChatRoomProps> = ({ chatData, socket }) => {
   const [myName, setMyName] = useState<string>('keroro');
   const [inputMessage, setInputMessage] = useState<string>('');
-  const [chatMonitor, setChatMonitor] = useState<ChatContent[]>([]);
-  const [recentChat, setRecentChat] = useState<ChatContent>(initialRecentChat);
-  const [isFirstChat, setFirstChat] = useState<boolean>(true);
-  const [firstArr, setFirstArr] = useState<number[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const { chatList, addChat, setPastChat } = useChatList();
+  const scrollRef = useRef<HTMLInputElement>(null);
 
   //set user by login(w/redux) temp var = keroro
 
@@ -58,42 +54,27 @@ const ChatDetail: React.FC<ChatRoomProps> = ({ chatData, socket }) => {
     setInputMessage('');
   };
 
-  const recallPastChat = () => {
-    const pastChat: ChatContent[] = [initialRecentChat];
-    chatData?.content?.map((item, idx) => {
-      pastChat.push({
-        message: item[0],
-        senderName: item[1],
-      });
-      if (
-        idx > 0 &&
-        pastChat[idx + 1]['senderName'] !== pastChat[idx]['senderName']
-      )
-        setFirstArr((prev) => [...prev, idx]);
-    });
-    setChatMonitor(pastChat);
+  const scrollToBottom = () => {
+    scrollRef?.current?.scrollTo(0, BOTTOM_HEIGHT);
   };
 
   useLayoutEffect(() => {
-    recallPastChat();
-  }, [chatData]);
+    setPastChat(chatData, myName)
+      .then(() => setLoading(false))
+      .then(() => scrollToBottom());
+  }, [chatData, myName, setPastChat]);
 
   useEffect(() => {
-    socket.on('upload', (data: ChatContent) => {
-      setRecentChat(data);
-    });
-  }, []);
-
-  useEffect(() => {
-    if (recentChat?.message?.length > 0) {
-      recentChat?.senderName !==
-        chatMonitor[chatMonitor.length - 1]['senderName'] &&
-        firstArr[firstArr.length - 1] !== chatMonitor.length &&
-        setFirstArr([...firstArr, chatMonitor.length]);
-      setChatMonitor([...chatMonitor, recentChat]);
-    }
-    setRecentChat(initialRecentChat);
-  }, [recentChat]);
+    const handler = (data: ChatContent) => {
+      addChat(data, myName).then(() => {
+        scrollToBottom();
+      });
+    };
+    socket.on('upload', handler);
+    return () => {
+      socket.off('upload', handler);
+    };
+  }, [addChat, myName, socket]);
 
   return (
     <Box className='chat-detail-container'>
@@ -103,38 +84,18 @@ const ChatDetail: React.FC<ChatRoomProps> = ({ chatData, socket }) => {
           {chatData.User?.nickname}
         </Typography>
       </Card>
-      <Box className='chat-detail'>
-        {chatMonitor.map((item, idx) => {
-          if (item.message.length === 0) return;
-          if (item.senderName !== myName && firstArr.includes(idx)) {
-            return (
-              <ChatCard
-                message={item.message}
-                isFirst={true}
-                color='yellow'
-                key={idx}
-              />
-            ); // first Yellow & yellow or gray
-          } else if (item.senderName !== myName && !firstArr.includes(idx)) {
-            return (
-              <ChatCard
-                message={item.message}
-                isFirst={false}
-                color='yellow'
-                key={idx}
-              />
-            );
-          } else {
-            return (
-              <ChatCard
-                message={item.message}
-                isFirst={false}
-                color='gray'
-                key={idx}
-              />
-            );
-          }
-        })}
+      <Box className='chat-detail' ref={scrollRef}>
+        {!loading &&
+          chatList?.map(
+            (item, idx) =>
+              item?.message?.length > 0 && (
+                <ChatCard
+                  message={item.message}
+                  isLeft={item.isLeft}
+                  key={idx}
+                />
+              )
+          )}
       </Box>
       <Box className='send-chat'>
         <TextField

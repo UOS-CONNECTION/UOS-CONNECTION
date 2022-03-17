@@ -11,7 +11,7 @@
   .detail-main-image {
     width: 40%;
     flex-grow: 1;
-    
+
     @include mobile {
       width: 100%;
     }
@@ -76,12 +76,12 @@
             margin-left: 3%;
           }
         }
-        
+
         .user-short_desc {
           @include font-default(300, 0.8rem);
           color: #8a8787;
         }
-      } 
+      }
     }
 
     .post-desc {

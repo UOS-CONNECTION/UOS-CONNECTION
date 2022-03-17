@@ -213,6 +213,7 @@ export const TempChat = [
     unwatched: 0,
     last: '2022/2/08/11/20',
     overview: '책상 breaker',
+    content: [],
   },
   {
     id: 3,
@@ -244,6 +245,7 @@ export const TempChat = [
     unwatched: 3,
     last: '2022/2/08/14/20',
     overview: '몸은 작아졌어도 두뇌는 그래도 포기를 모르는 명탐정',
+    content: [],
   },
   {
     id: 5,
@@ -255,6 +257,7 @@ export const TempChat = [
     unwatched: 0,
     last: '2021/2/28/11/20',
     overview: '아무르 티그로 캐슬을 박살 내기 위해서 한국에 상륙',
+    content: [],
   },
 ];
 

@@ -32,6 +32,7 @@ const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(
     forceNew: true,
   }
 );
+
 socket.send('Hello, Im from client!');
 console.log(socket.connected);
 
