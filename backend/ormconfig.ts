@@ -1,5 +1,5 @@
-import dotenv from 'dotenv';
-import { ConnectionOptions } from 'typeorm';
+import dotenv from "dotenv";
+import { ConnectionOptions } from "typeorm";
 
 dotenv.config();
 
