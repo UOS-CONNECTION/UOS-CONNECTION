@@ -8,10 +8,10 @@ class UserInfoEntity {
   _id!: number;
 
   @Column('text', { nullable: true })
-  authentication: string;
+  proved_at: string;
 
   @Column('int', { nullable: true })
-  share_cnt: string;
+  share_cnt: number;
 
   @Column('text', { nullable: true })
   location: string;
