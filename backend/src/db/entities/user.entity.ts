@@ -18,13 +18,13 @@ class UserEntity {
   email!: string;
 
   @Column('text', { nullable: false })
-  password!: string;
+  pwd!: string;
 
   @Column('text', { nullable: false })
   nickname!: string;
 
   @Column('text', { nullable: true })
-  image: string;
+  img: string;
 
   // 매너 점수
   @Column('int', { nullable: true })
@@ -42,7 +42,7 @@ class UserEntity {
   favorite_post: string;
 
   @OneToOne(() => UserInfoEntity, (user) => user._id)
-  user_info: UserInfoEntity;
+  user_info_id: UserInfoEntity;
 
   @OneToMany(() => ChatEntity, (chatRoom) => chatRoom._id)
   chat_id: ChatEntity;
