@@ -1,4 +1,11 @@
-import { Box, Typography, Card, TextField, Avatar } from '@mui/material';
+import {
+  Box,
+  Typography,
+  Card,
+  TextField,
+  Avatar,
+  Skeleton,
+} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import React from 'react';
@@ -16,6 +23,7 @@ import useChatList from '../../Hook/useChatList';
 interface ChatRoomProps {
   chatData: ChatType;
   socket: Socket<ServerToClientEvents, ClientToServerEvents>;
+  isLoading: boolean;
 }
 
 interface ChatContent {
@@ -23,7 +31,11 @@ interface ChatContent {
   senderName: string;
 }
 
-const ChatDetail: React.FC<ChatRoomProps> = ({ chatData, socket }) => {
+const ChatDetail: React.FC<ChatRoomProps> = ({
+  chatData,
+  socket,
+  isLoading,
+}) => {
   const [myName, setMyName] = useState<string>('keroro');
   const [inputMessage, setInputMessage] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);

@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Skeleton, Card } from '@mui/material';
 import { Dispatch, SetStateAction } from 'react';
 import { Socket } from 'socket.io-client';
 
@@ -13,25 +13,49 @@ interface IChatSelect {
   setChatRoom: Dispatch<SetStateAction<number>>;
   chatList: ChatType[];
   socket: Socket<ServerToClientEvents, ClientToServerEvents>;
+  isLoading: boolean;
 }
 
-const ChatList: React.FC<IChatSelect> = ({ setChatRoom, chatList, socket }) => {
+const ChatList: React.FC<IChatSelect> = ({
+  setChatRoom,
+  chatList,
+  socket,
+  isLoading,
+}) => {
   return (
     <Box className='chat-list-container'>
       <Box className='chat-list-top'>
-        <Typography color='inherit' className='chat-list-header'>
-          대화목록
-        </Typography>
+        {isLoading ? (
+          <Skeleton
+            variant='text'
+            animation='wave'
+            width='50%'
+            height='70%'
+            className='chat-list-header'
+          />
+        ) : (
+          <Typography color='inherit' className='chat-list-header'>
+            대화목록
+          </Typography>
+        )}
       </Box>
       <Box className='chat-list'>
-        {chatList.map((item, idx) => (
-          <ChatPerson
-            key={idx}
-            item={item}
-            idx={idx}
-            setChatRoom={setChatRoom}
-          />
-        ))}
+        {isLoading ? (
+          <>
+            <Card elevation={0}>
+              <Skeleton variant='circular' width={50} height={50} />
+            </Card>
+          </>
+        ) : (
+          chatList.map((item, idx) => (
+            <ChatPerson
+              key={idx}
+              item={item}
+              idx={idx}
+              setChatRoom={setChatRoom}
+            />
+          ))
+        )}
       </Box>
     </Box>
   );
