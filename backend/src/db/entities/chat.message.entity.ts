@@ -6,13 +6,13 @@ class ChatMessageEntity {
   @PrimaryGeneratedColumn()
   _id: number;
 
-  @Column('text', { nullable: false })
+  @Column('text', { nullable: true })
   content: string;
 
   @ManyToOne(() => ChatEntity, (chat) => chat._id)
-  chatRoom: ChatEntity;
+  chat_room_id: ChatEntity;
 
-  @Column('timestamp', { nullable: false })
+  @Column('timestamp', { nullable: true })
   created_at: Timestamp;
 }
 
