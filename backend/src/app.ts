@@ -3,12 +3,14 @@ import * as http from 'http';
 import express from 'express';
 import passport from 'passport';
 import session from 'express-session';
-const FileStore = require('session-file-store')(session);
+import sessionStore from 'session-file-store';
 
 import DBConfig from './db';
 import rootRouter from './routes';
 import SocketAPI from './utils/socket';
 import passportAPI from './utils/passport';
+
+const FileStore = sessionStore(session);
 
 export default class App {
   app: express.Application;
