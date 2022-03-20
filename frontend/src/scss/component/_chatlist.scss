@@ -25,6 +25,11 @@
       @include font-default(500, 1.5rem);
       line-height: 30px;
     }
+    .chat-list-header-skeleton {
+      line-height: 30px;
+      width: 40%;
+      height: 70%;
+    }
   }
 
   .chat-list {
@@ -52,12 +57,19 @@
         height: 50px;
         border-radius: 50px;
       }
+      .user-img-skeleton {
+        width: 50px;
+        height: 50px;
+      }
 
       .chat-list-mid {
         width: 45%;
 
         .chat-list-nickname {
           @include font-default(500, 1.125rem);
+        }
+        .nickname-skeleton {
+          width: 60%;
         }
 
         .chat-list-overview {

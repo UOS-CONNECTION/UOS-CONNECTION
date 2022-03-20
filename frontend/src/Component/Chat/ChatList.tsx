@@ -1,4 +1,4 @@
-import { Box, Typography, Skeleton, Card } from '@mui/material';
+import { Box, Typography, Skeleton, Card, CardContent } from '@mui/material';
 import { Dispatch, SetStateAction } from 'react';
 import { Socket } from 'socket.io-client';
 
@@ -16,6 +16,8 @@ interface IChatSelect {
   isLoading: boolean;
 }
 
+const skeletonChat = [0, 0, 0, 0, 0];
+
 const ChatList: React.FC<IChatSelect> = ({
   setChatRoom,
   chatList,
@@ -29,9 +31,7 @@ const ChatList: React.FC<IChatSelect> = ({
           <Skeleton
             variant='text'
             animation='wave'
-            width='50%'
-            height='70%'
-            className='chat-list-header'
+            className='chat-list-header-skeleton'
           />
         ) : (
           <Typography color='inherit' className='chat-list-header'>
@@ -40,22 +40,32 @@ const ChatList: React.FC<IChatSelect> = ({
         )}
       </Box>
       <Box className='chat-list'>
-        {isLoading ? (
-          <>
-            <Card elevation={0}>
-              <Skeleton variant='circular' width={50} height={50} />
-            </Card>
-          </>
-        ) : (
-          chatList.map((item, idx) => (
-            <ChatPerson
-              key={idx}
-              item={item}
-              idx={idx}
-              setChatRoom={setChatRoom}
-            />
-          ))
-        )}
+        {isLoading
+          ? skeletonChat.map((item, idx) => (
+              <Card elevation={0} key={idx} className='chat'>
+                <Skeleton
+                  variant='circular'
+                  animation='wave'
+                  className='user-img-skeleton'
+                />
+                <CardContent className='chat-list-mid'>
+                  <Skeleton
+                    variant='text'
+                    animation='wave'
+                    className='nickname-skeleton'
+                  />
+                  <Skeleton variant='text' animation='wave' />
+                </CardContent>
+              </Card>
+            ))
+          : chatList.map((item, idx) => (
+              <ChatPerson
+                key={idx}
+                item={item}
+                idx={idx}
+                setChatRoom={setChatRoom}
+              />
+            ))}
       </Box>
     </Box>
   );
