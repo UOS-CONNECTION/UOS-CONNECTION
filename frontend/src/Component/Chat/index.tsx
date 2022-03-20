@@ -34,16 +34,11 @@ const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(
   }
 );
 
-socket.send('Hello, Im from client!');
-console.log(socket.connected);
-
 const Chat: React.FC = () => {
   const [chatRoom, setChatRoom] = useState<number>(0);
   const [chatList, setChatList] = useState<ChatType[]>(initialChatList);
   const [chatData, setChatData] = useState<ChatType>(initialChat);
   const [loading, setLoading] = useState<boolean[]>([true, true]);
-
-  console.log(loading);
 
   useLayoutEffect(() => {
     requestAPI
