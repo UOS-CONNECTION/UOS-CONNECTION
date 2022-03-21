@@ -10,7 +10,7 @@ const Logo: React.FC = () => {
   const navigate = useNavigate();
 
   const handleGoMain = () => {
-    navigate('/')
+    navigate('/');
   };
 
   return (
@@ -42,16 +42,16 @@ const GNBNavigation: React.FC = () => {
 const UserNavigation: React.FC<IUserNavigtaion> = ({ isLogin }) => {
   return (
     <Box className='user-navigation-container'>
-      {!isLogin && 
-        <Link href='/' color='inherit' underline='none'>
+      {!isLogin && (
+        <Link href='/login' color='inherit' underline='none'>
           로그인
         </Link>
-      }
-      {!isLogin &&
-        <Link href='#' color='inherit' underline='none'>
+      )}
+      {!isLogin && (
+        <Link href='/signup' color='inherit' underline='none'>
           회원가입
         </Link>
-      }
+      )}
       <Link href='#' color='inherit' underline='none'>
         고객센터
       </Link>
