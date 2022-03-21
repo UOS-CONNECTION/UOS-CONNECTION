@@ -1,11 +1,4 @@
-import {
-  Box,
-  Typography,
-  Card,
-  TextField,
-  Avatar,
-  Skeleton,
-} from '@mui/material';
+import { Box, Typography, Card, TextField, Avatar } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import React from 'react';
@@ -18,6 +11,10 @@ import {
 } from '../../Util/Type';
 import { BOTTOM_HEIGHT } from '../../Util/Constant';
 import ChatCard from './ChatCard';
+import {
+  ChatDetailTopSkeleton,
+  ChatMsgSkeletonContainer,
+} from './ChatSkeleton';
 import useChatList from '../../Hook/useChatList';
 
 interface ChatRoomProps {
@@ -30,7 +27,7 @@ interface ChatContent {
   message: string;
   senderName: string;
 }
-
+//isLoading 상위 index에서 fetch,  loading 그걸로 실제 데이터 가공 여부
 const ChatDetail: React.FC<ChatRoomProps> = ({
   chatData,
   socket,
@@ -90,14 +87,20 @@ const ChatDetail: React.FC<ChatRoomProps> = ({
 
   return (
     <Box className='chat-detail-container'>
-      <Card className='chat-detail-top' elevation={0}>
-        <Avatar alt='user-img' src={''}></Avatar>
-        <Typography className='chat-detail-usernickname'>
-          {chatData.User?.nickname}
-        </Typography>
-      </Card>
+      {isLoading ? (
+        <ChatDetailTopSkeleton />
+      ) : (
+        <Card className='chat-detail-top' elevation={0}>
+          <Avatar alt='user-img' src={''}></Avatar>
+          <Typography className='chat-detail-usernickname'>
+            {chatData.User?.nickname}
+          </Typography>
+        </Card>
+      )}
       <Box className='chat-detail' ref={scrollRef}>
-        {!loading &&
+        {loading ? (
+          <ChatMsgSkeletonContainer />
+        ) : (
           chatList?.map(
             (item, idx) =>
               item?.message?.length > 0 && (
@@ -107,7 +110,8 @@ const ChatDetail: React.FC<ChatRoomProps> = ({
                   key={idx}
                 />
               )
-          )}
+          )
+        )}
       </Box>
       <Box className='send-chat'>
         <TextField

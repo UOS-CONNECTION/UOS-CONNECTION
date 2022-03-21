@@ -51,7 +51,7 @@ const Chat: React.FC = () => {
     requestAPI
       .get('/api/chat/list')
       .then((res) => setChatList(res.data))
-      .then(() => setLoading((prev) => [true, prev[DETAIL]]));
+      .then(() => setLoading((prev) => [false, prev[DETAIL]]));
   }, []);
 
   return (
