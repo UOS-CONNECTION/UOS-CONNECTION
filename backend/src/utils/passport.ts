@@ -1,47 +1,52 @@
-import UserEntity from '@src/entities/user.entity';
-import UserRepository from '@src/repositories/user.repository';
 import passport from 'passport';
-import passportLocal from 'passport-local';
+import { Strategy } from 'passport-local';
 import { getCustomRepository } from 'typeorm';
 
-const LocalStrategy = passportLocal.Strategy;
+import cryptoAPI from './crypto';
+import UserRepository from '@src/db/repositories/user.repository';
 
-interface LocalFields {
-  usernameField: string;
-  passwordField: string;
-}
-
-class PassportAPI {
-  localLogin(fields: LocalFields) {
+class passportAPI {
+  observerLocalLogin() {
     passport.use(
-      new LocalStrategy(fields, async (email, password, done) => {
-        try {
-          const userRepository = getCustomRepository(UserRepository);
-          const existedUser = await userRepository.findByEmail(email);
-          if (!existedUser) {
-            done(null, null, { message: 'Cannot find User' });
-          }
-          if (existedUser.password !== password) {
-            done(null, null, { message: 'Incorrect password' });
-          }
+      'local',
+      new Strategy(
+        {
+          usernameField: 'email',
+          passwordField: 'password',
+        },
+        async (email, password, done) => {
+          try {
+            // const userRepository = getCustomRepository(UserRepository);
+            // const user = await userRepository.findByEmail(email);
+            const user = {
+              email: 'sangmin',
+              password:
+                'def1f709c553feec997195ef5f1015d4f89786defaf849dd15e4a2dc0d062f56',
+            };
 
-          // success
-          done(null, existedUser, {
-            message: `[Passport] Login Success with ${existedUser.email}`,
-          });
-        } catch (error) {
-          console.error(error);
-          done(error);
+            // database에 유저가 없는 경우
+            if (!user) {
+              return done(null, null, { message: 'email is wrong' });
+            }
+
+            // 유저 비밀번호가 틀린 경우
+            const hashedPassword = await cryptoAPI.getHashedPassword(password);
+            if (user.password !== hashedPassword) {
+              return done(null, null, {
+                message: 'password is wrong',
+              });
+            }
+
+            // 유저 정보 반환
+            return done(null, user, { message: 'user find' });
+          } catch (err) {
+            console.error(`[Passport] ${err}`);
+            return done(err);
+          }
         }
-      })
+      )
     );
   }
-  localAuthenticate() {
-    passport.authenticate('local', {
-      successRedirect: '/',
-      failureRedirect: '/login',
-    });
-  }
 }
 
-export default new PassportAPI();
+export default new passportAPI();
