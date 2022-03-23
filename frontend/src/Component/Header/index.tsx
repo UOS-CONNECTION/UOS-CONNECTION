@@ -52,9 +52,6 @@ const UserNavigation: React.FC<IUserNavigtaion> = ({ isLogin }) => {
           회원가입
         </Link>
       )}
-      <Link href='#' color='inherit' underline='none'>
-        고객센터
-      </Link>
       {isLogin && (
         <Link href='/' color='inherit' underline='none'>
           마이페이지
