@@ -1,9 +1,10 @@
 // type orm user
-import { Column, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import UserEntity from './user.entity';
 
-class UserInfoEntity {
+@Entity()
+class UserInfo {
   @PrimaryGeneratedColumn()
   _id!: number;
 
@@ -23,4 +24,4 @@ class UserInfoEntity {
   user_id: UserEntity;
 }
 
-export default UserInfoEntity;
+export default UserInfo;

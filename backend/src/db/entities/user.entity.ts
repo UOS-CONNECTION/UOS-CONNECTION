@@ -1,16 +1,15 @@
 // type orm user
 import {
   Column,
+  Entity,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
   Timestamp,
 } from 'typeorm';
 
-import ChatEntity from './chat.entity';
-import UserInfoEntity from './user.info.entity';
-
-class UserEntity {
+@Entity()
+class User {
   @PrimaryGeneratedColumn()
   _id!: number;
 
@@ -41,12 +40,6 @@ class UserEntity {
   @Column('text', { nullable: true })
   favorite_post: string;
 
-  @OneToOne(() => UserInfoEntity, (user) => user._id)
-  user_info_id: UserInfoEntity;
-
-  @OneToMany(() => ChatEntity, (chatRoom) => chatRoom._id)
-  chat_id: ChatEntity;
-
   @Column('timestamp', { nullable: false })
   updated_at: Timestamp;
 
@@ -54,4 +47,4 @@ class UserEntity {
   created_at: Timestamp;
 }
 
-export default UserEntity;
+export default User;
