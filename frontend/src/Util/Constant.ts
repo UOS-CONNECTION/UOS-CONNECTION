@@ -16,3 +16,8 @@ export const EXTRA_INFO_TYPE = {
 };
 
 export const BOTTOM_HEIGHT = 1000000;
+
+export enum LOADING {
+  LIST,
+  DETAIL,
+}
