@@ -47,19 +47,9 @@ interface UserType {
   nickname: string;
 }
 
-interface ChatContent {
+export interface Message {
   message: string;
   senderName: string;
 }
 
-export interface ServerToClientEvents {
-  upload: (data: ChatContent) => void;
-}
-
-export interface ClientToServerEvents {
-  send: () => void;
-}
-
-export interface InterServerEvents {
-  ping: () => void;
-}
+export type HandlerType = (msg: Message) => void;
