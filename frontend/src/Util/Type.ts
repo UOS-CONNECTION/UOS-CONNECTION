@@ -38,7 +38,7 @@ export interface ChatType {
   unwatched: number;
   last: string;
   overview: string;
-  content?: string[][];
+  content: string[][];
 }
 
 interface UserType {
