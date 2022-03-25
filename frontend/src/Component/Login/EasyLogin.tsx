@@ -1,16 +1,12 @@
 import { Typography, Avatar } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import requestAPI from '../../Util/Request';
 
 const EasyLogin: React.FC = () => {
-  const navigate = useNavigate();
-  const handleGoogleClick = () => {
-    navigate('/auth/google');
-  };
-  const handleNaverClick = () => {
-    navigate('/auth/naver');
-  };
-  const handleKakaoClick = () => {
-    navigate('/auth/kakao');
+  const handleGoogleClick = () => {};
+  const handleNaverClick = () => {};
+
+  const handleKakaoClick = async () => {
+    return await requestAPI.get('/api/user/kakao');
   };
 
   return (
