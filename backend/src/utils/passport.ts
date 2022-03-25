@@ -6,6 +6,10 @@ import cryptoAPI from './crypto';
 import UserRepository from '@src/db/repositories/user.repository';
 
 class passportAPI {
+  config() {
+    this.observerKakaoLogin();
+    this.observerKakaoLogin();
+  }
   observerLocalLogin() {
     passport.use(
       'local',
@@ -47,6 +51,8 @@ class passportAPI {
       )
     );
   }
+
+  observerKakaoLogin() {}
 }
 
 export default new passportAPI();

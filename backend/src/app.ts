@@ -20,9 +20,9 @@ export default class App {
   constructor() {
     this.app = express();
     this.port = process.env.PORT || '8080';
-    this.config();
     this.middleware();
     this.route();
+    this.config();
   }
 
   private config() {
@@ -37,7 +37,7 @@ export default class App {
         store: new FileStore(),
       })
     );
-    passportAPI.observerLocalLogin();
+    passportAPI.config();
     DBConfig.connectionDB();
   }
 
