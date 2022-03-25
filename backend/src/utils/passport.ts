@@ -9,7 +9,7 @@ import UserRepository from '@src/db/repositories/user.repository';
 
 class passportAPI {
   config() {
-    this.observerKakaoLogin();
+    this.observerLocalLogin();
     this.observerKakaoLogin();
   }
 
