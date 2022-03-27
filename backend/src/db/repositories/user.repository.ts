@@ -8,8 +8,11 @@ class UserRepository extends Repository<UserEntity> {
     return this.findOne({ _id });
   }
 
-  findByEmail(email: string) {
-    return this.findOne({ email });
+  async findByEmail(email: string) {
+    return await this.createQueryBuilder('user')
+      .where({ email })
+      .select()
+      .getOne();
   }
 }
 

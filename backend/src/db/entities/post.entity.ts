@@ -1,9 +1,16 @@
 // type orm user
-import { Column, ManyToOne, PrimaryGeneratedColumn, Timestamp } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  Timestamp,
+} from 'typeorm';
 
 import UserEntity from './user.entity';
 
-class PostEntity {
+@Entity()
+class Post {
   @PrimaryGeneratedColumn()
   _id!: number;
 
@@ -29,4 +36,4 @@ class PostEntity {
   created_at: Timestamp;
 }
 
-export default PostEntity;
+export default Post;
