@@ -1,11 +1,14 @@
 import * as http from 'http';
-import { Server } from 'socket.io';
+import { Server, Socket } from 'socket.io';
+
+import { ChatEvent, ConnectionEvent } from '@src/types/socket-type';
+import SokcetChatController from '@src/controllers/socket/socket.chat.controller';
+
+export let io: Server;
 
 class SocketAPI {
-  io: Server;
-
   constructor(server: http.Server) {
-    this.io = new Server(server, {
+    io = new Server(server, {
       cors: {
         origin: process.env.FRONTNED_URL || 'http://localhost:3000',
       },
@@ -13,20 +16,18 @@ class SocketAPI {
   }
 
   connectSocket() {
-    this.io.on('connection', (socket) => {
+    io.on(ConnectionEvent.connection, (socket: Socket) => {
       console.log(`[Socket] User ${socket.id} connected`);
-      socket.on('message', (data) => {
-        //database 추가
-        this.io.emit('upload', data);
-      });
-    });
-    this.io.on('disconnection', (socket) => {
-      console.log(`[Socket] User ${socket.id} disconnected`);
+
+      // Observer Event
+      this.observerChatEvent(socket);
     });
   }
 
-  emit(event, data) {
-    this.io.sockets.emit(event, data);
+  observerChatEvent(socket: Socket) {
+    const socketChatController = new SokcetChatController(socket);
+    socket.on(ChatEvent.message, socketChatController.sendMessage);
+    socket.on(ConnectionEvent.disconnection, socketChatController.leaveChat);
   }
 }
 

@@ -29,11 +29,10 @@ const useChatList = () => {
 
   const setPastChat = useCallback(
     async (chatData: ChatType, myName: string) => {
-      const pastChat: ChatContent[] = chatData!.content!.map((item) => {
+      const pastChat: ChatContent[] = chatData.content?.map((item) => {
         const singlePastChat = {
           message: item[0],
           isLeft: item[1] !== myName,
-          isFirstChat: item[1] !== myName,
         };
         return singlePastChat;
       });
