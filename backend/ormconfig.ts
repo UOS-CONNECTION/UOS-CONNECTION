@@ -1,7 +1,12 @@
-import dotenv from "dotenv";
-import { ConnectionOptions } from "typeorm";
-
+import dotenv from 'dotenv';
 dotenv.config();
+import { ConnectionOptions } from 'typeorm';
+
+import User from '@src/db/entities/user.entity';
+import Chat from '@src/db/entities/chat.entity';
+import Post from '@src/db/entities/post.entity';
+import UserInfo from '@src/db/entities/user.info.entity';
+import ChatMessage from '@src/db/entities/chat.message.entity';
 
 const ormconfig: ConnectionOptions = {
   type: 'mysql',
@@ -12,10 +17,7 @@ const ormconfig: ConnectionOptions = {
   database: process.env.DB_DATABASENAME,
   synchronize: true,
   logging: false,
-  entities: ['src/db/entities/**/*.ts'],
-  cli: {
-    entitiesDir: 'src/db/entities',
-  },
+  entities: [User, Chat, Post, UserInfo, ChatMessage],
 };
 
 export default ormconfig;
