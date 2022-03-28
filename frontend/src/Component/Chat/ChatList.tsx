@@ -1,19 +1,13 @@
 import { Box, Typography } from '@mui/material';
 import { Dispatch, SetStateAction } from 'react';
-import { Socket } from 'socket.io-client';
 
 import ChatPerson from './ChatPerson';
-import {
-  ChatType,
-  ServerToClientEvents,
-  ClientToServerEvents,
-} from '../../Util/Type';
+import { ChatType } from '../../Util/Type';
 import { ChatListHeaderSkeleton, ChatPersonSkeleton } from './ChatSkeleton';
 
 interface IChatSelect {
   setChatRoom: Dispatch<SetStateAction<number>>;
   chatList: ChatType[];
-  socket: Socket<ServerToClientEvents, ClientToServerEvents>;
   isLoading: boolean;
 }
 
@@ -22,7 +16,6 @@ const skeletonChat = [0, 0, 0, 0, 0];
 const ChatList: React.FC<IChatSelect> = ({
   setChatRoom,
   chatList,
-  socket,
   isLoading,
 }) => {
   return (

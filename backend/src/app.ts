@@ -25,10 +25,10 @@ export default class App {
     this.config();
   }
 
-  private config() {
+  private async config() {
     this.app.use(express.urlencoded({ extended: false })); // body parsing
     this.app.use(express.json()); // json parsing
-    this.app.use(passport.initialize());
+    await this.app.use(passport.initialize());
     this.app.use(
       session({
         secret: 'asadlfkj!@#!@#dfgasdg',
@@ -37,8 +37,9 @@ export default class App {
         store: new FileStore(),
       })
     );
+    this.app.use(passport.session());
     passportAPI.config();
-    DBConfig.connectionDB();
+    await DBConfig.connectionDB();
   }
 
   private middleware() {

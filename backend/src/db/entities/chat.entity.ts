@@ -1,21 +1,29 @@
 // type orm user
-import { Column, OneToMany, PrimaryGeneratedColumn, Timestamp } from 'typeorm';
+import {
+  Column,
+  Entity,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+  Timestamp,
+} from 'typeorm';
 
-import ChatMessageEntity from './chat.message.entity';
+import PostEntity from './post.entity';
 import UserEntity from './user.entity';
 
-class ChatEntity {
+@Entity()
+class Chat {
   @PrimaryGeneratedColumn()
   _id!: number;
 
-  @Column('int', { nullable: true })
-  unwatched: number;
+  @OneToOne(() => UserEntity, (user) => user._id)
+  user_id1: number;
 
-  @OneToMany(() => UserEntity, (user) => user._id)
-  user_id: number;
+  @OneToOne(() => UserEntity, (user) => user._id)
+  user_id2: number;
 
-  @OneToMany(() => ChatMessageEntity, (chatMessage) => chatMessage._id)
-  chat_id: number;
+  @OneToMany(() => PostEntity, (post) => post._id)
+  post_id: number;
 
   @Column('timestamp', { nullable: true })
   updated_at: Timestamp;
@@ -24,4 +32,4 @@ class ChatEntity {
   created_at: Timestamp;
 }
 
-export default ChatEntity;
+export default Chat;

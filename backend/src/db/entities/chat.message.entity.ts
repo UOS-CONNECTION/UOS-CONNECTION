@@ -1,13 +1,23 @@
-import { Column, ManyToOne, PrimaryGeneratedColumn, Timestamp } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  Timestamp,
+} from 'typeorm';
 
 import ChatEntity from './chat.entity';
 
-class ChatMessageEntity {
+@Entity()
+class ChatMessage {
   @PrimaryGeneratedColumn()
   _id: number;
 
   @Column('text', { nullable: true })
   content: string;
+
+  @Column('bool', { nullable: true })
+  watched: boolean;
 
   @ManyToOne(() => ChatEntity, (chat) => chat._id)
   chat_room_id: ChatEntity;
@@ -16,4 +26,4 @@ class ChatMessageEntity {
   created_at: Timestamp;
 }
 
-export default ChatMessageEntity;
+export default ChatMessage;

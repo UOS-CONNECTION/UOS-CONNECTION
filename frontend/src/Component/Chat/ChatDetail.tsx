@@ -1,25 +1,19 @@
-import { Box, Typography, Card, TextField, Avatar } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useState, useEffect, useLayoutEffect, useRef } from 'react';
-import React from 'react';
-import { Socket } from 'socket.io-client';
+import { Box, Typography, Card, TextField, Avatar } from '@mui/material';
 
-import {
-  ChatType,
-  ServerToClientEvents,
-  ClientToServerEvents,
-} from '../../Util/Type';
-import { BOTTOM_HEIGHT } from '../../Util/Constant';
 import ChatCard from './ChatCard';
+import { ChatType } from '../../Util/Type';
+import socketAPI from '../../Util/SocketAPI';
+import useChatList from '../../Hook/useChatList';
+import { BOTTOM_HEIGHT } from '../../Util/Constant';
 import {
   ChatDetailTopSkeleton,
   ChatMsgSkeletonContainer,
 } from './ChatSkeleton';
-import useChatList from '../../Hook/useChatList';
 
 interface ChatRoomProps {
   chatData: ChatType;
-  socket: Socket<ServerToClientEvents, ClientToServerEvents>;
   isLoading: boolean;
 }
 
@@ -28,11 +22,7 @@ interface ChatContent {
   senderName: string;
 }
 //isLoading 상위 index에서 fetch,  loading 그걸로 실제 데이터 가공 여부
-const ChatDetail: React.FC<ChatRoomProps> = ({
-  chatData,
-  socket,
-  isLoading,
-}) => {
+const ChatDetail: React.FC<ChatRoomProps> = ({ chatData, isLoading }) => {
   const [myName, setMyName] = useState<string>('keroro');
   const [inputMessage, setInputMessage] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
@@ -50,7 +40,7 @@ const ChatDetail: React.FC<ChatRoomProps> = ({
 
   const handleEnter = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'Enter') {
-      socket.send({
+      socketAPI.sendMessage({
         message: inputMessage,
         senderName: myName,
       });
@@ -59,7 +49,7 @@ const ChatDetail: React.FC<ChatRoomProps> = ({
   };
 
   const handleBtnClick = () => {
-    socket.send({ message: inputMessage, senderName: myName });
+    socketAPI.sendMessage({ message: inputMessage, senderName: myName });
     setInputMessage('');
   };
 
@@ -79,11 +69,9 @@ const ChatDetail: React.FC<ChatRoomProps> = ({
         scrollToBottom();
       });
     };
-    socket.on('upload', handler);
-    return () => {
-      socket.off('upload', handler);
-    };
-  }, [addChat, myName, socket]);
+    socketAPI.onEvent('upload', handler);
+    return () => socketAPI.offEvent('upload', handler);
+  }, [addChat, myName]);
 
   return (
     <Box className='chat-detail-container'>

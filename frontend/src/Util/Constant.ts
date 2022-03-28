@@ -21,3 +21,7 @@ export enum LOADING {
   LIST,
   DETAIL,
 }
+
+export enum ChatEvent {
+  MESSAGE = 'message',
+}
