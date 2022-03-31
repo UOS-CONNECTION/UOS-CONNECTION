@@ -53,7 +53,7 @@ const UserNavigation: React.FC<IUserNavigtaion> = ({ isLogin }) => {
         </Link>
       )}
       {isLogin && (
-        <Link href='/' color='inherit' underline='none'>
+        <Link href='/mypage' color='inherit' underline='none'>
           마이페이지
         </Link>
       )}
