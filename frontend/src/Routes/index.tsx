@@ -6,6 +6,7 @@ import {
   LoginPage,
   SignupPage,
   AboutPage,
+  Mypage,
 } from '../Page';
 
 const Router: React.FC = () => {
@@ -18,6 +19,7 @@ const Router: React.FC = () => {
         <Route path='/login' element={<LoginPage />} />
         <Route path='/signup' element={<SignupPage />} />
         <Route path='/about' element={<AboutPage />} />
+        <Route path='/mypage' element={<Mypage />} />
       </Routes>
     </BrowserRouter>
   );
