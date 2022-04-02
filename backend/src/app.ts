@@ -20,9 +20,9 @@ export default class App {
   constructor() {
     this.app = express();
     this.port = process.env.PORT || '8080';
-    this.config();
     this.middleware();
     this.route();
+    this.config();
   }
 
   private async config() {
@@ -38,7 +38,7 @@ export default class App {
       })
     );
     this.app.use(passport.session());
-    passportAPI.observerLocalLogin();
+    passportAPI.config();
     await DBConfig.connectionDB();
   }
 
