@@ -1,0 +1,39 @@
+.basic-info-container {
+  height: 33vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .user-img-container {
+    margin-right: 5%;
+
+    .info-user-img {
+      width: 120px;
+      height: 120px;
+    }
+  }
+
+  .basic-info {
+    .user-name-container {
+      display: flex;
+      flex-direction: row;
+
+      .user-name {
+        margin-bottom: 6%;
+        font-weight: 600;
+      }
+
+      .edit-btn {
+        cursor: pointer;
+        margin-left: 3%;
+      }
+    }
+
+    .description-container {
+      .edit-btn {
+        float: right;
+      }
+    }
+  }
+}
