@@ -6,11 +6,20 @@
   align-items: center;
 
   .user-img-container {
+    display: flex;
+    flex-direction: row;
     margin-right: 5%;
 
     .info-user-img {
       width: 120px;
       height: 120px;
+      cursor: pointer;
+    }
+
+    .user-img-edit-btn {
+      cursor: pointer;
+      align-self: flex-end;
+      fill: #a9a6a6;
     }
   }
 
@@ -24,15 +33,26 @@
         font-weight: 600;
       }
 
+      .user-name-input {
+        margin-bottom: 3%;
+      }
+
       .edit-btn {
         cursor: pointer;
         margin-left: 3%;
+        fill: #585858;
       }
     }
 
     .description-container {
       .edit-btn {
         float: right;
+      }
+
+      .user-dsc {
+        font-size: 17px;
+        padding: 5px 14px;
+        color: #757575;
       }
     }
   }
