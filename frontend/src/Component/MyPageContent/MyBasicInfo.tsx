@@ -4,9 +4,9 @@ import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutl
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
 const MyBasicInfo: React.FC = () => {
-  const [isNameClicked, setIsNameClicked] = useState(false);
-  const [isDscClicked, setIsDscClicked] = useState(false);
-  const [isImgClicked, setIsImgClicked] = useState(false);
+  const [isNameClicked, setIsNameClicked] = useState<Boolean>(false);
+  const [isDscClicked, setIsDscClicked] = useState<Boolean>(false);
+  const [isImgClicked, setIsImgClicked] = useState<Boolean>(false);
 
   const imgClickHandler = () => {
     setIsImgClicked((prev) => !prev);
@@ -14,15 +14,8 @@ const MyBasicInfo: React.FC = () => {
   const nameClickHandler = () => {
     setIsNameClicked((prev) => !prev);
   };
-  const DSCHandler = () => {
+  const DSCClickHandler = () => {
     setIsDscClicked((prev) => !prev);
-  };
-
-  const handleImgModalOff = (event: any) => {
-    const clicked = event.target.closest('.img-notice');
-
-    if (clicked) return;
-    else setIsImgClicked(false);
   };
 
   return (
@@ -72,7 +65,11 @@ const MyBasicInfo: React.FC = () => {
               This is self-description.~~~~~~~~~~~~~~~
             </Typography>
           )}
-          <Button variant='outlined' className='edit-btn' onClick={DSCHandler}>
+          <Button
+            variant='outlined'
+            className='edit-btn'
+            onClick={DSCClickHandler}
+          >
             수정
           </Button>
         </Box>
