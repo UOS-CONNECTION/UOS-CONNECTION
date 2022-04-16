@@ -8,13 +8,13 @@ const MyBasicInfo: React.FC = () => {
   const [isDscClicked, setIsDscClicked] = useState<Boolean>(false);
   const [isImgClicked, setIsImgClicked] = useState<Boolean>(false);
 
-  const imgClickHandler = () => {
+  const handleImgClick = () => {
     setIsImgClicked((prev) => !prev);
   };
-  const nameClickHandler = () => {
+  const handleNameClick = () => {
     setIsNameClicked((prev) => !prev);
   };
-  const DSCClickHandler = () => {
+  const handleDSCClick = () => {
     setIsDscClicked((prev) => !prev);
   };
 
@@ -25,11 +25,11 @@ const MyBasicInfo: React.FC = () => {
           alt='user img'
           src=''
           className='info-user-img'
-          onClick={imgClickHandler}
+          onClick={handleImgClick}
         />
         <SettingsOutlinedIcon
           className='user-img-edit-btn'
-          onClick={imgClickHandler}
+          onClick={handleImgClick}
         />
       </Box>
       <Box className='basic-info'>
@@ -49,7 +49,7 @@ const MyBasicInfo: React.FC = () => {
 
           <ModeEditOutlineOutlinedIcon
             className='edit-btn'
-            onClick={nameClickHandler}
+            onClick={handleNameClick}
           />
         </Box>
         <Box className='description-container'>
@@ -68,7 +68,7 @@ const MyBasicInfo: React.FC = () => {
           <Button
             variant='outlined'
             className='edit-btn'
-            onClick={DSCClickHandler}
+            onClick={handleDSCClick}
           >
             수정
           </Button>
