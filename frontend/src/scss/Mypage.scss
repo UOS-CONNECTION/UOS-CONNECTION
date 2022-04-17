@@ -1,0 +1,14 @@
+// default scss
+@import './base/base';
+@import './base/variable';
+@import './base/mixin';
+
+//component scss
+@import './component/myBasicInfo';
+@import './component/myDetailInfo';
+
+.mypage-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}

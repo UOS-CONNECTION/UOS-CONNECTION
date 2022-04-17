@@ -1,0 +1,115 @@
+.detail-info-container {
+  .detail-tab-bar {
+    .detail-tabs {
+      margin-left: 33%;
+      color: #898989;
+      button {
+        font-size: 17px;
+        font-weight: 500;
+      }
+      .MuiTab-textColorPrimary {
+        min-width: 150px;
+      }
+      .MuiTabs-indicator {
+        display: none;
+      }
+      .Mui-selected {
+        background-color: #eff2f9;
+        color: #03588c;
+        font-weight: 800;
+        border-radius: 10px 10px 0 0;
+      }
+    }
+  }
+
+  .detail-contents {
+    background-color: #eff2f9;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    height: 47vh;
+
+    .detail-myinfo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .myinfo-container {
+        width: 25%;
+        margin: 0.5% 0;
+        border-bottom: 1px solid rgba(180, 186, 189, 50%);
+
+        .myinfo-key {
+          color: #7596aa;
+          font-weight: 600;
+          margin-bottom: 0.7%;
+        }
+
+        .myinfo-value {
+          margin-left: 2%;
+          font-size: 17px;
+        }
+
+        .myinfo-rating {
+          display: flex;
+          flex-direction: row;
+        }
+
+        .myinfo-cert {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          .myinfo-check-icon {
+            color: #26a964;
+          }
+        }
+      }
+
+      .detail-btn-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 25%;
+        margin-top: 1.5%;
+
+        .pwd-chg-btn {
+          background-color: #fff;
+          border-radius: 15px;
+          border: 1px solid #03588c;
+          color: #03588c;
+          padding: 2px 26px;
+        }
+
+        .unsubscribe-btn {
+          background-color: #f25c5c;
+          border-radius: 15px;
+          padding: 2px 26px;
+        }
+      }
+    }
+
+    .detail-mywrite {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .mywrite-container {
+        margin-top: 3%;
+        width: 35%;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #c0c0c0;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+  }
+}
