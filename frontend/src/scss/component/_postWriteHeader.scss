@@ -1,0 +1,35 @@
+.post-write-header {
+  p {
+    @include font-default(700, 1.2rem);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #a9a9a9;
+  }
+
+  .post-write-select-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+
+    span {
+      width: 45%;
+      height: 100%;
+      padding: 0.4rem 0.5rem;
+      height: auto;
+
+      &.border {
+        display: flex;
+        height: 100%;
+        border: 1px solid #a9a9a9;
+      }
+    }
+  }
+
+  .MuiInputLabel-shrink {
+    display: none;
+  }
+  .notranslate {
+    display: none;
+  }
+}
