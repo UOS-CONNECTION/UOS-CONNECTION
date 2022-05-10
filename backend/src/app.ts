@@ -19,6 +19,8 @@ export default class App {
 
   constructor() {
     this.app = express();
+    this.app.use(express.urlencoded({ extended: false })); // body parsing
+    this.app.use(express.json()); // json parsing
     this.port = process.env.PORT || '8080';
     this.middleware();
     this.route();
@@ -26,9 +28,7 @@ export default class App {
   }
 
   private async config() {
-    this.app.use(express.urlencoded({ extended: false })); // body parsing
-    this.app.use(express.json()); // json parsing
-    await this.app.use(passport.initialize());
+    this.app.use(passport.initialize());
     this.app.use(
       session({
         secret: 'asadlfkj!@#!@#dfgasdg',
