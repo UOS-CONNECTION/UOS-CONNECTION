@@ -9,10 +9,10 @@ class postController {
 	async getOnePost(req: Request, res: Response) {
 		try {
 			const { postId } = req.params;
-			const PostRepo = getCustomRepository(PostRepository);
-			const SearchRes = await PostRepo.findById(parseInt(postId));
+			const postRepo = getCustomRepository(PostRepository);
+			const searchRes = await postRepo.findById(parseInt(postId));
 
-			return res.json(SearchRes);
+			return res.json(searchRes);
 		} catch (err) {
 			res.sendStatus(400);
 		}
