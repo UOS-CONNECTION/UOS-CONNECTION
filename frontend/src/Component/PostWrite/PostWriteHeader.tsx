@@ -7,6 +7,7 @@ import {
   Select,
   SelectChangeEvent,
   styled,
+  Typography,
 } from '@mui/material';
 
 import { ValueOf } from '../../Util/HelperType';
@@ -36,9 +37,9 @@ const PostWriteHeader = ({
 }: PostWriteHeaderProps) => {
   return (
     <Box className='post-write-header'>
-      <p>글 작성하기</p>
-      <div className='post-write-select-box'>
-        <span>
+      <Typography>글 작성하기</Typography>
+      <Box className='post-write-select-box'>
+        <Box component='span'>
           <FormControl fullWidth>
             <InputLabel id='category-select'>카테고리</InputLabel>
             <Select
@@ -50,8 +51,8 @@ const PostWriteHeader = ({
               <MenuItem value={Category.things}>물품 공유</MenuItem>
             </Select>
           </FormControl>
-        </span>
-        <span className='border'>
+        </Box>
+        <Box component='span' className='border'>
           <label htmlFor='contained-button-file'>
             <Input
               accept='image/*'
@@ -63,8 +64,8 @@ const PostWriteHeader = ({
               Upload
             </Button>
           </label>
-        </span>
-      </div>
+        </Box>
+      </Box>
     </Box>
   );
 };
