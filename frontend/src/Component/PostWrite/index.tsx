@@ -22,9 +22,8 @@ const PostWrite: React.FC = () => {
   const handleFormSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      console.log(inputValue);
     },
-    [inputValue]
+    []
   );
 
   const handleBtnClick = useCallback(
