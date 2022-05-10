@@ -22,10 +22,6 @@ export const Category = {
 
 export type CategoryType = ValueOf<typeof Category>;
 
-const Input = styled('input')({
-  display: 'none',
-});
-
 interface PostWriteHeaderProps {
   category: number;
   handleCategoryChange: (e: SelectChangeEvent<unknown>) => void;
@@ -53,17 +49,15 @@ const PostWriteHeader = ({
           </FormControl>
         </Box>
         <Box component='span' className='border'>
-          <label htmlFor='contained-button-file'>
-            <Input
-              accept='image/*'
-              id='contained-button-file'
-              multiple
-              type='file'
-            />
-            <Button variant='contained' component='span'>
-              Upload
-            </Button>
-          </label>
+          <input
+            accept='image/*'
+            id='contained-button-file'
+            multiple
+            type='file'
+          />
+          <Button variant='contained' component='span'>
+            Upload
+          </Button>
         </Box>
       </Box>
     </Box>

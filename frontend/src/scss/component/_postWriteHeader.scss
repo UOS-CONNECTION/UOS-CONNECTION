@@ -7,22 +7,38 @@
 
   .post-write-select-box {
     width: 100%;
+    height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: auto;
+    margin-top: 1rem;
 
-    span {
+    .MuiOutlinedInput-input {
+      padding: 0.4rem 0.5rem;
+    }
+
+    .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+      top: -0.5rem;
+    }
+
+    .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+      border: 0;
+    }
+
+    & > span {
       width: 45%;
       height: 100%;
       padding: 0.4rem 0.5rem;
-      height: auto;
+      box-shadow: 0 0 0 1px #a9a9a9 inset;
 
       &.border {
         display: flex;
         height: 100%;
-        border: 1px solid #a9a9a9;
       }
+    }
+
+    input[type='file'] {
+      display: none;
     }
   }
 
