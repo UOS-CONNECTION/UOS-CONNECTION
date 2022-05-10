@@ -1,13 +1,18 @@
 import { TempData } from '@src/utils/temp.data';
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
+
+import PostRepository from '@src/db/repositories/post.repository';
+import { getCustomRepository } from 'typeorm';
 
 class postController {
   // example user
-  async temp(req: Request, res: Response, next: NextFunction) {
+  async getOnePost(req: Request, res: Response) {
     try {
       const { postId } = req.params;
+      const PostRepo = getCustomRepository(PostRepository);
+      const SearchRes = await PostRepo.findById(parseInt(postId));
 
-      return res.json(TempData[Number(postId) - 1]);
+      return res.json(SearchRes);
     } catch (err) {
       res.sendStatus(400);
     }
