@@ -7,6 +7,7 @@ import {
   SignupPage,
   AboutPage,
   Mypage,
+  PostWritePage,
 } from '../Page';
 
 const Router: React.FC = () => {
@@ -20,6 +21,7 @@ const Router: React.FC = () => {
         <Route path='/signup' element={<SignupPage />} />
         <Route path='/about' element={<AboutPage />} />
         <Route path='/mypage' element={<Mypage />} />
+        <Route path='/write' element={<PostWritePage />} />
       </Routes>
     </BrowserRouter>
   );
