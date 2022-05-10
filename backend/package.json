@@ -8,8 +8,8 @@
     "dev": "concurrently \"yarn dev:server\" \"yarn dev:client\"",
     "dev:server": "nodemon --exec ts-node -r tsconfig-paths/register src/index.ts",
     "dev:client": "cd ../frontend && yarn start",
-    "lint": "eslint ./src/**/*.{ts,tsx,js,jsx}",
-    "lint:fix": "eslint --fix ./src/**/*.{ts,tsx,js,jsx}",
+    "lint:code": "eslint ./src/**/*.{ts,tsx,js,jsx}",
+    "lint:code-fix": "eslint --fix ./src/**/*.{ts,tsx,js,jsx}",
     "prettier": "prettier --write ./src/**/*.{ts,tsx}"
   },
   "dependencies": {
