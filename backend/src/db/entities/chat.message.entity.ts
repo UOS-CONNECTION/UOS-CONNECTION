@@ -1,29 +1,23 @@
-import {
-  Column,
-  Entity,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-  Timestamp,
-} from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, Timestamp } from 'typeorm';
 
 import ChatEntity from './chat.entity';
 
 @Entity()
 class ChatMessage {
-  @PrimaryGeneratedColumn()
-  _id: number;
+	@PrimaryGeneratedColumn()
+	_id: number;
 
-  @Column('text', { nullable: true })
-  content: string;
+	@Column('text', { nullable: true })
+	content: string;
 
-  @Column('bool', { nullable: true })
-  watched: boolean;
+	@Column('bool', { nullable: true })
+	watched: boolean;
 
-  @ManyToOne(() => ChatEntity, (chat) => chat._id)
-  chat_room_id: ChatEntity;
+	@ManyToOne(() => ChatEntity, (chat) => chat._id)
+	chat_room_id: ChatEntity;
 
-  @Column('timestamp', { nullable: true })
-  created_at: Timestamp;
+	@Column('timestamp', { nullable: true })
+	created_at: Timestamp;
 }
 
 export default ChatMessage;

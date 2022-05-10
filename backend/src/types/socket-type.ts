@@ -1,12 +1,12 @@
 export enum ConnectionEvent {
-  connection = 'connection',
-  disconnection = 'disconnection',
+	connection = 'connection',
+	disconnection = 'disconnection',
 }
 
 export enum ChatEvent {
-  message = 'message',
+	message = 'message',
 }
 
 export enum DatabaseEvent {
-  upload = 'upload',
+	upload = 'upload',
 }

@@ -5,23 +5,23 @@ import UserEntity from './user.entity';
 
 @Entity()
 class UserInfo {
-  @PrimaryGeneratedColumn()
-  _id!: number;
+	@PrimaryGeneratedColumn()
+	_id!: number;
 
-  @Column('text', { nullable: true })
-  proved_at: string;
+	@Column('text', { nullable: true })
+	proved_at: string;
 
-  @Column('int', { nullable: true })
-  share_cnt: number;
+	@Column('int', { nullable: true })
+	share_cnt: number;
 
-  @Column('text', { nullable: true })
-  location: string;
+	@Column('text', { nullable: true })
+	location: string;
 
-  @Column('text', { nullable: true })
-  contact_time: string;
+	@Column('text', { nullable: true })
+	contact_time: string;
 
-  @OneToOne(() => UserEntity, (user) => user._id)
-  user_id: UserEntity;
+	@OneToOne(() => UserEntity, (user) => user._id)
+	user_id: UserEntity;
 }
 
 export default UserInfo;
