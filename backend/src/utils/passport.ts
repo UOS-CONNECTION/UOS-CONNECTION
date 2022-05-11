@@ -43,8 +43,8 @@ class passportAPI {
 						console.error(`[Passport] ${err}`);
 						return done(err);
 					}
-				}
-			)
+				},
+			),
 		);
 	}
 
@@ -82,8 +82,8 @@ class passportAPI {
             console.error(error);
             done(error);
           } */
-				}
-			)
+				},
+			),
 		);
 	}
 }

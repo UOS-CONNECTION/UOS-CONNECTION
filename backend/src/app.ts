@@ -37,7 +37,7 @@ export default class App {
 				resave: false,
 				saveUninitialized: true,
 				store: new FileStore(),
-			})
+			}),
 		);
 		this.app.use(passport.session());
 		passportAPI.config();

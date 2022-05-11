@@ -1,5 +1,12 @@
 // type orm user
-import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn, Timestamp } from 'typeorm';
+import {
+	Column,
+	Entity,
+	OneToMany,
+	OneToOne,
+	PrimaryGeneratedColumn,
+	Timestamp,
+} from 'typeorm';
 
 @Entity()
 class User {

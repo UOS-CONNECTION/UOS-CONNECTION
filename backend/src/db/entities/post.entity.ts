@@ -1,5 +1,11 @@
 // type orm user
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, Timestamp } from 'typeorm';
+import {
+	Column,
+	Entity,
+	ManyToOne,
+	PrimaryGeneratedColumn,
+	Timestamp,
+} from 'typeorm';
 
 import UserEntity from './user.entity';
 

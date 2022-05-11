@@ -1,5 +1,12 @@
 // type orm user
-import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn, Timestamp } from 'typeorm';
+import {
+	Column,
+	Entity,
+	OneToMany,
+	OneToOne,
+	PrimaryGeneratedColumn,
+	Timestamp,
+} from 'typeorm';
 
 import PostEntity from './post.entity';
 import UserEntity from './user.entity';

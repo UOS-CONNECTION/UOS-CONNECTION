@@ -27,17 +27,20 @@ class userController {
 	}
 
 	signIn(req: Request, res: Response, next: NextFunction) {
-		passport.authenticate('local', async (err: Error, user: UserEntity, info: { message: string }) => {
-			if (err) {
-				return res.status(409).send(info.message);
-			}
+		passport.authenticate(
+			'local',
+			async (err: Error, user: UserEntity, info: { message: string }) => {
+				if (err) {
+					return res.status(409).send(info.message);
+				}
 
-			if (!info) {
-				return res.status(401).send(info.message);
-			}
+				if (!info) {
+					return res.status(401).send(info.message);
+				}
 
-			return res.status(200).send(user);
-		})(req, res, next);
+				return res.status(200).send(user);
+			},
+		)(req, res, next);
 	}
 
 	async signOut(req: Request, res: Response, next: NextFunction) {}

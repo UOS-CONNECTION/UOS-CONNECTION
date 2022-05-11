@@ -1,4 +1,10 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, Timestamp } from 'typeorm';
+import {
+	Column,
+	Entity,
+	ManyToOne,
+	PrimaryGeneratedColumn,
+	Timestamp,
+} from 'typeorm';
 
 import ChatEntity from './chat.entity';
 
