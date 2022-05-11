@@ -9,6 +9,7 @@ class chatController {
       res.sendStatus(400);
     }
   }
+
   async getChatRoomDetail(req: Request, res: Response) {
     try {
       const { id } = req.params;

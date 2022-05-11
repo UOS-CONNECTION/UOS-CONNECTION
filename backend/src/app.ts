@@ -14,7 +14,9 @@ const FileStore = sessionStore(session);
 
 export default class App {
   app: express.Application;
+
   port: string;
+
   server: http.Server;
 
   constructor() {
@@ -35,7 +37,7 @@ export default class App {
         resave: false,
         saveUninitialized: true,
         store: new FileStore(),
-      })
+      }),
     );
     this.app.use(passport.session());
     passportAPI.config();

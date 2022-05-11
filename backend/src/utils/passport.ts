@@ -4,8 +4,8 @@ import KakaoStrategy from 'passport-kakao';
 
 import { getCustomRepository } from 'typeorm';
 
-import cryptoAPI from './crypto';
 import UserRepository from '@src/db/repositories/user.repository';
+import cryptoAPI from './crypto';
 
 class passportAPI {
   config() {
@@ -43,8 +43,8 @@ class passportAPI {
             console.error(`[Passport] ${err}`);
             return done(err);
           }
-        }
-      )
+        },
+      ),
     );
   }
 
@@ -82,8 +82,8 @@ class passportAPI {
             console.error(error);
             done(error);
           } */
-        }
-      )
+        },
+      ),
     );
   }
 }

@@ -9,10 +9,7 @@ class UserRepository extends Repository<UserEntity> {
   }
 
   async findByEmail(email: string) {
-    return await this.createQueryBuilder('user')
-      .where({ email })
-      .select()
-      .getOne();
+    return this.createQueryBuilder('user').where({ email }).select().getOne();
   }
 }
 

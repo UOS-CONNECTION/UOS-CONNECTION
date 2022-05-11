@@ -39,7 +39,7 @@ class userController {
         }
 
         return res.status(200).send(user);
-      }
+      },
     )(req, res, next);
   }
 
