@@ -3,5 +3,8 @@
     "parser": "typescript",
     "semi": true,
     "useTabs": true,
-    "printWidth": 120
+    "tabWidth": 2,
+    "bracketSpacing": true,
+    "trailingComma": "all",
+    "printWidth": 80
   }

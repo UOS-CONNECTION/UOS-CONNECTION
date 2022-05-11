@@ -27,5 +27,12 @@
       "@typescript-eslint"
   ],
   "rules": {
+    "linebreak-style": 0,
+    "import/no-unresolved": 0,
+    "no-use-before-define": ["error", { "functions": true, "classes": true, "variables": true }],
+    "no-shadow": ["error", { "builtinGlobals": false, "hoist": "functions", "allow": [], "ignoreOnInitialization": false }],
+    "react/prop-types": 0,
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "jsx-a11y/no-noninteractive-element-interactions": "off"
   }
 }
