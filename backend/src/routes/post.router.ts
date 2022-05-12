@@ -4,6 +4,6 @@ import { Request, Response, Router } from 'express';
 const postRouter = Router();
 
 postRouter.get('/:postId', postController.getOnePost);
-postRouter.get('/', postController.getAllPost);
+postRouter.get('', postController.getLimitedPost);
 
 export default postRouter;
