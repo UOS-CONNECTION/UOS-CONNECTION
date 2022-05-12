@@ -24,7 +24,7 @@ const useChatList = () => {
       setChatList((prev) => [...prev, newChat]);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [chatList]
+    [chatList],
   );
 
   const setPastChat = useCallback(
@@ -39,7 +39,7 @@ const useChatList = () => {
       setChatList(pastChat);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [],
   );
 
   return { chatList, addChat, setPastChat };

@@ -28,19 +28,16 @@ export const dateConvert = (_date: string): string => {
   const pastDate: string[] = _date.split('/'); // 작성 당시의 시간을 연월일시분으로 분리
   const [pastYear, pastMonth, pastDay, pastHour, pastMinute] = pastDate;
 
-  const today = new Date(); //현재 시간을 연월일로 분리
+  const today = new Date(); // 현재 시간을 연월일로 분리
   const year: number = today.getFullYear();
   const month: number = today.getMonth() + 1;
   const date: number = today.getDate();
 
-  const yyyymmdd: string =
-    pastYear +
-    '-' +
-    ['0', pastMonth].join('').slice(-2) +
-    '-' +
-    ['0', pastDay].join('').slice(-2); // yyyymmdd 형식으로 변경
+  const yyyymmdd: string = `${pastYear}-${['0', pastMonth].join('').slice(-2)}-${['0', pastDay]
+    .join('')
+    .slice(-2)}`; // yyyymmdd 형식으로 변경
 
-  const pastAfternoonTime: string = String(Number(pastHour) - 12); //작성 당시 시간 오후로 변환
+  const pastAfternoonTime: string = String(Number(pastHour) - 12); // 작성 당시 시간 오후로 변환
 
   if (
     (isToday(pastDay, date) || isYesterday(pastDay, date)) &&
@@ -49,10 +46,9 @@ export const dateConvert = (_date: string): string => {
   ) {
     if (isToday(pastDay, date) && isAfternoon(pastHour))
       return `오후 ${pastAfternoonTime}:${pastMinute}`;
-    else if (isToday(pastDay, date) && !isAfternoon(pastHour))
-      return `오전 ${pastHour}:${pastMinute}`;
-    else if (isYesterday(pastDay, date)) return '어제';
+    if (isToday(pastDay, date) && !isAfternoon(pastHour)) return `오전 ${pastHour}:${pastMinute}`;
+    if (isYesterday(pastDay, date)) return '어제';
   } else return yyyymmdd;
 
-  return 'err'; //exception handling
+  return 'err'; // exception handling
 };
