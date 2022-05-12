@@ -1,9 +1,9 @@
 import postController from '@src/controllers/post.controller';
-import { Request, Response, Router } from 'express';
+import { Router } from 'express';
 
 const postRouter = Router();
 
 postRouter.get('/:postId', postController.getOnePost);
-postRouter.get('', postController.getLimitedPost);
+postRouter.get('', postController.getPaginationPost);
 
 export default postRouter;

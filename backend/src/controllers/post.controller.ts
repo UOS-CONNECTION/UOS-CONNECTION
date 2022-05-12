@@ -19,7 +19,7 @@ class postController {
     }
   }
 
-  async getLimitedPost(req: Request, res: Response) {
+  async getPaginationPost(req: Request, res: Response) {
     try {
       const offset = req.query.offset;
       const limit = req.query.limit;
