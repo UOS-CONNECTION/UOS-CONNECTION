@@ -21,7 +21,7 @@ const Developer = [
     github: 'pasly0920',
     stack: ['FE', 'BE'],
     img: 'https://avatars.githubusercontent.com/u/86864534?s=88&u=43e1e9f8113d19da3c3b8e8b656e4b758beff36e&v=4',
-    short_desc: '인력난 이에요 왜..?'
+    short_desc: '인력난 이에요 왜..?',
   },
 ];
 

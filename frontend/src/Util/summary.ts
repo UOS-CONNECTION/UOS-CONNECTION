@@ -5,10 +5,6 @@
 */
 export const summary = (_content: string | null): string | null => {
   const summary: string | null =
-    _content !== null
-      ? _content?.length > 18
-        ? _content?.slice(0, 19) + '...'
-        : _content
-      : null;
+    _content !== null ? (_content?.length > 18 ? `${_content?.slice(0, 19)}...` : _content) : null;
   return summary;
 };

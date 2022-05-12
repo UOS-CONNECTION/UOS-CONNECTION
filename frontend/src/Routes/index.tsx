@@ -14,14 +14,14 @@ const Router: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<MainPage />} />
-        <Route path='post/:postId' element={<DetailPage />} />
-        <Route path='/chat' element={<ChatPage />} />
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='/signup' element={<SignupPage />} />
-        <Route path='/about' element={<AboutPage />} />
-        <Route path='/mypage' element={<Mypage />} />
-        <Route path='/write' element={<PostWritePage />} />
+        <Route path="/" element={<MainPage />} />
+        <Route path="post/:postId" element={<DetailPage />} />
+        <Route path="/chat" element={<ChatPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/mypage" element={<Mypage />} />
+        <Route path="/write" element={<PostWritePage />} />
       </Routes>
     </BrowserRouter>
   );
