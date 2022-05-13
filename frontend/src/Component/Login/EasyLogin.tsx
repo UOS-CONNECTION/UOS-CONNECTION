@@ -2,11 +2,14 @@ import { Typography, Avatar } from '@mui/material';
 import requestAPI from '../../Util/Request';
 
 const EasyLogin: React.FC = () => {
-  const handleGoogleClick = () => {};
   const handleNaverClick = () => {};
 
   const handleKakaoClick = async () => {
     return await requestAPI.get('/api/user/kakao');
+  };
+
+  const handleGoogleClick = async () => {
+    return await requestAPI.get('/api/user/google');
   };
 
   return (

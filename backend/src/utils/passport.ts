@@ -1,6 +1,8 @@
 import passport from 'passport';
 import { Strategy } from 'passport-local';
-import KakaoStrategy from 'passport-kakao';
+// import KakaoStrategy from 'passport-kakao';
+const KakaoStrategy = require('passport-kakao').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 import { getCustomRepository } from 'typeorm';
 
@@ -11,6 +13,7 @@ class passportAPI {
   config() {
     this.observerLocalLogin();
     this.observerKakaoLogin();
+    this.observerGoogleLogin();
   }
 
   private observerLocalLogin() {
@@ -48,13 +51,28 @@ class passportAPI {
     );
   }
 
+  private observerGoogleLogin() {
+    passport.use(
+      new GoogleStrategy(
+        {
+          clientID: process.env.GOOGLE_ID,
+          clientSecret: process.env.GOOGLE_SECRET,
+          callbackURL: '/api/user/google/callback',
+        },
+        async (accessToken, refreshToken, profile, done) => {
+          console.log('[Google] Access token: ', accessToken);
+          console.log('[Google] Profile: ', profile);
+        },
+      ),
+    );
+  }
+
   private observerKakaoLogin() {
     passport.use(
-      'login-kakao',
       new KakaoStrategy(
         {
           clientID: process.env.KAKAO_KEY, // 카카오 로그인에서 발급받은 REST API 키
-          callbackURL: 'http://localhost:8080/api/user/kakao/callback', // kakao-developer에 등록한 카카오 로그인 Redirect URI 경로
+          callbackURL: '/api/user/kakao/callback', // kakao-developer에 등록한 카카오 로그인 Redirect URI 경로
         },
         /*
         clientID에 카카오 앱 아이디 추가
