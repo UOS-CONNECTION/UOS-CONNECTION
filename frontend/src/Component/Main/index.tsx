@@ -1,8 +1,6 @@
 import { useCallback, useLayoutEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getAllPost } from '../../Store/Action/postAction';
-import requestAPI from '../../Util/Request';
-import { TempData } from '../../Util/TempData';
 import { IData } from '../../Util/Type';
 import Filter from './Filter';
 import ShareTab from './ShareTab';
@@ -17,7 +15,7 @@ const Main: React.FC = () => {
   const dispatch = useDispatch();
 
   const setInitialPosts = useCallback(async () => {
-    const res = await dispatch(getAllPost());
+    const res = await dispatch(getAllPost({ limit: 1, offset: 1 }));
     if (res.payload.status === 200) {
       setTalentData(res.payload.data);
     }

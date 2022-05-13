@@ -43,7 +43,7 @@ const Detail: React.FC = () => {
   const dispatch = useDispatch();
   const { postId } = useParams();
   const postFromRedux = useSelector(
-    (state: RootStateOrAny) => state.postReducer.post
+    (state: RootStateOrAny) => state.postReducer.post,
   );
 
   const setPostData = useCallback((postData) => {

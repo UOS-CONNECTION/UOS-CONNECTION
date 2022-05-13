@@ -17,7 +17,7 @@ interface IDetailCard {
 interface IUserInfo {
   userImg: string;
   userName: string;
-  short_desc: string;
+  shortDesc: string;
   score: number;
 }
 
@@ -25,8 +25,8 @@ const UserInfo: React.FC<IUserInfo> = ({
   userImg,
   score,
   userName,
-  short_desc,
-}) => {
+  shortDesc,
+}: IUserInfo) => {
   return (
     <Box className='detail-user-info'>
       <Box className='user-avatar'>
@@ -38,13 +38,13 @@ const UserInfo: React.FC<IUserInfo> = ({
           <Typography className='user-score'>{score.toFixed(1)}</Typography>
           <Rating className='user-star-score' value={score} readOnly />
         </Box>
-        <Typography className='user-short_desc'>{short_desc}</Typography>
+        <Typography className='user-short_desc'>{shortDesc}</Typography>
       </Box>
     </Box>
   );
 };
 
-const DetailCard: React.FC<IDetailCard> = ({ post }) => {
+const DetailCard: React.FC<IDetailCard> = ({ post }: IDetailCard) => {
   return (
     <Card className='detail-card-container'>
       <Box className='detail-main-image'>
@@ -63,7 +63,7 @@ const DetailCard: React.FC<IDetailCard> = ({ post }) => {
       <Box className='detail-content-container'>
         <Typography className='post-title'>{post.title}</Typography>
         <UserInfo
-          short_desc={post.User.short_desc}
+          shortDesc={post.User.short_desc}
           userImg={post.User.img}
           userName={post.User.name}
           score={post.User.score}

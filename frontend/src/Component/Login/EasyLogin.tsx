@@ -6,7 +6,8 @@ const EasyLogin: React.FC = () => {
   const handleNaverClick = () => {};
 
   const handleKakaoClick = async () => {
-    return await requestAPI.get('/api/user/kakao');
+    const res = await requestAPI.get('/api/user/kakao');
+    return res;
   };
 
   return (
@@ -18,7 +19,7 @@ const EasyLogin: React.FC = () => {
         <Avatar
           className='easylogin-icon'
           alt='Google'
-          src={`/img/google.ico`}
+          src='/img/google.ico'
           onClick={handleGoogleClick}
         />
         <Avatar

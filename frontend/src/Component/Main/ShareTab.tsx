@@ -8,7 +8,7 @@ interface IShareTab {
   talentData: IData[];
 }
 
-const ShareTab: React.FC<IShareTab> = ({ talentData }) => {
+const ShareTab: React.FC<IShareTab> = ({ talentData }: IShareTab) => {
   const [option, setOption] = useState<number>(0);
 
   const handleOptionChange = useCallback(

@@ -11,8 +11,15 @@ import {
  * TODO: 나중에 페이지가 생기면 백엔드와 연동해서 사용해야 합니다.
  * @returns InfoCard Datas from server
  */
-export const getAllPost = async () => {
-  const res = await requestAPI.get('/api/post');
+export const getAllPost = async ({
+  offset,
+  limit,
+}: {
+  offset: number;
+  limit: number;
+}) => {
+  // const res = await requestAPI.get(`/api/post?offset=${offset}&limit=${limit}`);
+  const res = await requestAPI.get('/api/post/1');
 
   return {
     type: GET_ALL_POST_REQUEST,

@@ -1,4 +1,11 @@
-import { Box, FormControl, MenuItem, Select, SelectChangeEvent, Typography } from '@mui/material';
+import {
+  Box,
+  FormControl,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  Typography,
+} from '@mui/material';
 import { useCallback } from 'react';
 
 interface IMannerFilter {
@@ -9,12 +16,12 @@ interface IMannerFilter {
 const MannerFilter: React.FC<IMannerFilter> = ({
   mannerOption,
   setMannerOption,
-}) => {
+}: IMannerFilter) => {
   const handleMannerOptionChange = useCallback(
     (e: SelectChangeEvent) => {
       setMannerOption(e.target.value);
     },
-    [setMannerOption]
+    [setMannerOption],
   );
 
   return (
@@ -35,7 +42,7 @@ const MannerFilter: React.FC<IMannerFilter> = ({
           <MenuItem value={6}>4.0</MenuItem>
           <MenuItem value={7}>4.5</MenuItem>
         </Select>
-        <span style={{marginLeft: '3%'}}>이상</span>
+        <span style={{ marginLeft: '3%' }}>이상</span>
       </Box>
     </FormControl>
   );

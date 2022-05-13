@@ -17,7 +17,7 @@ const isInValidPassword = (password: string) => {
 const Password: React.FC<PasswordProps> = ({
   password,
   handleSignUpInputChange,
-}) => {
+}: PasswordProps) => {
   const [invalidPassword, setInvalidPassword] = useState<boolean>(false);
 
   const validatePassword = () => {

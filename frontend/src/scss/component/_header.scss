@@ -67,6 +67,9 @@
   }
 
   .header-logo {
+    border: 0;
+    outline: 0;
+    background-color: transparent;
     width: 15%;
     @include mobile {
       width: 35%;

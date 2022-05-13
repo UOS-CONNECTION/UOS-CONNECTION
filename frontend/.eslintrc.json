@@ -3,7 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["plugin:react/recommended", "airbnb", "prettier"],
+  "extends": ["plugin:react/recommended", "airbnb", "prettier", "react-app"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -42,6 +42,8 @@
     "react/no-array-index-key": 0,
     "react/jsx-key": 0,
     "consistent-return": 0,
+    "no-shadow": 0,
+    "class-methods-use-this": 0,
     "@typescript-eslint/no-unused-vars": ["error"]
   }
 }

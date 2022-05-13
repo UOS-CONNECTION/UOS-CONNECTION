@@ -13,7 +13,11 @@ interface ChatPersonProps {
 
 const unwatchedExist = (_item: ChatType): boolean => _item.unwatched !== 0;
 
-const ChatPerson: React.FC<ChatPersonProps> = ({ item, idx, setChatRoom }) => {
+const ChatPerson: React.FC<ChatPersonProps> = ({
+  item,
+  idx,
+  setChatRoom,
+}: ChatPersonProps) => {
   return (
     <Card
       className='chat'

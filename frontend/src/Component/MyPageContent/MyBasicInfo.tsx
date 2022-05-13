@@ -6,7 +6,7 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 const MyBasicInfo: React.FC = () => {
   const [isNameClicked, setIsNameClicked] = useState<Boolean>(false);
   const [isDscClicked, setIsDscClicked] = useState<Boolean>(false);
-  const [isImgClicked, setIsImgClicked] = useState<Boolean>(false);
+  const [, setIsImgClicked] = useState<Boolean>(false);
 
   const handleImgClick = () => {
     setIsImgClicked((prev) => !prev);
