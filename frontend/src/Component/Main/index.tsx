@@ -28,7 +28,7 @@ const Main: React.FC = () => {
   }, [dispatch, setInitialPosts]);
 
   return (
-    <div className='main-container'>
+    <div className="main-container">
       <ShareTab talentData={talentData} />
       <Filter
         locationOption={locationOption}
