@@ -17,7 +17,7 @@ const ChatList: React.FC<IChatSelect> = ({
   setChatRoom,
   chatList,
   isLoading,
-}) => {
+}: IChatSelect) => {
   return (
     <Box className='chat-list-container'>
       <Box className='chat-list-top'>

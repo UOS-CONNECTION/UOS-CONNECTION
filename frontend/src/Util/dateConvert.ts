@@ -33,9 +33,9 @@ export const dateConvert = (_date: string): string => {
   const month: number = today.getMonth() + 1;
   const date: number = today.getDate();
 
-  const yyyymmdd: string = `${pastYear}-${['0', pastMonth].join('').slice(-2)}-${['0', pastDay]
+  const yyyymmdd: string = `${pastYear}-${['0', pastMonth]
     .join('')
-    .slice(-2)}`; // yyyymmdd 형식으로 변경
+    .slice(-2)}-${['0', pastDay].join('').slice(-2)}`; // yyyymmdd 형식으로 변경
 
   const pastAfternoonTime: string = String(Number(pastHour) - 12); // 작성 당시 시간 오후로 변환
 
@@ -46,7 +46,8 @@ export const dateConvert = (_date: string): string => {
   ) {
     if (isToday(pastDay, date) && isAfternoon(pastHour))
       return `오후 ${pastAfternoonTime}:${pastMinute}`;
-    if (isToday(pastDay, date) && !isAfternoon(pastHour)) return `오전 ${pastHour}:${pastMinute}`;
+    if (isToday(pastDay, date) && !isAfternoon(pastHour))
+      return `오전 ${pastHour}:${pastMinute}`;
     if (isYesterday(pastDay, date)) return '어제';
   } else return yyyymmdd;
 

@@ -1,4 +1,10 @@
-import { Box, FormControlLabel, Radio, RadioGroup, Typography } from '@mui/material';
+import {
+  Box,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  Typography,
+} from '@mui/material';
 import { useCallback } from 'react';
 
 interface ISortFilter {
@@ -6,12 +12,15 @@ interface ISortFilter {
   setSortOption: Function;
 }
 
-const SortFilter: React.FC<ISortFilter> = ({ sortOption, setSortOption }) => {
+const SortFilter: React.FC<ISortFilter> = ({
+  sortOption,
+  setSortOption,
+}: ISortFilter) => {
   const handleSortOptionChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setSortOption((e.target as HTMLInputElement).value);
     },
-    [setSortOption]
+    [setSortOption],
   );
 
   return (

@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import BannerSlider from './BannerSlider';
 import * as faker from 'faker';
+import BannerSlider from './BannerSlider';
 
 const MainBanner: React.FC = () => {
-  const [banner, setBanner] = useState<string[]>([
+  const [banner] = useState<string[]>([
     faker.image.image(),
     faker.image.image(),
     faker.image.image(),

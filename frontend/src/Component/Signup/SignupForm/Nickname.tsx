@@ -17,7 +17,7 @@ const isInValidNickname = (nickname: string) => {
 const Nickname: React.FC<SingupNickname> = ({
   nickname,
   handleSignUpInputChange,
-}) => {
+}: SingupNickname) => {
   const [invalidNickname, setInvalidNickname] = useState<boolean>(false);
 
   const validateNickname = () => {

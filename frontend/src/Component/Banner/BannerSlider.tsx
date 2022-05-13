@@ -8,12 +8,12 @@ interface BannerProps {
   banner: string[];
 }
 
-const BannerSlider: React.FC<BannerProps> = ({ banner }) => {
+const BannerSlider: React.FC<BannerProps> = ({ banner }: BannerProps) => {
   SwiperCore.use([Navigation, Scrollbar, Autoplay]);
   return (
     <Swiper
-      navigation={true}
-      scrollbar={true}
+      navigation
+      scrollbar
       autoplay={{ delay: 3000, disableOnInteraction: false }}
     >
       {banner?.map((bannerSrc, idx) => (

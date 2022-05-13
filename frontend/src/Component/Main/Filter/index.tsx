@@ -1,8 +1,8 @@
-import { Button, Card } from "@mui/material";
-import LocationFilter from "./LocationFilter";
-import MannerFilter from "./MannerFilter";
-import SortFilter from "./SortFilter";
-import TagFilter from "./TagFilter";
+import { Button, Card } from '@mui/material';
+import LocationFilter from './LocationFilter';
+import MannerFilter from './MannerFilter';
+import SortFilter from './SortFilter';
+import TagFilter from './TagFilter';
 
 interface IFilter {
   locationOption: string;
@@ -24,9 +24,9 @@ const Filter: React.FC<IFilter> = ({
   setMannerOption,
   sortOption,
   setSortOption,
-}) => {
+}: IFilter) => {
   return (
-    <Card className="filter-container">
+    <Card className='filter-container'>
       <SortFilter sortOption={sortOption} setSortOption={setSortOption} />
       <LocationFilter
         locationOption={locationOption}
@@ -37,7 +37,7 @@ const Filter: React.FC<IFilter> = ({
         mannerOption={mannerOption}
         setMannerOption={setMannerOption}
       />
-      <Button variant="contained" className="filter-btn">
+      <Button variant='contained' className='filter-btn'>
         필터 적용하기
       </Button>
     </Card>

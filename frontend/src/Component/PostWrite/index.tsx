@@ -23,14 +23,14 @@ const PostWrite: React.FC = () => {
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
     },
-    []
+    [],
   );
 
   const handleBtnClick = useCallback(
     (e) => {
       handleFormSubmit(e);
     },
-    [handleFormSubmit]
+    [handleFormSubmit],
   );
 
   const handleCategoryChange = (e: SelectChangeEvent<unknown>) => {
