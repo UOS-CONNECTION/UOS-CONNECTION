@@ -1,10 +1,11 @@
 import {
+  ActionType,
   GET_ALL_POST_REQUEST,
   GET_ONE_POST_REQUEST,
   SELECT_ONE_POST,
 } from '../type';
 
-const postReducer = (action: any, state = {}) => {
+const postReducer = (action: ActionType, state = {}) => {
   switch (action.type) {
     case GET_ALL_POST_REQUEST:
       return { ...state, posts: action.payload };
