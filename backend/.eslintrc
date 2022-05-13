@@ -26,6 +26,7 @@
     "import/no-unresolved": 0,
     "no-use-before-define": ["error", { "functions": true, "classes": true, "variables": true }],
     "no-shadow": ["error", { "builtinGlobals": false, "hoist": "functions", "allow": [], "ignoreOnInitialization": false }],
-    "jsx-a11y/no-noninteractive-element-interactions": "off"
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "no-underscore-dangle": 0
   }
 }
