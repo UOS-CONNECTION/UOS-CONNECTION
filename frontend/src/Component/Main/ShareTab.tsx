@@ -15,19 +15,19 @@ const ShareTab: React.FC<IShareTab> = ({ talentData }) => {
     (e: React.SyntheticEvent, nextOption: number) => {
       setOption(nextOption);
     },
-    []
+    [],
   );
 
   return (
-    <Box className='share-tab-container'>
+    <Box className="share-tab-container">
       <Tabs value={option} onChange={handleOptionChange}>
-        <Tab label='재능공유' />
-        <Tab label='물품공유' />
+        <Tab label="재능공유" />
+        <Tab label="물품공유" />
       </Tabs>
       {option === SHARE_INFO.TALENT &&
-        talentData.map((data, idx) => <ShareCard key={idx} data={data} />)}
+        talentData?.map((data, idx) => <ShareCard key={idx} data={data} />)}
       {option === SHARE_INFO.ITEM &&
-        talentData.map((data, idx) => <ShareCard key={idx} data={data} />)}
+        talentData?.map((data, idx) => <ShareCard key={idx} data={data} />)}
     </Box>
   );
 };

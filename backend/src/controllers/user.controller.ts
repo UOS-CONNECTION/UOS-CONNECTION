@@ -3,9 +3,9 @@ import passport from 'passport';
 
 import UserEntity from '@src/db/entities/user.entity';
 
-class userController {
+class UserController {
   // example user
-  async temp(req: Request, res: Response, next: NextFunction) {
+  async temp(req: Request, res: Response) {
     try {
       // const UserRepository = getCustomRepository(UserRepository)
       return res.json({
@@ -15,15 +15,17 @@ class userController {
     } catch (err) {
       res.sendStatus(400);
     }
+    return null;
   }
 
-  async signUp(req: Request, res: Response, next: NextFunction) {
+  async signUp(req: Request, res: Response) {
     if (req.user) {
       return res.redirect('/');
     }
     res.render('/signup', {
       title: 'Create Account',
     });
+    return null;
   }
 
   signIn(req: Request, res: Response, next: NextFunction) {
@@ -69,4 +71,4 @@ class userController {
   async updateUser(req: Request, res: Response) {}
 }
 
-export default new userController();
+export default new UserController();

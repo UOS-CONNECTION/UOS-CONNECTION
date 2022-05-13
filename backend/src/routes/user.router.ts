@@ -1,14 +1,14 @@
-import userController from '@src/controllers/user.controller';
-import { Request, Response, Router } from 'express';
+import UserController from '@src/controllers/user.controller';
+import { Router } from 'express';
 
 const userRouter = Router();
 
-userRouter.get('/', userController.temp);
+userRouter.get('/', UserController.temp);
 
-userRouter.post('/login', userController.signIn);
+userRouter.post('/login', UserController.signIn);
 
-userRouter.get('/kakao', userController.kakaoSignIn);
+userRouter.get('/kakao', UserController.kakaoSignIn);
 
-userRouter.get('/kakao/callback', userController.kakaoCallback);
+userRouter.get('/kakao/callback', UserController.kakaoCallback);
 
 export default userRouter;
