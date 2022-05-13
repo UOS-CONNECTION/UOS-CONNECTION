@@ -9,7 +9,7 @@ interface IShareCard {
   data: IData;
 }
 
-const ShareCard: React.FC<IShareCard> = ({ data }) => {
+const ShareCard: React.FC<IShareCard> = ({ data }: IShareCard) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

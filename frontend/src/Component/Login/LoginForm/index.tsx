@@ -15,7 +15,7 @@ const LoginForm: React.FC = () => {
       const res = await requestAPI.post('/api/user/login', inputData);
       console.log(res);
     },
-    [email, password]
+    [email, password],
   );
 
   return (

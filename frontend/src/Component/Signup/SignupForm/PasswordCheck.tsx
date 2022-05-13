@@ -5,12 +5,14 @@ interface PasswordCheckProps {
   password: string;
 }
 
-const PasswordCheck: React.FC<PasswordCheckProps> = ({ password }) => {
+const PasswordCheck: React.FC<PasswordCheckProps> = ({
+  password,
+}: PasswordCheckProps) => {
   const [repassword, setRepassword] = useState<string>('');
   const [invalidRepassword, setInvalidRepassword] = useState<boolean>(false);
 
   const handleRepasswordChange = (
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ) => {
     setRepassword(e.target.value);
   };

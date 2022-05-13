@@ -20,7 +20,7 @@ const LoignInput: React.FC<LoginInput> = ({
   setEmail,
   password,
   setPassword,
-}) => {
+}: LoginInput) => {
   const [invalidEmail, setInvalidEmail] = useState<boolean>(false);
 
   const handleInputChange = useCallback(
@@ -30,7 +30,7 @@ const LoignInput: React.FC<LoginInput> = ({
       if (name === 'email') setEmail(value);
       else if (name === 'password') setPassword(value);
     },
-    [setEmail, setPassword]
+    [setEmail, setPassword],
   );
 
   const validateEmail = () => {

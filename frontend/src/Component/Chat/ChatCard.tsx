@@ -5,7 +5,10 @@ type ChatCardProps = {
   isLeft: boolean;
 };
 
-const ChatCard: React.FC<ChatCardProps> = ({ message, isLeft }) => {
+const ChatCard: React.FC<ChatCardProps> = ({
+  message,
+  isLeft,
+}: ChatCardProps) => {
   // const isfirstYellow: boolean = item[1] === 1;
 
   return (

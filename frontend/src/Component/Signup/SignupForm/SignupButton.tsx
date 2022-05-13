@@ -1,12 +1,12 @@
-import { Button } from "@mui/material";
+import { Button } from '@mui/material';
 
 const SignupButton: React.FC = () => {
   return (
     <Button
-      className="signup-button"
-      type="submit"
+      className='signup-button'
+      type='submit'
       fullWidth
-      variant="contained"
+      variant='contained'
     >
       회원가입하기
     </Button>

@@ -29,7 +29,7 @@ const SignupForm: React.FC = () => {
       e.preventDefault();
       console.log(makeSignUpData(signUpData));
     },
-    [signUpData]
+    [signUpData],
   );
 
   const handleSignUpInputChange = useCallback(
@@ -40,7 +40,7 @@ const SignupForm: React.FC = () => {
         [name]: value,
       });
     },
-    [setSignupData, signUpData]
+    [setSignupData, signUpData],
   );
 
   return (
