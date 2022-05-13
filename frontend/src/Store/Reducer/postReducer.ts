@@ -6,7 +6,7 @@ import {
 } from '../type';
 
 const postReducer = (action: ActionType, state = {}) => {
-  switch (action.type) {
+  switch (action?.type) {
     case GET_ALL_POST_REQUEST:
       return { ...state, posts: action.payload };
     case GET_ONE_POST_REQUEST:

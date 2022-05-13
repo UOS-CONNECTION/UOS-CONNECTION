@@ -15,7 +15,7 @@ const Main: React.FC = () => {
   const dispatch = useDispatch();
 
   const setInitialPosts = useCallback(async () => {
-    const res = await dispatch(getAllPost());
+    const res = await dispatch(getAllPost({ limit: 1, offset: 1 }));
     if (res.payload.status === 200) {
       setTalentData(res.payload.data);
     }
