@@ -4,8 +4,11 @@ import requestAPI from '../../Util/Request';
 const EasyLogin: React.FC = () => {
   const handleNaverClick = () => {};
 
-  const handleKakaoClick = async () => {
-    return await requestAPI.get('/api/user/kakao');
+  const handleKakaoClick = () => {
+    const REST_API_KEY = '6b190b1746f6460e0328fb561516d76f';
+    const REDIRECT_URI = 'http://localhost:3000/oauth/kakao/callback';
+
+    window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`;
   };
 
   const handleGoogleClick = async () => {
