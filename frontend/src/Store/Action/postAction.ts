@@ -19,7 +19,6 @@ export const getAllPost = async ({
   limit: number;
 }) => {
   const res = await requestAPI.get(`/api/post?offset=${offset}&limit=${limit}`);
-  // const res = await requestAPI.get('/api/post/1');
 
   return {
     type: GET_ALL_POST_REQUEST,
