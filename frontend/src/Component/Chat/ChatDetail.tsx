@@ -3,7 +3,7 @@ import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { Box, Typography, Card, TextField, Avatar } from '@mui/material';
 
 import ChatCard from './ChatCard';
-import { ChatType } from '../../Util/Type';
+import { ChatType } from '../../Types/Type';
 import socketAPI from '../../Util/SocketAPI';
 import useChatList from '../../Hook/useChatList';
 import { BOTTOM_HEIGHT } from '../../Util/Constant';

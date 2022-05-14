@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useCallback, useLayoutEffect, useState } from 'react';
 
 import ShareCard from '../Main/ShareCard';
-import { IData } from '../../Util/Type';
+import { IData } from '../../Types/Type';
 import { getAllPost } from '../../Store/Action/postAction';
 
 const DetailMyWrite: React.FC = () => {

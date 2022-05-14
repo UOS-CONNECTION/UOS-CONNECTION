@@ -1,7 +1,7 @@
 import { io, Socket } from 'socket.io-client';
 
 import { ChatEvent } from './Constant';
-import { HandlerType, Message } from './Type';
+import { HandlerType, Message } from '../Types/Type';
 
 class SocketAPI {
   socket: Socket;

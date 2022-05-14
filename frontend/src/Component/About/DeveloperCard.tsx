@@ -1,5 +1,5 @@
 import { Box, Card, CardMedia, Typography, Chip } from '@mui/material';
-import { IDeveloper } from '../../Util/Type';
+import { IDeveloper } from '../../Types/Type';
 
 interface IDeveloperCard {
   user: IDeveloper;
