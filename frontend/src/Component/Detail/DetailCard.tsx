@@ -8,7 +8,7 @@ import {
   Rating,
   Typography,
 } from '@mui/material';
-import { IData } from '../../Util/Type';
+import { IData } from '../../Types/Type';
 
 interface IDetailCard {
   post: IData;

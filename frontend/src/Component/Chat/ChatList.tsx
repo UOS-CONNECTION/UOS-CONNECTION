@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material';
 import { Dispatch, SetStateAction } from 'react';
 
 import ChatPerson from './ChatPerson';
-import { ChatType } from '../../Util/Type';
+import { ChatType } from '../../Types/Type';
 import { ChatListHeaderSkeleton, ChatPersonSkeleton } from './ChatSkeleton';
 
 interface IChatSelect {

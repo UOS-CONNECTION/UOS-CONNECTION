@@ -2,7 +2,7 @@ import { useCallback, useLayoutEffect, useState } from 'react';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOnePost } from '../../Store/Action/postAction';
-import { IData, IInfomation } from '../../Util/Type';
+import { IData, IInfomation } from '../../Types/Type';
 import DetailCard from './DetailCard';
 import InfomationCard from './InfomationCard';
 
