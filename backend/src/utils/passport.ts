@@ -1,8 +1,8 @@
 import passport from 'passport';
 import { Strategy } from 'passport-local';
-// import KakaoStrategy from 'passport-kakao';
-const KakaoStrategy = require('passport-kakao').Strategy;
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+import KakaoStrategy from 'passport-kakao';
+import GoogleOauth20 from 'passport-google-oauth20';
+const GoogleStrategy = GoogleOauth20.Strategy;
 
 import { getCustomRepository } from 'typeorm';
 
