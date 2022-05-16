@@ -1,11 +1,10 @@
 // type orm user
 import {
   Column,
+  CreateDateColumn,
   Entity,
-  OneToMany,
-  OneToOne,
   PrimaryGeneratedColumn,
-  Timestamp,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
@@ -40,11 +39,18 @@ class User {
   @Column('text', { nullable: true })
   favorite_post: string;
 
-  @Column('timestamp', { nullable: false })
-  updated_at: Timestamp;
+  @CreateDateColumn({
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP(6)',
+  })
+  public updated_at: Date;
 
-  @Column('timestamp', { nullable: false })
-  created_at: Timestamp;
+  @UpdateDateColumn({
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP(6)',
+    onUpdate: 'CURRENT_TIMESTAMP(6)',
+  })
+  public created_at: Date;
 }
 
 export default User;
