@@ -45,20 +45,20 @@ class UserController {
     )(req, res, next);
   }
 
-  async signOut(req: Request, res: Response, next: NextFunction) {}
+  // async signOut(req: Request, res: Response, next: NextFunction) {}
 
-  async naverSignIn(req: Request, res: Response) {}
+  // async naverSignIn(req: Request, res: Response) {}
 
-  async googleSignIn(req: Request, res: Response) {}
+  // async googleSignIn(req: Request, res: Response) {}
 
   // 'kakao'
-  async kakaoSignIn(req: Request, res: Response) {
+  async kakaoSignIn() {
     console.log('[Kakao] kakao login');
     passport.authenticate('login-kakao');
   }
 
   // 'kakao/callback'
-  async kakaoCallback(req: Request, res: Response, next: NextFunction) {
+  async kakaoCallback() {
     console.log('[Kakao] kakao callback');
     passport.authenticate('login-kakao', {
       successRedirect: '/',
@@ -66,9 +66,9 @@ class UserController {
     });
   }
 
-  getUserData(req: Request, res: Response) {}
+  // getUserData() {}
 
-  async updateUser(req: Request, res: Response) {}
+  // async updateUser(req: Request, res: Response) {}
 }
 
 export default new UserController();

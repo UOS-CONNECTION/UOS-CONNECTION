@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 
-class cryptoAPI {
+class CryptoAPI {
   getHashedPassword(password): Promise<string> {
     return new Promise((resolve, reject) => {
       crypto.pbkdf2(
@@ -20,4 +20,4 @@ class cryptoAPI {
   }
 }
 
-export default new cryptoAPI();
+export default new CryptoAPI();
