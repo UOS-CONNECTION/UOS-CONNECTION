@@ -28,12 +28,16 @@ class userController {
 
   async signUp(req: Request, res: Response) {
     const { email, nickname, password } = req.body;
+    const userRepository = getCustomRepository(UserRepository);
 
+    const existUser = await userRepository.findByEmail(email);
+    if (existUser) {
+      return res.status(409).send('이미 존재하는 이메일입니다.');
+    }
     const user = new UserEntity();
     user.email = email;
     user.nickname = nickname;
     user.pwd = await crypto.getHashedPassword(password);
-    const userRepository = getCustomRepository(UserRepository);
     userRepository.save(user);
 
     return res.status(200).send('회원가입에 성공했습니다.');
