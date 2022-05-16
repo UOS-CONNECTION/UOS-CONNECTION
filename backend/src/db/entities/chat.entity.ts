@@ -1,11 +1,13 @@
 // type orm user
 import {
   Column,
+  CreateDateColumn,
   Entity,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
   Timestamp,
+  UpdateDateColumn,
 } from 'typeorm';
 
 import PostEntity from './post.entity';
@@ -25,11 +27,18 @@ class Chat {
   @OneToMany(() => PostEntity, (post) => post._id)
   post_id: number;
 
-  @Column('timestamp', { nullable: true })
-  updated_at: Timestamp;
+  @CreateDateColumn({
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP(6)',
+  })
+  public updated_at: Date;
 
-  @Column('timestamp', { nullable: true })
-  created_at: Timestamp;
+  @UpdateDateColumn({
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP(6)',
+    onUpdate: 'CURRENT_TIMESTAMP(6)',
+  })
+  public created_at: Date;
 }
 
 export default Chat;

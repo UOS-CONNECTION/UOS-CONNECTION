@@ -12,7 +12,7 @@ const EasyLogin: React.FC = () => {
   };
 
   const handleGoogleClick = async () => {
-    return await requestAPI.get('/api/user/google');
+    await requestAPI.get('/api/user/google');
   };
 
   return (

@@ -1,4 +1,6 @@
 import { useCallback, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import Email from './Email';
 import Password from './Password';
@@ -7,6 +9,7 @@ import Nickname from './Nickname';
 import Agree from './Agree';
 import SignupButton from './SignupButton';
 import { SignUpData } from '../type';
+import { signUpUser } from '../../../Store/Action/userAction';
 
 const makeSignUpData = (signUpData: SignUpData) => {
   return {
@@ -24,12 +27,22 @@ const SignupForm: React.FC = () => {
     domain: '',
   });
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handleSubmit = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
+    async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      console.log(makeSignUpData(signUpData));
+      const { email, nickname, password } = makeSignUpData(signUpData);
+      const signUpRes = await dispatch(
+        signUpUser({ email, nickname, password }),
+      );
+
+      if (signUpRes.payload.status === 200) {
+        navigate('/login');
+      }
     },
-    [signUpData],
+    [dispatch, navigate, signUpData],
   );
 
   const handleSignUpInputChange = useCallback(

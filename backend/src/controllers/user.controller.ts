@@ -1,7 +1,10 @@
-import { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
+import { getCustomRepository } from 'typeorm';
+import { NextFunction, Request, Response } from 'express';
 
+import crypto from '@src/utils/crypto';
 import UserEntity from '@src/db/entities/user.entity';
+import UserRepository from '@src/db/repositories/user.repository';
 
 class UserController {
   // example user
@@ -19,13 +22,20 @@ class UserController {
   }
 
   async signUp(req: Request, res: Response) {
-    if (req.user) {
-      return res.redirect('/');
+    const { email, nickname, password } = req.body;
+    const userRepository = getCustomRepository(UserRepository);
+
+    const existUser = await userRepository.findByEmail(email);
+    if (existUser) {
+      return res.status(409).send('이미 존재하는 이메일입니다.');
     }
-    res.render('/signup', {
-      title: 'Create Account',
-    });
-    return null;
+    const user = new UserEntity();
+    user.email = email;
+    user.nickname = nickname;
+    user.pwd = await crypto.getHashedPassword(password);
+    userRepository.save(user);
+
+    return res.status(200).send('회원가입에 성공했습니다.');
   }
 
   signIn(req: Request, res: Response, next: NextFunction) {
@@ -45,38 +55,26 @@ class UserController {
     )(req, res, next);
   }
 
-  // async signOut(req: Request, res: Response, next: NextFunction) {}
-
-  // async naverSignIn(req: Request, res: Response) {}
-
-  async googleSignIn(req: Request, res: Response) {
-    console.log('[Google] Login');
+  async googleSignIn() {
     passport.authenticate('google', { scope: ['email', 'profile'] });
   }
 
-  async googleCallback(req: Request, res: Response) {
-    console.log('[Google] Callback');
+  async googleCallback() {
     passport.authenticate('google', { failureRedirect: '/' });
   }
 
   // 'kakao'
   async kakaoSignIn() {
-    console.log('[Kakao] kakao login');
     passport.authenticate('kakao');
   }
 
   // 'kakao/callback'
   async kakaoCallback() {
-    console.log('[Kakao] kakao callback');
     passport.authenticate('kakao', {
       successRedirect: '/',
       failureRedirect: '/', // kakaoStrategy에서 실패한다면 실행
     });
   }
-
-  // getUserData() {}
-
-  // async updateUser(req: Request, res: Response) {}
 }
 
 export default new UserController();
