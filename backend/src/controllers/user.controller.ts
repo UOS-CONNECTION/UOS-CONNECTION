@@ -3,9 +3,9 @@ import passport from 'passport';
 
 import UserEntity from '@src/db/entities/user.entity';
 
-class userController {
+class UserController {
   // example user
-  async temp(req: Request, res: Response, next: NextFunction) {
+  async temp(req: Request, res: Response) {
     try {
       // const UserRepository = getCustomRepository(UserRepository)
       return res.json({
@@ -15,15 +15,17 @@ class userController {
     } catch (err) {
       res.sendStatus(400);
     }
+    return null;
   }
 
-  async signUp(req: Request, res: Response, next: NextFunction) {
+  async signUp(req: Request, res: Response) {
     if (req.user) {
       return res.redirect('/');
     }
     res.render('/signup', {
       title: 'Create Account',
     });
+    return null;
   }
 
   signIn(req: Request, res: Response, next: NextFunction) {
@@ -43,9 +45,9 @@ class userController {
     )(req, res, next);
   }
 
-  async signOut(req: Request, res: Response, next: NextFunction) {}
+  // async signOut(req: Request, res: Response, next: NextFunction) {}
 
-  async naverSignIn(req: Request, res: Response) {}
+  // async naverSignIn(req: Request, res: Response) {}
 
   async googleSignIn(req: Request, res: Response) {
     console.log('[Google] Login');
@@ -58,13 +60,13 @@ class userController {
   }
 
   // 'kakao'
-  async kakaoSignIn(req: Request, res: Response) {
+  async kakaoSignIn() {
     console.log('[Kakao] kakao login');
     passport.authenticate('kakao');
   }
 
   // 'kakao/callback'
-  async kakaoCallback(req: Request, res: Response, next: NextFunction) {
+  async kakaoCallback() {
     console.log('[Kakao] kakao callback');
     passport.authenticate('kakao', {
       successRedirect: '/',
@@ -72,9 +74,9 @@ class userController {
     });
   }
 
-  getUserData(req: Request, res: Response) {}
+  // getUserData() {}
 
-  async updateUser(req: Request, res: Response) {}
+  // async updateUser(req: Request, res: Response) {}
 }
 
-export default new userController();
+export default new UserController();

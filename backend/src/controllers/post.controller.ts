@@ -3,13 +3,13 @@ import { Request, Response } from 'express';
 import PostRepository from '@src/db/repositories/post.repository';
 import { getCustomRepository } from 'typeorm';
 
-class postController {
+class PostController {
   // example user
   async getOnePost(req: Request, res: Response) {
     try {
       const { postId } = req.params;
       const postRepo = getCustomRepository(PostRepository);
-      const searchRes = await postRepo.findById(parseInt(postId));
+      const searchRes = await postRepo.findById(parseInt(postId, 10));
       if (searchRes.content === '')
         return res.json({ status: 'error', error: 'empty post' });
 
@@ -17,12 +17,13 @@ class postController {
     } catch (err) {
       res.sendStatus(400);
     }
+    return null;
   }
 
   async getPaginationPost(req: Request, res: Response) {
     try {
-      const offset = req.query.offset;
-      const limit = req.query.limit;
+      const { offset } = req.query;
+      const { limit } = req.query;
       const postRepo = getCustomRepository(PostRepository);
 
       if (!limit || !offset)
@@ -31,20 +32,21 @@ class postController {
         return res.json({ status: 'error', error: 'wrong param types' });
 
       const maxSize = await postRepo.getMaxSize();
-      if (parseInt(offset as string) >= maxSize)
+      if (parseInt(offset as string, 10) >= maxSize)
         return res.json({ status: 'err', err: 'out of range' });
 
       const searchRes = await postRepo.getSomePost(
         maxSize,
-        parseInt(offset as string),
-        parseInt(limit as string),
+        parseInt(offset as string, 10),
+        parseInt(limit as string, 10),
       );
 
       return res.json({ status: 'success', data: searchRes });
     } catch (err) {
       res.sendStatus(400);
     }
+    return null;
   }
 }
 
-export default new postController();
+export default new PostController();

@@ -1,2 +1,2 @@
-export enum userType {}
-// example
+// export enum userType {}
+// // example

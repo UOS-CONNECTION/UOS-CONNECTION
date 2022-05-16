@@ -8,7 +8,7 @@ import sessionStore from 'session-file-store';
 import DBConfig from './db';
 import rootRouter from './routes';
 import SocketAPI from './utils/socket';
-import passportAPI from './utils/passport';
+import PassportAPI from './utils/passport';
 
 const FileStore = sessionStore(session);
 
@@ -40,7 +40,7 @@ export default class App {
       }),
     );
     this.app.use(passport.session());
-    passportAPI.config();
+    PassportAPI.config();
     await DBConfig.connectionDB();
   }
 

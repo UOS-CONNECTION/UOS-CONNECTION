@@ -7,9 +7,9 @@ const GoogleStrategy = GoogleOauth20.Strategy;
 import { getCustomRepository } from 'typeorm';
 
 import UserRepository from '@src/db/repositories/user.repository';
-import cryptoAPI from './crypto';
+import CryptoAPI from './crypto';
 
-class passportAPI {
+class PassportAPI {
   config() {
     this.observerLocalLogin();
     this.observerKakaoLogin();
@@ -33,7 +33,7 @@ class passportAPI {
             }
 
             // 유저 비밀번호가 틀린 경우
-            const hashedPassword = await cryptoAPI.getHashedPassword(password);
+            const hashedPassword = await CryptoAPI.getHashedPassword(password);
             if (user.pwd !== hashedPassword) {
               return done(null, null, {
                 message: 'password is wrong',
@@ -80,7 +80,7 @@ class passportAPI {
         accessToken, refreshToken: 로그인 성공 후 카카오가 보내준 토큰
         profile: 카카오가 보내준 유저 정보. profile의 정보를 바탕으로 회원가입
         */
-        async (accessToken, refreshToken, profile, done) => {
+        async (accessToken, refreshToken, profile) => {
           console.log('Access token: ', accessToken);
           console.log('Kakao profile: ', profile);
 
@@ -106,4 +106,4 @@ class passportAPI {
   }
 }
 
-export default new passportAPI();
+export default new PassportAPI();
