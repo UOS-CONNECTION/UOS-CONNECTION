@@ -47,18 +47,26 @@ class userController {
 
   async naverSignIn(req: Request, res: Response) {}
 
-  async googleSignIn(req: Request, res: Response) {}
+  async googleSignIn(req: Request, res: Response) {
+    console.log('[Google] Login');
+    passport.authenticate('google', { scope: ['email', 'profile'] });
+  }
+
+  async googleCallback(req: Request, res: Response) {
+    console.log('[Google] Callback');
+    passport.authenticate('google', { failureRedirect: '/' });
+  }
 
   // 'kakao'
   async kakaoSignIn(req: Request, res: Response) {
     console.log('[Kakao] kakao login');
-    passport.authenticate('login-kakao');
+    passport.authenticate('kakao');
   }
 
   // 'kakao/callback'
   async kakaoCallback(req: Request, res: Response, next: NextFunction) {
     console.log('[Kakao] kakao callback');
-    passport.authenticate('login-kakao', {
+    passport.authenticate('kakao', {
       successRedirect: '/',
       failureRedirect: '/', // kakaoStrategy에서 실패한다면 실행
     });
