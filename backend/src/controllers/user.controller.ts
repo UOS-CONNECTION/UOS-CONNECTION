@@ -1,9 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-/* eslint-disable new-cap */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable consistent-return */
-/* eslint-disable class-methods-use-this */
 import { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
 
@@ -61,38 +55,26 @@ class UserController {
     )(req, res, next);
   }
 
-  // async signOut(req: Request, res: Response, next: NextFunction) {}
-
-  // async naverSignIn(req: Request, res: Response) {}
-
-  async googleSignIn(req: Request, res: Response) {
-    console.log('[Google] Login');
+  async googleSignIn() {
     passport.authenticate('google', { scope: ['email', 'profile'] });
   }
 
-  async googleCallback(req: Request, res: Response) {
-    console.log('[Google] Callback');
+  async googleCallback() {
     passport.authenticate('google', { failureRedirect: '/' });
   }
 
   // 'kakao'
   async kakaoSignIn() {
-    console.log('[Kakao] kakao login');
     passport.authenticate('kakao');
   }
 
   // 'kakao/callback'
   async kakaoCallback() {
-    console.log('[Kakao] kakao callback');
     passport.authenticate('kakao', {
       successRedirect: '/',
       failureRedirect: '/', // kakaoStrategy에서 실패한다면 실행
     });
   }
-
-  // getUserData() {}
-
-  // async updateUser(req: Request, res: Response) {}
 }
 
 export default new UserController();
