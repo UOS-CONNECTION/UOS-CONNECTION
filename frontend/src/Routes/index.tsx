@@ -8,6 +8,7 @@ import {
   AboutPage,
   Mypage,
   PostWritePage,
+  KakaoCallbackPage,
 } from '../Page';
 
 const Router: React.FC = () => {
@@ -22,6 +23,7 @@ const Router: React.FC = () => {
         <Route path='/about' element={<AboutPage />} />
         <Route path='/mypage' element={<Mypage />} />
         <Route path='/write' element={<PostWritePage />} />
+        <Route path='/oauth/kakao/callback' element={<KakaoCallbackPage />} />
       </Routes>
     </BrowserRouter>
   );

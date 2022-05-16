@@ -49,18 +49,26 @@ class UserController {
 
   // async naverSignIn(req: Request, res: Response) {}
 
-  // async googleSignIn(req: Request, res: Response) {}
+  async googleSignIn(req: Request, res: Response) {
+    console.log('[Google] Login');
+    passport.authenticate('google', { scope: ['email', 'profile'] });
+  }
+
+  async googleCallback(req: Request, res: Response) {
+    console.log('[Google] Callback');
+    passport.authenticate('google', { failureRedirect: '/' });
+  }
 
   // 'kakao'
   async kakaoSignIn() {
     console.log('[Kakao] kakao login');
-    passport.authenticate('login-kakao');
+    passport.authenticate('kakao');
   }
 
   // 'kakao/callback'
   async kakaoCallback() {
     console.log('[Kakao] kakao callback');
-    passport.authenticate('login-kakao', {
+    passport.authenticate('kakao', {
       successRedirect: '/',
       failureRedirect: '/', // kakaoStrategy에서 실패한다면 실행
     });

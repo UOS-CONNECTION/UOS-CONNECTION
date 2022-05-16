@@ -11,4 +11,8 @@ userRouter.get('/kakao', UserController.kakaoSignIn);
 
 userRouter.get('/kakao/callback', UserController.kakaoCallback);
 
+userRouter.get('/google', userController.googleSignIn);
+
+userRouter.get('/google/callback', userController.googleCallback);
+
 export default userRouter;
