@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from 'react';
 
 import { dateConvert } from '../../Util/dateConvert';
 import { summary } from '../../Util/summary';
-import { ChatType } from '../../Util/Type';
+import { ChatType } from '../../Types/Type';
 
 interface ChatPersonProps {
   item: ChatType;

@@ -3,7 +3,7 @@ import { useState, useLayoutEffect } from 'react';
 
 import ChatList from './ChatList';
 import ChatDetail from './ChatDetail';
-import { ChatType } from '../../Util/Type';
+import { ChatType } from '../../Types/Type';
 import requestAPI from '../../Util/Request';
 import { LOADING } from '../../Util/Constant';
 

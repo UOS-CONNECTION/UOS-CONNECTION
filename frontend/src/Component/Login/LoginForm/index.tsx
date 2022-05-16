@@ -1,10 +1,15 @@
+import { useDispatch } from 'react-redux';
 import { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import LoginInput from './LoginInput';
 import LoginButton from './LoginButton';
-import requestAPI from '../../../Util/Request';
+import { loginUser } from '../../../Store/Action/userAction';
 
 const LoginForm: React.FC = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -12,10 +17,12 @@ const LoginForm: React.FC = () => {
     async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       const inputData = { email, password };
-      const res = await requestAPI.post('/api/user/login', inputData);
-      console.log(res);
+      const res = await dispatch(loginUser(inputData));
+      if (res.payload.status === 200) {
+        navigate('/');
+      }
     },
-    [email, password],
+    [dispatch, email, navigate, password],
   );
 
   return (

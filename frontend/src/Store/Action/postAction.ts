@@ -1,4 +1,4 @@
-import { IData } from '../../Util/Type';
+import { IData } from '../../Types/Type';
 import requestAPI from '../../Util/Request';
 import {
   GET_ALL_POST_REQUEST,
@@ -18,8 +18,7 @@ export const getAllPost = async ({
   offset: number;
   limit: number;
 }) => {
-  // const res = await requestAPI.get(`/api/post?offset=${offset}&limit=${limit}`);
-  const res = await requestAPI.get('/api/post/1');
+  const res = await requestAPI.get(`/api/post?offset=${offset}&limit=${limit}`);
 
   return {
     type: GET_ALL_POST_REQUEST,

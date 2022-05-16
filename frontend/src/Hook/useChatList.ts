@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 
-import { ChatType } from '../Util/Type';
+import { ChatType } from '../Types/Type';
 
 interface ChatContent {
   message: string;

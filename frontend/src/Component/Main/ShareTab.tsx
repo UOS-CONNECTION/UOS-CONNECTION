@@ -1,7 +1,7 @@
 import { Box, Tab, Tabs } from '@mui/material';
 import { useCallback, useState } from 'react';
 import { SHARE_INFO } from '../../Util/Constant';
-import { IData } from '../../Util/Type';
+import { IData } from '../../Types/Type';
 import ShareCard from './ShareCard';
 
 interface IShareTab {
