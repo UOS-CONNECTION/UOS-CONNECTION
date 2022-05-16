@@ -1,10 +1,10 @@
-import { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
+import { getCustomRepository } from 'typeorm';
+import { NextFunction, Request, Response } from 'express';
 
 import crypto from '@src/utils/crypto';
 import UserEntity from '@src/db/entities/user.entity';
 import UserRepository from '@src/db/repositories/user.repository';
-import { getCustomRepository } from 'typeorm';
 
 class UserController {
   // example user
