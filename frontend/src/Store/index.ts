@@ -1,8 +1,11 @@
-import { applyMiddleware, createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import ReduxPromise from 'redux-promise';
 
 import rootReducer from './Reducer';
 
-const store = applyMiddleware(ReduxPromise)(createStore)(rootReducer);
+const store2 = configureStore({
+  reducer: rootReducer,
+  middleware: [ReduxPromise],
+});
 
-export default store;
+export default store2;

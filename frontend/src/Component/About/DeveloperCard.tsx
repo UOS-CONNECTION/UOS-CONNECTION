@@ -1,11 +1,11 @@
 import { Box, Card, CardMedia, Typography, Chip } from '@mui/material';
-import { IDeveloper } from '../../Util/Type';
+import { IDeveloper } from '../../Types/Type';
 
 interface IDeveloperCard {
   user: IDeveloper;
 }
 
-const DeveloperCard: React.FC<IDeveloperCard> = ({ user }) => {
+const DeveloperCard: React.FC<IDeveloperCard> = ({ user }: IDeveloperCard) => {
   return (
     <Card className='developer-card-container'>
       <CardMedia

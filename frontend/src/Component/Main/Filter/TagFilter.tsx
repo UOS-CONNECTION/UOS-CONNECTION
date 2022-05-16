@@ -13,12 +13,15 @@ interface IMannerFilter {
   setTagOption: Function;
 }
 
-const TagFilter: React.FC<IMannerFilter> = ({ tagOption, setTagOption }) => {
+const TagFilter: React.FC<IMannerFilter> = ({
+  tagOption,
+  setTagOption,
+}: IMannerFilter) => {
   const handleTagOptionChange = useCallback(
     (e: SelectChangeEvent) => {
       setTagOption(e.target.value);
     },
-    [setTagOption]
+    [setTagOption],
   );
 
   return (
@@ -29,7 +32,6 @@ const TagFilter: React.FC<IMannerFilter> = ({ tagOption, setTagOption }) => {
         row
         value={tagOption}
         onChange={handleTagOptionChange}
-
       >
         <FormControlLabel value={1} control={<Radio />} label='자취방' />
         <FormControlLabel value={2} control={<Radio />} label='바퀴벌레' />

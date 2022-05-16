@@ -14,9 +14,9 @@ const Logo: React.FC = () => {
   };
 
   return (
-    <div className='header-logo' onClick={handleGoMain}>
+    <button type='button' className='header-logo' onClick={handleGoMain}>
       <img src='/img/logo_long.png' alt='logo' />
-    </div>
+    </button>
   );
 };
 
@@ -39,7 +39,9 @@ const GNBNavigation: React.FC = () => {
   );
 };
 
-const UserNavigation: React.FC<IUserNavigtaion> = ({ isLogin }) => {
+const UserNavigation: React.FC<IUserNavigtaion> = ({
+  isLogin,
+}: IUserNavigtaion) => {
   return (
     <Box className='user-navigation-container'>
       {!isLogin && (
@@ -65,7 +67,7 @@ const SearchBar: React.FC = () => {
   return (
     <Box className='search-container'>
       <Box className='search-container'>
-        <SearchIcon className='search-icon'></SearchIcon>
+        <SearchIcon className='search-icon' />
         <Input className='search-input' placeholder='Search..' />
       </Box>
     </Box>

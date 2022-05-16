@@ -20,14 +20,14 @@ const Email: React.FC<SignupEmailProps> = ({
   email,
   domain,
   handleSignUpInputChange,
-}) => {
+}: SignupEmailProps) => {
   const handleEmailButtonClicked = useCallback(
     (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.preventDefault();
       // TODO
       // email 인증 진행
     },
-    []
+    [],
   );
 
   return (

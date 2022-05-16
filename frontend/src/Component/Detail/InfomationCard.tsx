@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {
   Box,
   Divider,
@@ -14,9 +15,7 @@ import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import InboxIcon from '@mui/icons-material/Inbox';
-import { useState } from 'react';
-import React from 'react';
-import { IInfomation } from '../../Util/Type';
+import { IInfomation } from '../../Types/Type';
 import { BASIC_INFO_TYPE, EXTRA_INFO_TYPE } from '../../Util/Constant';
 
 interface IInfomationCard {
@@ -55,7 +54,7 @@ const InfomationComponent: React.FC<IInfomationComponent> = ({
   dense,
   infoList,
   title,
-}) => {
+}: IInfomationComponent) => {
   return (
     <Box className='infomation-container'>
       <Typography variant='h5'>{title}</Typography>

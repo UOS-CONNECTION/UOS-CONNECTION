@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material';
 import { Dispatch, SetStateAction } from 'react';
 
 import ChatPerson from './ChatPerson';
-import { ChatType } from '../../Util/Type';
+import { ChatType } from '../../Types/Type';
 import { ChatListHeaderSkeleton, ChatPersonSkeleton } from './ChatSkeleton';
 
 interface IChatSelect {
@@ -17,7 +17,7 @@ const ChatList: React.FC<IChatSelect> = ({
   setChatRoom,
   chatList,
   isLoading,
-}) => {
+}: IChatSelect) => {
   return (
     <Box className='chat-list-container'>
       <Box className='chat-list-top'>

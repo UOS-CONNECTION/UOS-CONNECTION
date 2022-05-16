@@ -1,6 +1,6 @@
-import { BASIC_INFO_TYPE, EXTRA_INFO_TYPE } from './Constant';
 import * as faker from 'faker';
 import shortId from 'shortid';
+import { BASIC_INFO_TYPE, EXTRA_INFO_TYPE } from './Constant';
 
 export const TempData = [
   {
@@ -151,17 +151,11 @@ export const TempData = [
 
 faker.setLocale('ko');
 const makeDate = (): string => {
-  return (
-    String(faker.datatype.number({ min: 2000, max: 2022 })) +
-    '/' +
-    String(faker.datatype.number({ min: 1, max: 12 })) +
-    '/' +
-    String(faker.datatype.number({ min: 1, max: 30 })) +
-    '/' +
-    String(faker.datatype.number({ min: 0, max: 24 })) +
-    '/' +
-    String(faker.datatype.number({ min: 10, max: 60 }))
-  );
+  return `${String(faker.datatype.number({ min: 2000, max: 2022 }))}/${String(
+    faker.datatype.number({ min: 1, max: 12 }),
+  )}/${String(faker.datatype.number({ min: 1, max: 30 }))}/${String(
+    faker.datatype.number({ min: 0, max: 24 }),
+  )}/${String(faker.datatype.number({ min: 10, max: 60 }))}`;
 };
 
 export const TempChat = Array(20)
@@ -185,4 +179,3 @@ export const TempChat = Array(20)
       [faker.lorem.sentence(), -1],
     ],
   }));
-

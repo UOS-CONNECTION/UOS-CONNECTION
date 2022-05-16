@@ -3,7 +3,7 @@ import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { Box, Typography, Card, TextField, Avatar } from '@mui/material';
 
 import ChatCard from './ChatCard';
-import { ChatType } from '../../Util/Type';
+import { ChatType } from '../../Types/Type';
 import socketAPI from '../../Util/SocketAPI';
 import useChatList from '../../Hook/useChatList';
 import { BOTTOM_HEIGHT } from '../../Util/Constant';
@@ -21,18 +21,18 @@ interface ChatContent {
   message: string;
   senderName: string;
 }
-//isLoading 상위 index에서 fetch,  loading 그걸로 실제 데이터 가공 여부
-const ChatDetail: React.FC<ChatRoomProps> = ({ chatData, isLoading }) => {
-  const [myName, setMyName] = useState<string>('keroro');
+const ChatDetail: React.FC<ChatRoomProps> = ({
+  chatData,
+  isLoading,
+}: ChatRoomProps) => {
+  const [myName] = useState<string>('keroro');
   const [inputMessage, setInputMessage] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
   const { chatList, addChat, setPastChat } = useChatList();
   const scrollRef = useRef<HTMLInputElement>(null);
 
-  //set user by login(w/redux) temp var = keroro
-
   const handleInput = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     event.preventDefault();
     setInputMessage(event.target.value);
@@ -79,7 +79,7 @@ const ChatDetail: React.FC<ChatRoomProps> = ({ chatData, isLoading }) => {
         <ChatDetailTopSkeleton />
       ) : (
         <Card className='chat-detail-top' elevation={0}>
-          <Avatar alt='user-img' src={''}></Avatar>
+          <Avatar alt='user-img' src='' />
           <Typography className='chat-detail-usernickname'>
             {chatData.User?.nickname}
           </Typography>
@@ -97,7 +97,7 @@ const ChatDetail: React.FC<ChatRoomProps> = ({ chatData, isLoading }) => {
                   isLeft={item.isLeft}
                   key={idx}
                 />
-              )
+              ),
           )
         )}
       </Box>

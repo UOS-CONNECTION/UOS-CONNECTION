@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import { Typography } from '@mui/material';
 
-import { SignUpData } from './type';
 import SignupForm from './SignupForm';
 
 const SignupTitle: React.FC = () => {

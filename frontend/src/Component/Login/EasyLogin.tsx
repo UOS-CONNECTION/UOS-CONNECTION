@@ -4,6 +4,7 @@ import requestAPI from '../../Util/Request';
 const EasyLogin: React.FC = () => {
   const handleNaverClick = () => {};
 
+<<<<<<< HEAD
   const handleKakaoClick = () => {
     const REST_API_KEY = '6b190b1746f6460e0328fb561516d76f';
     const REDIRECT_URI = 'http://localhost:3000/oauth/kakao/callback';
@@ -13,6 +14,11 @@ const EasyLogin: React.FC = () => {
 
   const handleGoogleClick = async () => {
     return await requestAPI.get('/api/user/google');
+=======
+  const handleKakaoClick = async () => {
+    const res = await requestAPI.get('/api/user/kakao');
+    return res;
+>>>>>>> 67fb4c6214feb55811237776b7076f9b67822131
   };
 
   return (
@@ -24,7 +30,7 @@ const EasyLogin: React.FC = () => {
         <Avatar
           className='easylogin-icon'
           alt='Google'
-          src={`/img/google.ico`}
+          src='/img/google.ico'
           onClick={handleGoogleClick}
         />
         <Avatar

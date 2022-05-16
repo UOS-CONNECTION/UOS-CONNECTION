@@ -7,6 +7,18 @@ class PostRepository extends Repository<PostEntity> {
   async findById(_id: number) {
     return this.findOne({ _id });
   }
+
+  async getMaxSize() {
+    return this.createQueryBuilder('post').select('(*)').getCount();
+  }
+
+  async getSomePost(maxSize: number, offset: number, limit: number) {
+    return this.createQueryBuilder('post')
+      .orderBy('created_at', 'DESC')
+      .offset(offset)
+      .limit(limit)
+      .getMany();
+  }
 }
 
 export default PostRepository;

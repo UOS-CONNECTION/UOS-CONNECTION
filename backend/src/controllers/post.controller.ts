@@ -1,4 +1,3 @@
-import { TempData } from '@src/utils/temp.data';
 import { Request, Response } from 'express';
 
 import PostRepository from '@src/db/repositories/post.repository';
@@ -11,17 +10,37 @@ class postController {
       const { postId } = req.params;
       const postRepo = getCustomRepository(PostRepository);
       const searchRes = await postRepo.findById(parseInt(postId));
+      if (searchRes.content === '')
+        return res.json({ status: 'error', error: 'empty post' });
 
-      return res.json(searchRes);
+      return res.json({ status: 'success', data: searchRes });
     } catch (err) {
       res.sendStatus(400);
     }
   }
 
-  async getAllPost(req: Request, res: Response) {
+  async getPaginationPost(req: Request, res: Response) {
     try {
-      console.log('send All Data');
-      return res.json(TempData);
+      const offset = req.query.offset;
+      const limit = req.query.limit;
+      const postRepo = getCustomRepository(PostRepository);
+
+      if (!limit || !offset)
+        return res.json({ status: 'error', error: 'empty params' });
+      if (typeof offset !== 'string' || typeof limit !== 'string')
+        return res.json({ status: 'error', error: 'wrong param types' });
+
+      const maxSize = await postRepo.getMaxSize();
+      if (parseInt(offset as string) >= maxSize)
+        return res.json({ status: 'err', err: 'out of range' });
+
+      const searchRes = await postRepo.getSomePost(
+        maxSize,
+        parseInt(offset as string),
+        parseInt(limit as string),
+      );
+
+      return res.json({ status: 'success', data: searchRes });
     } catch (err) {
       res.sendStatus(400);
     }

@@ -1,21 +1,21 @@
 import { Box, Tab, Tabs } from '@mui/material';
 import { useCallback, useState } from 'react';
 import { SHARE_INFO } from '../../Util/Constant';
-import { IData } from '../../Util/Type';
+import { IData } from '../../Types/Type';
 import ShareCard from './ShareCard';
 
 interface IShareTab {
   talentData: IData[];
 }
 
-const ShareTab: React.FC<IShareTab> = ({ talentData }) => {
+const ShareTab: React.FC<IShareTab> = ({ talentData }: IShareTab) => {
   const [option, setOption] = useState<number>(0);
 
   const handleOptionChange = useCallback(
     (e: React.SyntheticEvent, nextOption: number) => {
       setOption(nextOption);
     },
-    []
+    [],
   );
 
   return (
