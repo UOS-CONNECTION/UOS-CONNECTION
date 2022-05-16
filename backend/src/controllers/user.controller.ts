@@ -12,7 +12,7 @@ import UserEntity from '@src/db/entities/user.entity';
 import UserRepository from '@src/db/repositories/user.repository';
 import { getCustomRepository } from 'typeorm';
 
-class userController {
+class UserController {
   // example user
   async temp(req: Request, res: Response) {
     try {
@@ -24,6 +24,7 @@ class userController {
     } catch (err) {
       res.sendStatus(400);
     }
+    return null;
   }
 
   async signUp(req: Request, res: Response) {
@@ -64,26 +65,34 @@ class userController {
 
   // async naverSignIn(req: Request, res: Response) {}
 
-  // async googleSignIn(req: Request, res: Response) {}
+  async googleSignIn(req: Request, res: Response) {
+    console.log('[Google] Login');
+    passport.authenticate('google', { scope: ['email', 'profile'] });
+  }
+
+  async googleCallback(req: Request, res: Response) {
+    console.log('[Google] Callback');
+    passport.authenticate('google', { failureRedirect: '/' });
+  }
 
   // 'kakao'
-  async kakaoSignIn(req: Request, res: Response) {
+  async kakaoSignIn() {
     console.log('[Kakao] kakao login');
-    passport.authenticate('login-kakao');
+    passport.authenticate('kakao');
   }
 
   // 'kakao/callback'
-  async kakaoCallback(req: Request, res: Response, next: NextFunction) {
+  async kakaoCallback() {
     console.log('[Kakao] kakao callback');
-    passport.authenticate('login-kakao', {
+    passport.authenticate('kakao', {
       successRedirect: '/',
       failureRedirect: '/', // kakaoStrategy에서 실패한다면 실행
     });
   }
 
-  getUserData(req: Request, res: Response) {}
+  // getUserData() {}
 
-  async updateUser(req: Request, res: Response) {}
+  // async updateUser(req: Request, res: Response) {}
 }
 
-export default new userController();
+export default new UserController();

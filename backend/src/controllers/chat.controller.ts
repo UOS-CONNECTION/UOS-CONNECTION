@@ -1,13 +1,14 @@
 import { TempChat, TempChatList } from '@src/utils/temp.data';
 import { Request, Response } from 'express';
 
-class chatController {
+class ChatController {
   async getChatList(req: Request, res: Response) {
     try {
       return res.json(TempChatList);
     } catch (err) {
       res.sendStatus(400);
     }
+    return null;
   }
 
   async getChatRoomDetail(req: Request, res: Response) {
@@ -18,7 +19,8 @@ class chatController {
     } catch (err) {
       res.sendStatus(400);
     }
+    return null;
   }
 }
 
-export default new chatController();
+export default new ChatController();

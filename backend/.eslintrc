@@ -26,7 +26,11 @@
     "linebreak-style": 0,
     "import/no-unresolved": 0,
     "no-use-before-define": ["error", { "functions": true, "classes": true, "variables": true }],
-    "no-shadow": ["error", { "builtinGlobals": false, "hoist": "functions", "allow": [], "ignoreOnInitialization": false }],
-    "jsx-a11y/no-noninteractive-element-interactions": "off"
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "no-underscore-dangle": 0,
+    "class-methods-use-this" : 0,
+    "no-shadow": 0,
+    "@typescript-eslint/no-shadow": ["error"],
+    "import/no-mutable-exports" : 0
   }
 }

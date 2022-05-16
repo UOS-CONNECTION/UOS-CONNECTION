@@ -25,9 +25,9 @@ const ShareTab: React.FC<IShareTab> = ({ talentData }: IShareTab) => {
         <Tab label='물품공유' />
       </Tabs>
       {option === SHARE_INFO.TALENT &&
-        talentData.map((data, idx) => <ShareCard key={idx} data={data} />)}
+        talentData?.map((data, idx) => <ShareCard key={idx} data={data} />)}
       {option === SHARE_INFO.ITEM &&
-        talentData.map((data, idx) => <ShareCard key={idx} data={data} />)}
+        talentData?.map((data, idx) => <ShareCard key={idx} data={data} />)}
     </Box>
   );
 };
