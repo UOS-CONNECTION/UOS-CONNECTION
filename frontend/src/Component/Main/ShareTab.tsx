@@ -19,10 +19,10 @@ const ShareTab: React.FC<IShareTab> = ({ talentData }: IShareTab) => {
   );
 
   return (
-    <Box className="share-tab-container">
+    <Box className='share-tab-container'>
       <Tabs value={option} onChange={handleOptionChange}>
-        <Tab label="재능공유" />
-        <Tab label="물품공유" />
+        <Tab label='재능공유' />
+        <Tab label='물품공유' />
       </Tabs>
       {option === SHARE_INFO.TALENT &&
         talentData?.map((data, idx) => <ShareCard key={idx} data={data} />)}
