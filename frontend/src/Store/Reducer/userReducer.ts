@@ -1,4 +1,9 @@
-import { ActionType, LOG_IN_REQUEST, SAVE_UESR_LOGIN_STATUS } from '../type';
+import {
+  ActionType,
+  LOG_IN_REQUEST,
+  SAVE_UESR_LOGIN_STATUS,
+  SIGN_UP_REQUEST,
+} from '../type';
 
 const userReducer = (action: ActionType, state = {}) => {
   switch (action?.type) {
@@ -6,6 +11,8 @@ const userReducer = (action: ActionType, state = {}) => {
       return { ...state, login: action.payload };
     case SAVE_UESR_LOGIN_STATUS:
       return { ...state, isLogin: true };
+    case SIGN_UP_REQUEST:
+      return { ...state, signup: action.payload };
     default:
       return state;
   }

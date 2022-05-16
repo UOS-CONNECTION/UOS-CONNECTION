@@ -1,5 +1,9 @@
-import { LOG_IN_REQUEST, SAVE_UESR_LOGIN_STATUS } from '../type';
-import { LoginRequeset, User } from '../../Types/UserType';
+import {
+  LOG_IN_REQUEST,
+  SAVE_UESR_LOGIN_STATUS,
+  SIGN_UP_REQUEST,
+} from '../type';
+import { LoginRequest, SingUpRequest, User } from '../../Types/UserType';
 import requestAPI from '../../Util/Request';
 
 export const saveUserLoginStatus = (user: User) => {
@@ -9,7 +13,7 @@ export const saveUserLoginStatus = (user: User) => {
   };
 };
 
-export const loginUser = async ({ email, password }: LoginRequeset) => {
+export const loginUser = async ({ email, password }: LoginRequest) => {
   const res = await requestAPI.post('/api/user/login', { email, password });
   if (res.status === 200) {
     saveUserLoginStatus(res?.data);
@@ -17,5 +21,22 @@ export const loginUser = async ({ email, password }: LoginRequeset) => {
   return {
     type: LOG_IN_REQUEST,
     payload: res.data,
+  };
+};
+
+export const signUpUser = async ({
+  email,
+  nickname,
+  password,
+}: SingUpRequest) => {
+  const res = await requestAPI.post('/api/user/signup', {
+    email,
+    nickname,
+    password,
+  });
+
+  return {
+    type: SIGN_UP_REQUEST,
+    payload: res,
   };
 };
