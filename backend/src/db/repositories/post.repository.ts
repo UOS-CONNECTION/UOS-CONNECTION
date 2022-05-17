@@ -5,7 +5,7 @@ import PostEntity from '@src/db/entities/post.entity';
 @EntityRepository(PostEntity)
 class PostRepository extends Repository<PostEntity> {
   async findById(_id: number) {
-    return this.findOne({ _id });
+    return this.findOne({ _id }, { relations: ['user_id'] });
   }
 
   async getMaxSize() {
