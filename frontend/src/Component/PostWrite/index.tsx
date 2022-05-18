@@ -1,13 +1,15 @@
 import { useCallback, useState } from 'react';
-import { Box, Button, SelectChangeEvent } from '@mui/material';
+import { Box, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 import PostWriteBox from './PostWriteBox';
 import PostWriteHeader, { Category, CategoryType } from './PostWriteHeader';
+import requestAPI from '../../Util/Request';
 
 export interface PostWriteValueType {
   title: string;
   content: string;
-  image: any;
+  image: string;
   category: CategoryType;
 }
 
@@ -18,12 +20,23 @@ const PostWrite: React.FC = () => {
     image: '',
     category: Category.unknown,
   } as PostWriteValueType);
+  const navigate = useNavigate();
 
   const handleFormSubmit = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
+    async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
+      const { title, content, category } = inputValue;
+      if (title === '' || content === '' || category === '') {
+        alert('게시글 항목을 채워주세요.');
+        return;
+      }
+      const submitRes = await requestAPI.post('/api/post', inputValue);
+      if (submitRes.status === 200) {
+        alert('포스트를 저장했습니다.');
+        navigate('/');
+      }
     },
-    [],
+    [inputValue, navigate],
   );
 
   const handleBtnClick = useCallback(
@@ -33,19 +46,14 @@ const PostWrite: React.FC = () => {
     [handleFormSubmit],
   );
 
-  const handleCategoryChange = (e: SelectChangeEvent<unknown>) => {
-    const nextCategory = e.target.value as CategoryType;
-    setInputValue((prev) => ({ ...prev, category: nextCategory }));
-  };
-
   return (
     <Box className='post-write-container'>
       <form onSubmit={handleFormSubmit}>
         <PostWriteHeader
           category={inputValue.category as number}
-          handleCategoryChange={handleCategoryChange}
+          setInputValue={setInputValue}
         />
-        <PostWriteBox />
+        <PostWriteBox setInputValue={setInputValue} />
         <Button variant='outlined' onClick={handleBtnClick}>
           작성 완료
         </Button>

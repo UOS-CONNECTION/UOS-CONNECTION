@@ -8,6 +8,8 @@ import {
   SelectChangeEvent,
   Typography,
 } from '@mui/material';
+import { Dispatch, SetStateAction } from 'react';
+import { PostWriteValueType } from '.';
 
 import { ValueOf } from '../../Util/HelperType';
 
@@ -23,13 +25,28 @@ export type CategoryType = ValueOf<typeof Category>;
 
 interface PostWriteHeaderProps {
   category: number;
-  handleCategoryChange: (e: SelectChangeEvent<unknown>) => void;
+  setInputValue: Dispatch<SetStateAction<PostWriteValueType>>;
 }
 
-const PostWriteHeader = ({
-  category,
-  handleCategoryChange,
-}: PostWriteHeaderProps) => {
+const PostWriteHeader = ({ category, setInputValue }: PostWriteHeaderProps) => {
+  const handleSelectFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const reader = new FileReader();
+      reader.addEventListener('load', () => {
+        setInputValue((prev) => ({
+          ...prev,
+          image: reader.result?.toString() ?? '',
+        }));
+      });
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
+
+  const handleCategoryChange = (e: SelectChangeEvent<unknown>) => {
+    const nextCategory = e.target.value as CategoryType;
+    setInputValue((prev) => ({ ...prev, category: nextCategory }));
+  };
+
   return (
     <Box className='post-write-header'>
       <Typography>글 작성하기</Typography>
@@ -48,14 +65,15 @@ const PostWriteHeader = ({
           </FormControl>
         </Box>
         <Box component='span' className='border'>
-          <input
-            accept='image/*'
-            id='contained-button-file'
-            multiple
-            type='file'
-          />
-          <Button variant='contained' component='span'>
+          <Button variant='contained' component='label'>
             Upload
+            <input
+              accept='image/*'
+              id='contained-button-file'
+              type='file'
+              hidden
+              onChange={handleSelectFile}
+            />
           </Button>
         </Box>
       </Box>
