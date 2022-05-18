@@ -17,6 +17,7 @@
     "@types/react-dom": "^17.0.9",
     "@types/react-swipeable-views": "^0.13.1",
     "axios": "^0.26.0",
+    "dotenv": "^16.0.1",
     "faker": "5.5.3",
     "node-sass": "^7.0.1",
     "react": "^17.0.2",
