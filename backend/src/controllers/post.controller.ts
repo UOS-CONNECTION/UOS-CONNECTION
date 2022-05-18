@@ -36,7 +36,6 @@ class PostController {
         return res.json({ status: 'err', err: 'out of range' });
 
       const searchRes = await postRepo.getSomePost(
-        maxSize,
         parseInt(offset as string, 10),
         parseInt(limit as string, 10),
       );

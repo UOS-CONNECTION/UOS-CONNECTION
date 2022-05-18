@@ -12,12 +12,15 @@ class PostRepository extends Repository<PostEntity> {
     return this.createQueryBuilder('post').select('(*)').getCount();
   }
 
-  async getSomePost(maxSize: number, offset: number, limit: number) {
-    return this.createQueryBuilder('post')
-      .orderBy('created_at', 'DESC')
-      .offset(offset)
-      .limit(limit)
-      .getMany();
+  async getSomePost(offset?: number, limit?: number) {
+    return await this.find({
+      relations: ['user_id'],
+      order: {
+        created_at: 'DESC',
+      },
+      skip: offset,
+      take: limit,
+    });
   }
 }
 
