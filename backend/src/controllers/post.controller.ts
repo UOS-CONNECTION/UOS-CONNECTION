@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
+import { getCustomRepository } from 'typeorm';
 
 import PostRepository from '@src/db/repositories/post.repository';
-import { getCustomRepository } from 'typeorm';
+import PostEntity from '@src/db/entities/post.entity';
 
 class PostController {
   // example user
@@ -46,6 +47,20 @@ class PostController {
       res.sendStatus(400);
     }
     return null;
+  }
+
+  async savePost(req: Request, res: Response) {
+    const { title, content, image, category } = req.body;
+    const postRepository = getCustomRepository(PostRepository);
+
+    const post = new PostEntity();
+    post.title = title;
+    post.img = image;
+    post.content = content;
+    post.category = category;
+
+    postRepository.save(post);
+    return res.status(200).send('포스트 저장에 성공했습니다.');
   }
 }
 
