@@ -26,11 +26,15 @@ const PostWrite: React.FC = () => {
     async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       const { title, content, category } = inputValue;
+      const userId = 1; // TODO: 리덕스 상태에서 가져오는 로직 생성후 연동
       if (title === '' || content === '' || category === '') {
         alert('게시글 항목을 채워주세요.');
         return;
       }
-      const submitRes = await requestAPI.post('/api/post', inputValue);
+      const submitRes = await requestAPI.post('/api/post', {
+        ...inputValue,
+        userId,
+      });
       if (submitRes.status === 200) {
         alert('포스트를 저장했습니다.');
         navigate('/');

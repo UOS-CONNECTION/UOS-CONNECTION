@@ -50,7 +50,7 @@ class PostController {
   }
 
   async savePost(req: Request, res: Response) {
-    const { title, content, image, category } = req.body;
+    const { title, content, image, category, userId } = req.body;
     const postRepository = getCustomRepository(PostRepository);
 
     const post = new PostEntity();
@@ -58,6 +58,7 @@ class PostController {
     post.img = image;
     post.content = content;
     post.category = category;
+    post.user_id = userId;
 
     postRepository.save(post);
     return res.status(200).send('포스트 저장에 성공했습니다.');
