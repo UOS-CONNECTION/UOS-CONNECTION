@@ -5,10 +5,7 @@ const EasyLogin: React.FC = () => {
   const handleNaverClick = () => {};
 
   const handleKakaoClick = () => {
-    const REST_API_KEY = '6b190b1746f6460e0328fb561516d76f';
-    const REDIRECT_URI = 'http://localhost:3000/oauth/kakao/callback';
-
-    window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`;
+    window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`;
   };
 
   const handleGoogleClick = async () => {
