@@ -5,5 +5,6 @@ const postRouter = Router();
 
 postRouter.get('/:postId', PostController.getOnePost);
 postRouter.get('', PostController.getPaginationPost);
+postRouter.post('/', PostController.savePost);
 
 export default postRouter;
