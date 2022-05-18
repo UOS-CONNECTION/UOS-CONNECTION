@@ -32,7 +32,9 @@ const PostWrite: React.FC = () => {
         return;
       }
       const submitRes = await requestAPI.post('/api/post', {
-        ...inputValue,
+        title,
+        content,
+        category,
         userId,
       });
       if (submitRes.status === 200) {
