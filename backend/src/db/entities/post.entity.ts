@@ -5,7 +5,6 @@ import {
   Entity,
   ManyToOne,
   PrimaryGeneratedColumn,
-  Timestamp,
   UpdateDateColumn,
 } from 'typeorm';
 
@@ -27,6 +26,9 @@ class Post {
 
   @Column('text', { nullable: true })
   label: string;
+
+  @Column('text', { nullable: true })
+  category: string;
 
   @ManyToOne(() => UserEntity, (user) => user._id)
   user_id: number;
