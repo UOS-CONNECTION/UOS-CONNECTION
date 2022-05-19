@@ -7,6 +7,7 @@
     "extends": [
       "eslint:recommended",
       "plugin:@typescript-eslint/recommended",
+      "@typescript-eslint/parser",
       "airbnb",
       "airbnb/hooks",
       "airbnb-typescript",
@@ -16,7 +17,8 @@
 "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module",
-    "project": "./backend/tsconfig.json"
+    "tsconfigRootDir": "__dirname",
+    "project": "./tsconfig.json"
 },
   "plugins": [
       "@typescript-eslint"

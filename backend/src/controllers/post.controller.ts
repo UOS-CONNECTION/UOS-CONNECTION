@@ -42,7 +42,7 @@ class PostController {
         parseInt(limit as string, 10),
       );
 
-      return res.json({ status: 'success', data: searchRes });
+      return res.json({ status: 'success', data: searchRes.reverse() });
     } catch (err) {
       res.sendStatus(400);
     }
